@@ -1,13 +1,15 @@
 <template>
   <div>
-    <v-date-picker
-      v-model="date"
-      :value="null"
-      color="green"
-      :transition="transition"
-      is-expanded
-      ref="calendar"
-    />
+    <div class="calendar-wrapper">
+      <v-date-picker 
+        v-model="date"
+        :value="null"
+        color="blue"
+        :transition="transition"
+        is-expanded
+        ref="calendar"
+      />
+    </div>
     <!-- 날짜 안내 모달 -->
     <div class="calendarModal" v-if="!getDay">
       <p>날짜를 선택해주세요!</p>
@@ -92,3 +94,7 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+@import "./calendar-main.css";
+</style>

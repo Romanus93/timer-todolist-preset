@@ -1,42 +1,29 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+button {
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    background-color: #e8eaf6;
-}
-
-#nav {
-  padding: 5px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-}
-
-h1, h2, h3, p {
-    margin: 0;
-}
-
-button {
-    padding: 0;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    background-color: #536dfe;
 }
 
 /* Advice-Font__CreateTodo__EditTodo */

@@ -1,5 +1,5 @@
 <template>
-  <div class="todolist-page">
+  <div class="todolist-component">
     <header class="header">
       <!-- 년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼 -->
       <ul class="todo-flex nav">
@@ -40,28 +40,33 @@
     </header>
     <!-- 일정 목록 -->
     <main>
-      <h1 v-show="test">hellow world</h1>
-      <section class="todo-flex teporaryClass">
+      <section class="todo-flex temporaryClass">
         <!-- v-for 반복문 -->
-        <ul class="todo-lists">
+        <ul class="todo-lists" v-show="!modalText">
           <swiper
             :slides-per-view="1"
             :space-between="50"
             :pagination="{ clickable: false }"
-            :scrollbar="{ draggable: true }"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
           >
             <swiper-slide v-for="(item, index) in todolist" :key="index">
-              <li class="todo_item" style="height: 200px">
+              <li class="todo_item todo-flex">
                 <div>Title : {{ item.title }}</div>
                 <div>description : {{ item.description }}</div>
                 <div>time : {{ item.time }}</div>
-                <!-- <div>id: {{ item.id }}</div> -->
                 <!-- eslint-disable-next-line -->
-                <div><button type="button" class="button--start"><i class="fas fa-running"></i></button></div>
+                <div>
+                  <button type="button" class="button--start">
+                    <i class="fas fa-running"></i>
+                  </button>
+                </div>
                 <!-- eslint-disable-next-line -->
-                <div><button type="button" class="button--edit-delete" @click="openModal(true)"><i class="fas fa-ellipsis-h"></i></button></div>
+                <div class="button--edit-delete-wrapper">
+                  <button type="button" class="button--edit-delete" @click="openModal(true)">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                </div>
                 <!-- eslint-disable-next-line -->
                 <div class="todo-flex modal" v-show="modalBoolean" >
                   <ul>
@@ -80,8 +85,8 @@
             </swiper-slide>
           </swiper>
         </ul>
-        <div v-show="testIf">
-          {{ text }}
+        <div class="modalText" v-show="modalText">
+          {{ modalText }}
         </div>
       </section>
     </main>
@@ -143,9 +148,7 @@ export default defineComponent({
   data() {
     return {
       todolist: [] as object[],
-      text: "",
-      testIf: false,
-      test: false,
+      modalText: '',
       modalBoolean: false
     }
   },
@@ -252,10 +255,9 @@ export default defineComponent({
     },
     inputText(): void {
       if (this.todolist.length == 0) {
-        this.testIf = true;
-        this.text = "일이 없네연 ^^";
+        this.modalText = "😋오늘은 뭘 할까요❔";
       } else {
-        this.testIf = false;
+        this.modalText = "";
       }
     }
   }
