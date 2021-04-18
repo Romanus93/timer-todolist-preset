@@ -1,0 +1,113 @@
+/* Header 762px*/
+.todolist-page > .header {
+    box-sizing: border-box;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+    /* position: fixed; */
+    /* top: 0;
+    z-index: 5; */
+}
+
+.todolist-page > .header i {
+    font-size: 2rem;
+}
+
+/* Header-Navigation */
+.todolist-page .nav {
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid burlywood;
+    background-color: burlywood;
+    box-sizing: border-box;
+}
+
+.todolist-page .today {
+    font-size: 1rem;
+}
+
+/* Header-Buttons-Size */
+.todolist-page .button--calendars, 
+.button--yesterday, 
+.button--tomorrow,
+.button--menus,
+.button--create,
+.button--delete {
+    width: 5vw;
+}
+
+/* Create-Delete-Button */
+.todolist-page .buttons-wrapper {
+    box-sizing: border-box;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2%;
+    border:darkorange 5px solid;
+    background-color: chocolate;
+
+}
+
+/* Todolists */
+.todolist-page > main {
+  margin-top: 15%;
+}
+
+
+.todo_item {
+    box-sizing: border-box;
+    border: tomato 5px solid;
+}
+
+/* Todolist-Form */
+.todolist {
+    height: 30vh;
+    margin: 2.5vh 10vw;
+    border: rgb(46, 46, 197) 5px solid;
+}
+
+.todolist > .info {
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.todolist li {
+    border: 2px solid sandybrown;
+}
+
+/* Start-Button-Icon-Size */
+.todolist .button--start > i {
+    font-size: 1.5rem;
+}
+
+/* Edit-Button-Icon-Position */
+.todolist .button--edit {
+    position: relative;
+    left: 46%;
+    bottom: 96%;
+    height: 10%;
+    width: 5%;
+}
+
+/* Edit-Button-Icon-Size */
+.todolist .button--edit > i {
+    vertical-align: top;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 640px) {
+    .todolist-page > .header i {
+        font-size: 1.6rem;
+    }
+    .todolist-page .button--calendars, 
+    .button--yesterday, 
+    .button--tomorrow,
+    .button--menus,
+    .button--create,
+    .button--delete {
+    width: 5vw;
+    }
+    .todolist-page .today {
+        font-size: 0.8rem;
+    }
+}
