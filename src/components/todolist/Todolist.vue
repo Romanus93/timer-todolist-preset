@@ -4,7 +4,7 @@
       <!-- 년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼 -->
       <ul class="todo-flex nav">
         <li>
-          <button class="button--calendars">
+          <button class="button--today" @click="goToday">
             <i class="far fa-calendar-alt"></i>
           </button>
         </li>
