@@ -17,6 +17,11 @@ ul {
   padding: 0;
 }
 
+@media screen and (max-width: 765px) {
+  width: ;
+}
+
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -24,6 +29,8 @@ ul {
     text-align: center;
     color: #2c3e50;
     background-color: #536dfe;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* Advice-Font__CreateTodo__EditTodo */

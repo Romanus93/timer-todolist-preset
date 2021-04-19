@@ -1,10 +1,11 @@
 <template>
   <div class="todolist-component">
-    <header class="header">
-      <!-- 년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼 -->
+    
+    <!-- <header class="header">
+      년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼
       <ul class="todo-flex nav">
         <li>
-          <button class="button--calendars">
+          <button class="button--today" @click="showToday">
             <i class="far fa-calendar-alt"></i>
           </button>
         </li>
@@ -14,30 +15,25 @@
           </button>
         </li>
         <li class="today">
-          <!-- 여기 값은 월 달력에서 해당 일(day)를 클릭했을때, 해당 day에 대한 값을 받아서, <h1>이 사이에 값이 들어감</h1> -->
+          여기 값은 월 달력에서 해당 일(day)를 클릭했을때, 해당 day에 대한 값을 받아서, <h1>이 사이에 값이 들어감</h1>
           <h1>{{ getDay }}</h1>
-          <!-- <h1>{{ date}}</h1> -->
         </li>
         <li>
           <button class="button--tomorrow" @click="goTomorrow">
             <i class="fas fa-chevron-right"></i>
           </button>
         </li>
-        <li>
-          <button class="button--menus">
-            <i class="fas fa-bars"></i>
-          </button>
-        </li>
       </ul>
-      <!-- 일정 생성 삭제 버튼 html 바까야함.div로 -->
+      일정 생성 삭제 버튼 html 바까야함.div로
       <ul class="todo-flex buttons-wrapper">
         <li>
           <button class="button--create" @click="goCreateTodoPage">
-            <i class="fas fa-plus"></i>
+            Add new <i class="fas fa-plus"></i>
           </button>
         </li>
       </ul>
-    </header>
+    </header> -->
+    
     <!-- 일정 목록 -->
     <main>
       <section class="todo-flex temporaryClass">
@@ -86,10 +82,20 @@
           </swiper>
         </ul>
         <div class="modalText" v-show="modalText">
-          {{ modalText }}
+          <!-- {{ modalText }} -->
+          <img src="src\assets\nothing to do.jpg" alt="뚱이 사진">
         </div>
       </section>
     </main>
+    <header class="header">
+      <ul class="todo-flex buttons-wrapper">
+        <li>
+          <button class="button--create" @click="goCreateTodoPage">
+            Add new <i class="fas fa-plus"></i>
+          </button>
+        </li>
+      </ul>
+    </header>
   </div>
 </template>
 
@@ -140,7 +146,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ["goYesterday", "goTomorrow"],
+  emits: ["goYesterday", "goTomorrow", "showToday"],
   components: {
       Swiper,
       SwiperSlide,
@@ -223,6 +229,9 @@ export default defineComponent({
           console.debug(error);
         });
       console.debug('axios-delete -- c');
+    },
+    showToday(): void {
+      this.$emit("showToday");
     },
     goYesterday(): void {
       console.log("goYesterday");
