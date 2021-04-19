@@ -191,14 +191,14 @@ export default defineComponent({
     async axiosGet(): Promise<void> {
       this.todolist.length = 0;
       await axios
-        .get("http://localhost:3005/todolists")
+        .get(`http://localhost:3005/todolists?date=${this.todolistDate}`)
         .then((response) => {
           // handle success
-          console.debug('a');
-          response.data.forEach((element: Todolist): void => {
-            (element.date == this.todolistDate)&& this.todolist.push(element)
-          });
-          console.debug('axiosGet-',this.todolist.length)
+          console.log(response.data);
+          this.todolist = response.data;
+          console.log(this.todolist);
+          
+          console.debug('axiosGet-',this.todolist.length);
         })
         .catch((error): void => {
           // handle error
