@@ -23,6 +23,7 @@
       :getDay="getDay"
       @goYesterday="goYesterday"
       @goTomorrow="goTomorrow"
+      @goToday="goToday"
     ></Todolist>
   </div>
 </template>
@@ -64,6 +65,10 @@ export default defineComponent({
     this.selectDate();
   },
   methods: {
+    goToday(): void {
+      this.date = new Date();
+      this.calendar.move(this.date);
+    },
     goYesterday(step: number): void {
       // eslint-disable-next-line
       this.date = moment(this.date).subtract(1, "day").toDate();

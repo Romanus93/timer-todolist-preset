@@ -86,7 +86,8 @@
           </swiper>
         </ul>
         <div class="modalText" v-show="modalText">
-          {{ modalText }}
+          <!-- {{ modalText }} -->
+          <img src="src\assets\nothing to do.jpg" alt="뚱이 사진">
         </div>
       </section>
     </main>
@@ -140,7 +141,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ["goYesterday", "goTomorrow"],
+  emits: ["goYesterday", "goTomorrow", "goToday"],
   components: {
       Swiper,
       SwiperSlide,
@@ -223,6 +224,9 @@ export default defineComponent({
           console.debug(error);
         });
       console.debug('axios-delete -- c');
+    },
+    goToday(): void {
+      this.$emit("goToday");
     },
     goYesterday(): void {
       console.log("goYesterday");
