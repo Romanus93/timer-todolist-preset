@@ -3,12 +3,12 @@
     <div class="calendar-wrapper">
       <v-date-picker 
         v-model="date"
-        :value="null"
-        color="blue"
-        :transition="transition"
-        is-expanded
         ref="calendar"
-      />
+        color="blue"
+        is-expanded
+        :value="null"
+        :transition="transition"
+      ></v-date-picker>
     </div>
     <!-- 날짜 안내 모달 -->
     <div class="calendarModal" v-if="!getDay">
@@ -17,14 +17,14 @@
     <!-- <div style="border: 1px solid blue; height: 300px" v-if="!getDay">
       
     </div> -->
-    <Todolist
+    <todo-list
       v-else
       :date="date"
       :getDay="getDay"
       @goYesterday="goYesterday"
       @goTomorrow="goTomorrow"
       @showToday="showToday"
-    ></Todolist>
+    ></todo-list>
 
     <div class="todolist-component">
     <header class="header">
@@ -37,7 +37,8 @@
         </li>
         <li>
           <button class="button--today" @click="showToday">
-            <span> {{ today }} </span><i class="far fa-calendar"></i>
+            <i class="far fa-calendar"></i>
+            <span> {{ today }} </span>
           </button>
         </li>
         <li>
@@ -60,11 +61,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import moment from "moment";
-import Todolist from "../../components/todolist/Todolist.vue";
+import TodoList from "../../components/todolist/TodoList.vue";
 
 export default defineComponent({
   name: 'Calendar',
-  components: { Todolist },
+  components: { TodoList },
   data() {
     return {
       date: new Date() as object,
@@ -94,12 +95,8 @@ export default defineComponent({
   },
   created() {
     console.log('calendar page - created');
+    console.log(this.$route);
     this.selectDate();
-    console.log(`today day - ${this.today}`);
-  },
-  beforeUpdate() {
-    console.log(`beforeUpdate -new Date() ${new Date()} -this.date ${this.date}`);
-    console.log(`beforeUpdate -this.getDay ${this.getDay}`);
   },
   methods: {
     goYesterday(step: number): void {
@@ -120,29 +117,20 @@ export default defineComponent({
       });
     },
     showToday(): void {
-      console.log('showToday');
-      
-      // this.date = new Date();
-      console.log(this.calendar);
-      console.log(new Date());
-      const today = new Date();
-      console.log(`today ${today}`);
       this.date = new Date();
-      // console.log(this.date= new Date());
-      // this.calendar.focusDate(today, {
-      //   transition: this.transition,
-      //   position: this.position
-      // })
       this.calendar.move(this.date);
-      console.log(this.date);
     },
     selectDate(){
-      if(this.$route.params.todolistDate == undefined) {
+      console.error('selecDate');
+      console.error(this.$route.params);
+      if(this.$route.params.todoItemDate === undefined) {
+        console.error('undefined');
         return;
       } else {
-        const todolistDate: any = moment(this.$route.params.todolistDate);
-        console.log(todolistDate._d);
-        this.date = todolistDate._d;
+        const todoItemDate: any = moment(this.$route.params.todoItemDate);
+        console.error('no undefined');
+        console.log(todoItemDate._d);
+        this.date = todoItemDate._d;
         return;
       }
     }

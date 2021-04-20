@@ -135,7 +135,7 @@ declare module "axios" {
 }
 
 export default defineComponent({
-  name: 'Todolist',
+  name: 'TodoList',
   props: {
     date: {
       type: Object,
@@ -159,7 +159,7 @@ export default defineComponent({
     }
   },
   computed: {
-    todolistDate(): string {
+    todoItemDate(): string {
       return this.getDay;
     }
   },
@@ -168,7 +168,6 @@ export default defineComponent({
     getDay(newValue, oldValue) {
       if(newValue == null) {
         this.todolist.length = 0;
-        this.inputText();
       } else if ((newValue !== null)&&(oldValue !== newValue)) {
         console.debug('else if');
         this.axiosGet();
@@ -178,9 +177,13 @@ export default defineComponent({
     }
   },
   // this.todolist가 먼저 나오는데 async를 써주는 것이 맞는지.
-  created(): void {
-    this.axiosGet();
-    console.log(this.todolist);
+  async created(): Promise<void> {
+    console.log('created');
+    console.log(this.todoItemDate);
+    console.log('aaaa');
+    await this.axiosGet();
+    console.log('cccc');
+    console.log(this.todoItemDate);
   },
   methods: {
     // Swiper func - onSwiper, onSlideChange
@@ -191,27 +194,28 @@ export default defineComponent({
         console.log('slide change');
     },
     openModal (booleanParams: boolean) :void {
-      console.log(booleanParams);
       this.modalBoolean = booleanParams;
     },
     async axiosGet(): Promise<void> {
       this.todolist.length = 0;
+      console.log('bbbb');
       await axios
-        .get(`http://localhost:3005/todolists?date=${this.todolistDate}`)
+        .get(`http://localhost:3005/todolists?date=${this.todoItemDate}`)
         .then((response) => {
           // handle success
+          console.log('response.data');
+          console.log(this.todoItemDate);
           console.log(response.data);
           this.todolist = response.data;
           console.log(this.todolist);
-          
           console.debug('axiosGet-',this.todolist.length);
         })
         .catch((error): void => {
           // handle error
           console.debug(error);
         });
-      this.inputText();
       console.debug('b');
+      console.log('bbbbbb');
     },
     async axiosDelete(item: Todolist): Promise<void> {
       console.debug('axios-delete -- b');
@@ -238,16 +242,20 @@ export default defineComponent({
       // eslint-disable-next-line
       const startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
       // eslint-disable-next-line
-      (this.todolistDate == startOfMonth ) ? this.$emit("goYesterday", -1) : this.$emit("goYesterday", 0);
+      (this.todoItemDate == startOfMonth ) ? this.$emit("goYesterday", -1) : this.$emit("goYesterday", 0);
     },
     goTomorrow(): void {
       // eslint-disable-next-line
       const endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
       // eslint-disable-next-line
-      (this.todolistDate == endOfMonth ) ? this.$emit("goTomorrow", 1) : this.$emit("goTomorrow", 0);
+      (this.todoItemDate == endOfMonth ) ? this.$emit("goTomorrow", 1) : this.$emit("goTomorrow", 0);
     },
     goCreateTodoPage(): void {
-      this.$router.push({ name: "CreateTodo" , params: { todolistDate: this.todolistDate }});
+      console.log('todoItemDate');
+      console.log(this.todoItemDate);
+      this.$router.push({ name: "CreateTodo" , params: { todoItemDate: this.todoItemDate }});
+      console.log('todoItemDate');
+      console.log(this.todoItemDate);
     },
     goEditTodoPage(item: any): void {
       this.$router.push({ name: "EditTodo", params: item });
@@ -256,18 +264,9 @@ export default defineComponent({
       this.$router.push({ name: "Calendar" });
     },
     async deleteTodolist(item: Todolist): Promise<void> {
-      console.debug('axios-delete -- a');
       await this.axiosDelete(item);
-      console.debug('axios-delte -- d');
       await this.axiosGet();
       this.modalBoolean = false;
-    },
-    inputText(): void {
-      if (this.todolist.length == 0) {
-        this.modalText = "😋오늘은 뭘 할까요❔";
-      } else {
-        this.modalText = "";
-      }
     }
   }
 });
