@@ -3,12 +3,12 @@
     <div class="calendar-wrapper">
       <v-date-picker 
         v-model="date"
-        :value="null"
-        color="blue"
-        :transition="transition"
-        is-expanded
         ref="calendar"
-      />
+        color="blue"
+        is-expanded
+        :value="null"
+        :transition="transition"
+      ></v-date-picker>
     </div>
     <!-- 날짜 안내 모달 -->
     <div class="calendarModal" v-if="!getDay">
@@ -17,25 +17,60 @@
     <!-- <div style="border: 1px solid blue; height: 300px" v-if="!getDay">
       
     </div> -->
-    <Todolist
+    <todo-list
       v-else
       :date="date"
       :getDay="getDay"
       @goYesterday="goYesterday"
       @goTomorrow="goTomorrow"
+<<<<<<< HEAD
       @goToday="goToday"
     ></Todolist>
+=======
+      @showToday="showToday"
+    ></todo-list>
+
+    <div class="todolist-component">
+    <header class="header">
+      <!-- 년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼 -->
+      <ul class="todo-flex nav">
+        <li>
+          <button class="button--yesterday" @click="goYesterday">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+        </li>
+        <li>
+          <button class="button--today" @click="showToday">
+            <i class="far fa-calendar"></i>
+            <span> {{ today }} </span>
+          </button>
+        </li>
+        <li>
+          <h2>
+            {{ getDay }}
+          </h2>
+        </li>
+        <li>
+          <button class="button--tomorrow" @click="goTomorrow">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </li>
+      </ul>
+      <!-- 일정 생성 삭제 버튼 html 바까야함.div로 -->
+    </header>
+    </div>  
+>>>>>>> design1
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import moment from "moment";
-import Todolist from "../../components/todolist/Todolist.vue";
+import TodoList from "../../components/todolist/TodoList.vue";
 
 export default defineComponent({
   name: 'Calendar',
-  components: { Todolist },
+  components: { TodoList },
   data() {
     return {
       date: new Date() as object,
@@ -55,6 +90,9 @@ export default defineComponent({
         return this.date;
       }
     },
+    today(): string {
+      return moment(new Date()).format('mm')
+    },
     calendar(): any {
       const calendars = this.$refs.calendar as object;
       return calendars;
@@ -62,6 +100,7 @@ export default defineComponent({
   },
   created() {
     console.log('calendar page - created');
+    console.log(this.$route);
     this.selectDate();
   },
   methods: {
@@ -86,13 +125,21 @@ export default defineComponent({
         position: this.position
       });
     },
+    showToday(): void {
+      this.date = new Date();
+      this.calendar.move(this.date);
+    },
     selectDate(){
-      if(this.$route.params.todolistDate == undefined) {
+      console.error('selecDate');
+      console.error(this.$route.params);
+      if(this.$route.params.todoItemDate === undefined) {
+        console.error('undefined');
         return;
       } else {
-        const todolistDate: any = moment(this.$route.params.todolistDate);
-        console.log(todolistDate._d);
-        this.date = todolistDate._d;
+        const todoItemDate: any = moment(this.$route.params.todoItemDate);
+        console.error('no undefined');
+        console.log(todoItemDate._d);
+        this.date = todoItemDate._d;
         return;
       }
     }

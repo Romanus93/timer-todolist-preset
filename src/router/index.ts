@@ -2,7 +2,6 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Calendar from "../pages/calendar/Calendar.vue";
 import CreateTodo from "../pages/createTodo/CreateTodo.vue";
 import EditTodo from "../pages/editTodo/EditTodo.vue";
-import TodoForm from "../pages/TodoForm.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,12 +21,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "EditTodo",
     props: (route) => ({ todolistData: route.params }),
     component: EditTodo
-  },
-  //연습용
-  {
-    path: "/todoForm",
-    name: "TodoForm",
-    component: TodoForm
   }
 ];
 
