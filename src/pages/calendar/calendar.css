@@ -1,23 +1,22 @@
 .calendar-wrapper {
   padding-top: 3vh;
   padding-bottom: 2vh;
-  /* background-color: #e8eaf6; */
 }
 
 /* 임시 */
-/* Header 762px*/
-.todolist-component > .header {
+/* Footer 762px*/
+.todolist-component > .footer {
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
   width: 100%;
 }
 
-.todolist-component > .header i {
+.todolist-component > .footer i {
   font-size: 2rem;
 }
 
-/* Header-Navigation */
+/* Footer-Navigation */
 .todolist-component .nav {
   justify-content: space-evenly;
   align-items: center;
@@ -29,7 +28,7 @@
   font-size: 1rem;
 }
 
-/* Header-Buttons-Size */
+/* Footer-Buttons-Size */
 .todolist-component .button--today, 
 .button--yesterday, 
 .button--tomorrow,

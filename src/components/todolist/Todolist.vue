@@ -1,48 +1,10 @@
 <template>
   <div class="todolist-component">
-    
-    <!-- <header class="header">
-      년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼
-      <ul class="todo-flex nav">
-        <li>
-<<<<<<< HEAD
-          <button class="button--today" @click="goToday">
-=======
-          <button class="button--today" @click="showToday">
->>>>>>> design1
-            <i class="far fa-calendar-alt"></i>
-          </button>
-        </li>
-        <li>
-          <button class="button--yesterday" @click="goYesterday">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-        </li>
-        <li class="today">
-          여기 값은 월 달력에서 해당 일(day)를 클릭했을때, 해당 day에 대한 값을 받아서, <h1>이 사이에 값이 들어감</h1>
-          <h1>{{ getDay }}</h1>
-        </li>
-        <li>
-          <button class="button--tomorrow" @click="goTomorrow">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </li>
-      </ul>
-      일정 생성 삭제 버튼 html 바까야함.div로
-      <ul class="todo-flex buttons-wrapper">
-        <li>
-          <button class="button--create" @click="goCreateTodoPage">
-            Add new <i class="fas fa-plus"></i>
-          </button>
-        </li>
-      </ul>
-    </header> -->
-    
     <!-- 일정 목록 -->
     <main>
       <section class="todo-flex temporaryClass">
         <!-- v-for 반복문 -->
-        <ul class="todo-lists" v-show="!modalText">
+        <ul class="todo-lists" v-show="getDay">
           <swiper
             :slides-per-view="1"
             :space-between="50"
@@ -63,12 +25,12 @@
                 </div>
                 <!-- eslint-disable-next-line -->
                 <div class="button--edit-delete-wrapper">
-                  <button type="button" class="button--edit-delete" @click="openModal(true)">
+                  <button type="button" class="button--edit-delete" @click="openUDCModal(true)">
                     <i class="fas fa-ellipsis-h"></i>
                   </button>
                 </div>
                 <!-- eslint-disable-next-line -->
-                <div class="todo-flex modal" v-show="modalBoolean" >
+                <div class="todo-flex modal" v-show="isVisibleUDCModal" >
                   <ul>
                     <li style="color: red;">
                       <button type="button" class="button--delete" style="width: 10vw" @click="deleteTodolist(item)">삭제하기</button>
@@ -77,7 +39,7 @@
                       <button type="button" class="button--edit" @click="goEditTodoPage(item)">수정하기</button>
                     </li>
                     <li>
-                      <button type="button" class="button--cancle" @click="openModal(false)">취소</button>
+                      <button type="button" class="button--cancle" @click="openUDCModal(false)">취소</button>
                     </li>
                   </ul>
                 </div>
@@ -85,21 +47,11 @@
             </swiper-slide>
           </swiper>
         </ul>
-        <div class="modalText" v-show="modalText">
-          <!-- {{ modalText }} -->
+        <div class="noTodoItemModal" v-show="!getDay || isVisibleTodoItemModal">
           <img src="src\assets\nothing to do.jpg" alt="뚱이 사진">
         </div>
       </section>
     </main>
-    <header class="header">
-      <ul class="todo-flex buttons-wrapper">
-        <li>
-          <button class="button--create" @click="goCreateTodoPage">
-            Add new <i class="fas fa-plus"></i>
-          </button>
-        </li>
-      </ul>
-    </header>
   </div>
 </template>
 
@@ -150,11 +102,6 @@ export default defineComponent({
       required: true
     }
   },
-<<<<<<< HEAD
-  emits: ["goYesterday", "goTomorrow", "goToday"],
-=======
-  emits: ["goYesterday", "goTomorrow", "showToday"],
->>>>>>> design1
   components: {
       Swiper,
       SwiperSlide,
@@ -162,13 +109,15 @@ export default defineComponent({
   data() {
     return {
       todolist: [] as object[],
-      modalText: '',
-      modalBoolean: false
+      isVisibleUDCModal: false
     }
   },
   computed: {
-    todoItemDate(): string {
+    dateOfTodoItem(): string {
       return this.getDay;
+    },
+    isVisibleTodoItemModal(): boolean {
+      return this.todolist.length === 0 ? true: false
     }
   },
   watch: {
@@ -177,7 +126,6 @@ export default defineComponent({
       if(newValue == null) {
         this.todolist.length = 0;
       } else if ((newValue !== null)&&(oldValue !== newValue)) {
-        console.debug('else if');
         this.axiosGet();
       } else {
         console.debug('else');
@@ -186,12 +134,7 @@ export default defineComponent({
   },
   // this.todolist가 먼저 나오는데 async를 써주는 것이 맞는지.
   async created(): Promise<void> {
-    console.log('created');
-    console.log(this.todoItemDate);
-    console.log('aaaa');
     await this.axiosGet();
-    console.log('cccc');
-    console.log(this.todoItemDate);
   },
   methods: {
     // Swiper func - onSwiper, onSlideChange
@@ -201,32 +144,25 @@ export default defineComponent({
     onSlideChange(): void {
         console.log('slide change');
     },
-    openModal (booleanParams: boolean) :void {
-      this.modalBoolean = booleanParams;
+    openUDCModal (booleanParams: boolean) :void {
+      this.isVisibleUDCModal = booleanParams;
     },
     async axiosGet(): Promise<void> {
+      console.debug('axios-get');
       this.todolist.length = 0;
-      console.log('bbbb');
       await axios
-        .get(`http://localhost:3005/todolists?date=${this.todoItemDate}`)
+        .get(`http://localhost:3005/todolists?date=${this.dateOfTodoItem}`)
         .then((response) => {
           // handle success
-          console.log('response.data');
-          console.log(this.todoItemDate);
-          console.log(response.data);
+          console.debug(response);
           this.todolist = response.data;
-          console.log(this.todolist);
-          console.debug('axiosGet-',this.todolist.length);
         })
         .catch((error): void => {
           // handle error
           console.debug(error);
         });
-      console.debug('b');
-      console.log('bbbbbb');
     },
     async axiosDelete(item: Todolist): Promise<void> {
-      console.debug('axios-delete -- b');
       await axios
         .delete(`http://localhost:3005/todolists/${item.id}`, {
           id: item.id,
@@ -240,35 +176,6 @@ export default defineComponent({
         .catch(error => {
           console.debug(error);
         });
-      console.debug('axios-delete -- c');
-    },
-<<<<<<< HEAD
-    goToday(): void {
-      this.$emit("goToday");
-=======
-    showToday(): void {
-      this.$emit("showToday");
->>>>>>> design1
-    },
-    goYesterday(): void {
-      console.log("goYesterday");
-      // eslint-disable-next-line
-      const startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
-      // eslint-disable-next-line
-      (this.todoItemDate == startOfMonth ) ? this.$emit("goYesterday", -1) : this.$emit("goYesterday", 0);
-    },
-    goTomorrow(): void {
-      // eslint-disable-next-line
-      const endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
-      // eslint-disable-next-line
-      (this.todoItemDate == endOfMonth ) ? this.$emit("goTomorrow", 1) : this.$emit("goTomorrow", 0);
-    },
-    goCreateTodoPage(): void {
-      console.log('todoItemDate');
-      console.log(this.todoItemDate);
-      this.$router.push({ name: "CreateTodo" , params: { todoItemDate: this.todoItemDate }});
-      console.log('todoItemDate');
-      console.log(this.todoItemDate);
     },
     goEditTodoPage(item: any): void {
       this.$router.push({ name: "EditTodo", params: item });
@@ -279,7 +186,7 @@ export default defineComponent({
     async deleteTodolist(item: Todolist): Promise<void> {
       await this.axiosDelete(item);
       await this.axiosGet();
-      this.modalBoolean = false;
+      this.isVisibleUDCModal = false;
     }
   }
 });

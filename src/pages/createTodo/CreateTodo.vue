@@ -6,7 +6,7 @@
     </div>
     <todo-form 
       type="create"
-      :todoItemDate="todoItemDate" 
+      :dateOfTodoItem="dateOfTodoItem" 
     ></todo-form>
   </main>
 </template>
@@ -27,7 +27,7 @@ export default defineComponent({
   components: { TodoForm },
   name: 'CreateTodo',
   props: {
-    todoItemDate: {
+    dateOfTodoItem: {
       type: String,
       required: true
     }

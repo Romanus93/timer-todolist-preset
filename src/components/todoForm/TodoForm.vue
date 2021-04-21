@@ -1,5 +1,5 @@
 <template>
-  <main class="todo-flex edit-form">
+  <main class="todo-flex todo-form">
     <ul class="todo-flex todo-info">
       <li class="todo-flex todo-title">
         <label for="title">오늘 할 일</label>
@@ -31,7 +31,7 @@
     </ul>
     <ul class="todo-flex buttons-wrapper">
       <li>
-        <button class="button--edit" @click="createUpdateTodoItem">
+        <button class="button--create-edit" @click="createUpdateTodoItem">
           <i class="far fa-edit"></i>
         </button>
       </li>
@@ -56,10 +56,10 @@ export default defineComponent({
       type: String,
       required: true
     },
-    todoItemDate: {
+    dateOfTodoItem: {
       type: String,
       default: ''
-      // todoItemDate type 에러 해결값.
+      // dateOfTodoItem type 에러 해결값.
     },
     item: {
       type: Object
@@ -67,26 +67,22 @@ export default defineComponent({
   },
   data() {
     return {
-      date: this.todoItemDate,
+      date: this.dateOfTodoItem,
       title: '',
       description: '',
       time: 0,
     }
   },
   created () {
-    console.log('todoform');
-    console.log(this.date);
     if(this.item){
       this.date = this.item.date;
       this.title = this.item.title;
       this.description = this.item.description;
       this.time = this.item.time;
     };
-    console.log(this.title , this.description, this.time, this.date);
   },
   methods: {
     async createUpdateTodoItem() {
-      console.log('createUpdateTodoItem');
       let params = {
         date: this.date,
         title: this.title,
@@ -117,7 +113,7 @@ export default defineComponent({
     },
     goCalendarPage(): void {
       const today: string = moment(new Date()).format("YYYY-MM-DD");
-      (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoItemDate: this.date} });
+      (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
     }
   }
 })

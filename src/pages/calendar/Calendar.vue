@@ -11,27 +11,23 @@
       ></v-date-picker>
     </div>
     <!-- 날짜 안내 모달 -->
-    <div class="calendarModal" v-if="!getDay">
+    <div class="calendarModal" v-show="!getDay">
       <p>날짜를 선택해주세요!</p>
     </div>
-    <!-- <div style="border: 1px solid blue; height: 300px" v-if="!getDay">
-      
-    </div> -->
     <todo-list
-      v-else
+      v-show="getDay"
       :date="date"
       :getDay="getDay"
-      @goYesterday="goYesterday"
-      @goTomorrow="goTomorrow"
-<<<<<<< HEAD
-      @goToday="goToday"
-    ></Todolist>
-=======
-      @showToday="showToday"
     ></todo-list>
-
-    <div class="todolist-component">
-    <header class="header">
+    <div class="todolist-component" v-show="getDay">
+    <footer class="footer">
+      <ul class="todo-flex buttons-wrapper">
+        <li>
+          <button class="button--create" @click="goCreateTodoPage">
+            Add new <i class="fas fa-plus"></i>
+          </button>
+        </li>
+      </ul>
       <!-- 년-월-주일 달력이동 / 어제-내일 날짜 이동 메뉴버튼 -->
       <ul class="todo-flex nav">
         <li>
@@ -56,17 +52,15 @@
           </button>
         </li>
       </ul>
-      <!-- 일정 생성 삭제 버튼 html 바까야함.div로 -->
-    </header>
+    </footer>
     </div>  
->>>>>>> design1
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import moment from "moment";
-import TodoList from "../../components/todolist/TodoList.vue";
+import TodoList from "../../components/todoList/TodoList.vue"
 
 export default defineComponent({
   name: 'Calendar',
@@ -81,12 +75,11 @@ export default defineComponent({
     };
   },
   computed: {
-    getDay(): string | null {
+    getDay(): any {
       if (this.date != null) {
         const today = moment(this.date).format("YYYY-MM-DD");
         return today;
       } else {
-        console.log('Calednar-Page Computed-Getday',this.date);
         return this.date;
       }
     },
@@ -99,26 +92,36 @@ export default defineComponent({
     }
   },
   created() {
-    console.log('calendar page - created');
-    console.log(this.$route);
-    this.selectDate();
+    (this.$route.params.dateOfTodoItem !== undefined)&&this.initDate();
   },
   methods: {
+    //type: string | null
     goToday(): void {
       this.date = new Date();
       this.calendar.move(this.date);
     },
-    goYesterday(step: number): void {
+    goYesterday(): void {
+      // eslint-disable-next-line
+      const startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
+      let step: number = 0;
+      // eslint-disable-next-line
+      (this.getDay == startOfMonth ) ? step = -1 : step = 0;
       // eslint-disable-next-line
       this.date = moment(this.date).subtract(1, "day").toDate();
       this.goMonth(step);
     },
-    goTomorrow(step: number): void {
+    goTomorrow(): void {
+      // eslint-disable-next-line
+      const endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
+      let step: number = 0;
+      // eslint-disable-next-line
+      (this.getDay == endOfMonth ) ? step = 1 : step = 0;
       // eslint-disable-next-line
       this.date = moment(this.date).add(1, "day").toDate();
       this.goMonth(step);
     },
     goMonth(step: number): void {
+      console.log(`goMonth-step ${step}`);
       // step: -1 이전 달, 0 이동 없음, 1 다음 달
       this.calendar.move(step, {
         transition: this.transition,
@@ -129,24 +132,18 @@ export default defineComponent({
       this.date = new Date();
       this.calendar.move(this.date);
     },
-    selectDate(){
-      console.error('selecDate');
-      console.error(this.$route.params);
-      if(this.$route.params.todoItemDate === undefined) {
-        console.error('undefined');
-        return;
-      } else {
-        const todoItemDate: any = moment(this.$route.params.todoItemDate);
-        console.error('no undefined');
-        console.log(todoItemDate._d);
-        this.date = todoItemDate._d;
-        return;
-      }
+    goCreateTodoPage(): void {
+      this.$router.push({ name: "CreateTodo" , params: { dateOfTodoItem: this.getDay }});
+    },
+    initDate(){
+      const dateOfTodoItem: any = moment(this.$route.params.dateOfTodoItem);
+      this.date = dateOfTodoItem._d;
+      return;
     }
   }
 });
 </script>
 
 <style scoped>
-@import "./calendar-main.css";
+@import "./calendar.css";
 </style>

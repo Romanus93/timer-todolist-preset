@@ -23,60 +23,7 @@ export default defineComponent({
       type: Object,
       required: true
     }
-  },
-  created () {
-    console.log('edit Page');
-    console.log(this.todolistData);
-  },
-  // data() {
-  //   return {
-  //     todolist: {
-  //       date: this.todolistData.date,
-  //       title: this.todolistData.title,
-  //       description: this.todolistData.description,
-  //       time: this.todolistData.time,
-  //       id: this.todolistData.id
-  //     } ,
-  //     verificationTodolist: this.todolistData,
-  //     route: {}
-  //   }
-  // },
-  // created () {
-  //   console.log(`createTodo` + this.$route)
-  //   console.log(this.$route.path)
-  // },
-  // computed: {
-  //   routeData(): any {
-  //     console.debug('computed');
-  //     this.route = this.$route.path
-  //     return this.route 
-  //   }
-  // },
-  // methods: {
-  //   editTodo() {
-  //     console.log("editTodo");
-  //     if (
-  //       (this.todolist.title === this.verificationTodolist.title) &&
-  //       (this.todolist.description === this.verificationTodolist.description) &&
-  //       (this.todolist.time  === this.verificationTodolist.time)
-  //     ) {
-  //       this.goCalendarPage();
-  //     } else {
-  //       this.goCalendarPage();
-  //     }
-  //   },
-  //   goCalendarPage(): void {
-  //     this.compareDates();
-  //   },
-  //   compareDates(): void {
-  //     const today: string = moment(new Date()).format("YYYY-MM-DD");
-  //     if(today == this.todolist.date) {
-  //       this.$router.push({name: "Calendar" });
-  //     } else {
-  //       this.$router.push({name: "Calendar", params: { todolistDate: this.todolist.date }})
-  //     }
-  //   }
-  // }
+  }
 });
 </script>
 
