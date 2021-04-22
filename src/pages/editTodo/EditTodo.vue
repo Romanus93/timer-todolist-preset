@@ -1,14 +1,16 @@
 <template>
-  <main class="todo-flex edit-form">
-    <div class="advice">
+  <div class="todo-flex editTodo-page">
+    <section class="todo-motivation">
       <!-- 명언 랜덤으로 뿌리기 -->
       <p>어디를 가든 마음을 다해 가라.<br />-공자-</p>
-    </div>
-    <todo-form 
-      type="edit" 
-      :item="todolistData">
-    </todo-form>
-  </main>
+    </section>
+    <section class="todo-info">
+      <todo-form 
+        type="edit" 
+        :item="todolistData">
+      </todo-form>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">

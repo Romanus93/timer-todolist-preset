@@ -1,45 +1,47 @@
-.calendar-wrapper {
+.calendar {
   padding-top: 3vh;
   padding-bottom: 2vh;
 }
 
+.todolist-wrapper .date-none-modal {
+
+}
+
 /* 임시 */
 /* Footer 762px*/
-.todolist-component > .footer {
+.action-buttons-wrapper {
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
   width: 100%;
 }
 
-.todolist-component > .footer i {
+.action-buttons-wrapper i {
   font-size: 2rem;
 }
 
-/* Footer-Navigation */
-.todolist-component .nav {
+/* ??Footer-navigation */
+.action-buttons-wrapper .nav {
   justify-content: space-evenly;
   align-items: center;
   background-color: #0043ca;
   box-sizing: border-box;
 }
 
-.todolist-component .today {
+.action-buttons-wrapper .today {
   font-size: 1rem;
 }
 
 /* Footer-Buttons-Size */
-.todolist-component .button--today, 
-.button--yesterday, 
-.button--tomorrow,
-.button--menus,
-.button--create,
-.button--delete {
+.action-buttons-wrapper .today-button, 
+.yesterday-button, 
+.tomorrow-button,
+.create-button {
   width: 5vw;
 }
 
 /* Create-Delete-Button */
-.todolist-component .buttons-wrapper {
+.action-buttons-wrapper .buttons-wrapper {
   box-sizing: border-box;
   justify-content: space-evenly;
   align-items: center;

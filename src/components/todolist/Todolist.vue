@@ -1,64 +1,56 @@
 <template>
   <div class="todolist-component">
-    <!-- 일정 목록 -->
-    <main>
-      <section class="todo-flex temporaryClass">
-        <!-- v-for 반복문 -->
-        <ul class="todo-lists" v-show="getDay">
-          <swiper
-            :slides-per-view="1"
-            :space-between="50"
-            :pagination="{ clickable: false }"
-            @swiper="onSwiper"
-            @slideChange="onSlideChange"
-          >
-            <swiper-slide v-for="(item, index) in todolist" :key="index">
-              <li class="todo_item todo-flex">
-                <div>Title : {{ item.title }}</div>
-                <div>description : {{ item.description }}</div>
-                <div>time : {{ item.time }}</div>
-                <!-- eslint-disable-next-line -->
-                <div>
-                  <button type="button" class="button--start">
-                    <i class="fas fa-running"></i>
-                  </button>
-                </div>
-                <!-- eslint-disable-next-line -->
-                <div class="button--edit-delete-wrapper">
-                  <button type="button" class="button--edit-delete" @click="openUDCModal(true)">
-                    <i class="fas fa-ellipsis-h"></i>
-                  </button>
-                </div>
-                <!-- eslint-disable-next-line -->
-                <div class="todo-flex modal" v-show="isVisibleUDCModal" >
-                  <ul>
-                    <li style="color: red;">
-                      <button type="button" class="button--delete" style="width: 10vw" @click="deleteTodolist(item)">삭제하기</button>
-                    </li>
-                    <li>
-                      <button type="button" class="button--edit" @click="goEditTodoPage(item)">수정하기</button>
-                    </li>
-                    <li>
-                      <button type="button" class="button--cancle" @click="openUDCModal(false)">취소</button>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </swiper-slide>
-          </swiper>
-        </ul>
-        <div class="noTodoItemModal" v-show="!getDay || isVisibleTodoItemModal">
-          <img src="src\assets\nothing to do.jpg" alt="뚱이 사진">
-        </div>
-      </section>
-    </main>
+    <div class="todo-flex todo-list-wrapper">
+      <ul class="todo-list" v-show="!hasTodoItemModal">
+        <swiper
+          :slides-per-view="1"
+          :space-between="50"
+          :pagination="{ clickable: false }"
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
+        >
+          <swiper-slide v-for="(item, index) in todolist" :key="index">
+            <li class="todo-item todo-flex">
+              <div>Title : {{ item.title }}</div>
+              <div>description : {{ item.description }}</div>
+              <div>time : {{ item.time }}</div>
+              <div>
+                <button type="button" class="start-button">
+                  <i class="fas fa-running"></i>
+                </button>
+              </div>
+              <div class="edit-delete-modal-button-wrapper">
+                <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true)">
+                  <i class="fas fa-ellipsis-h"></i>
+                </button>
+              </div>
+              <div class="todo-flex edit-delete-modal" v-show="hasEditDeleteModal" >
+                <ul>
+                  <li>
+                    <button type="button" class="delete-button" @click="deleteItem(item)">삭제하기</button>
+                  </li>
+                  <li>
+                    <button type="button" class="edit-button"  @click="goEditTodoPage(item)">수정하기</button>
+                  </li>
+                  <li>
+                    <button type="button" class="cancle-button" @click="showEditDeleteModal(false)">취소</button>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </swiper-slide>
+        </swiper>
+      </ul>
+      <div class="todo-item-none-modal" v-show="hasTodoItemModal">
+        <img src="src\assets\nothing to do.jpg" alt="뚱이 사진">
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
-import moment from "moment";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 // import Swiper core and required modules
@@ -72,7 +64,7 @@ import 'swiper/components/scrollbar/scrollbar.scss';
  // install Swiper modules
 SwiperCore.use([Pagination, Scrollbar, A11y]);
 
-interface Todolist {
+interface TodoItem {
   title: string;
   description: string;
   time: number;
@@ -97,8 +89,8 @@ export default defineComponent({
       type: Object,
       required: true
     },
-    getDay: {
-      type: String,
+    inputedDay: {
+      type: [ Object, String ],
       required: true
     }
   },
@@ -109,32 +101,23 @@ export default defineComponent({
   data() {
     return {
       todolist: [] as object[],
-      isVisibleUDCModal: false
+      hasEditDeleteModal: false
     }
   },
   computed: {
-    dateOfTodoItem(): string {
-      return this.getDay;
-    },
-    isVisibleTodoItemModal(): boolean {
-      return this.todolist.length === 0 ? true: false
+    hasTodoItemModal(): boolean {
+      return (this.todolist.length === 0)? true : false  
     }
   },
   watch: {
-    // else 써야하나 아니면 if문 속에 if문을 넣어야 할려나
-    getDay(newValue, oldValue) {
-      if(newValue == null) {
-        this.todolist.length = 0;
-      } else if ((newValue !== null)&&(oldValue !== newValue)) {
-        this.axiosGet();
-      } else {
-        console.debug('else');
-      }
+    inputedDay(newValue, oldValue) {
+      (oldValue !== newValue)&& this.axiosGet()
     }
   },
   // this.todolist가 먼저 나오는데 async를 써주는 것이 맞는지.
-  async created(): Promise<void> {
-    await this.axiosGet();
+  created() {
+    // 고민
+    setTimeout(()=>this.axiosGet(), 2000);
   },
   methods: {
     // Swiper func - onSwiper, onSlideChange
@@ -144,14 +127,13 @@ export default defineComponent({
     onSlideChange(): void {
         console.log('slide change');
     },
-    openUDCModal (booleanParams: boolean) :void {
-      this.isVisibleUDCModal = booleanParams;
+    showEditDeleteModal (boolean: boolean) :void {
+      this.hasEditDeleteModal = boolean;
     },
     async axiosGet(): Promise<void> {
-      console.debug('axios-get');
       this.todolist.length = 0;
       await axios
-        .get(`http://localhost:3005/todolists?date=${this.dateOfTodoItem}`)
+        .get(`http://localhost:3005/todolist?date=${this.inputedDay}`)
         .then((response) => {
           // handle success
           console.debug(response);
@@ -162,9 +144,9 @@ export default defineComponent({
           console.debug(error);
         });
     },
-    async axiosDelete(item: Todolist): Promise<void> {
+    async axiosDelete(item: TodoItem): Promise<void> {
       await axios
-        .delete(`http://localhost:3005/todolists/${item.id}`, {
+        .delete(`http://localhost:3005/todolist/${item.id}`, {
           id: item.id,
           title: item.title,
           description: item.description,
@@ -183,10 +165,10 @@ export default defineComponent({
     goCalendarPage(): void {
       this.$router.push({ name: "Calendar" });
     },
-    async deleteTodolist(item: Todolist): Promise<void> {
+    async deleteItem(item: TodoItem): Promise<void> {
       await this.axiosDelete(item);
       await this.axiosGet();
-      this.isVisibleUDCModal = false;
+      this.hasEditDeleteModal = false;
     }
   }
 });

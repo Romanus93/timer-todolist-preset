@@ -1,59 +1,28 @@
-/* Header 762px*/
-.todolist-component > .header {
-    box-sizing: border-box;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    width: 100%;
-}
-
-.todolist-component > .header i {
-    font-size: 2rem;
-}
-
-/* Header-Navigation */
-.todolist-component .nav {
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #0043ca;
-    box-sizing: border-box;
-}
-
-.todolist-component .today {
-    font-size: 1rem;
-}
-
 /* Header-Buttons-Size */
-.todolist-component .button--today, 
-.button--yesterday, 
-.button--tomorrow,
-.button--menus,
-.button--create,
-.button--delete {
-    width: 5vw;
+.todolist-component .edit-delete-modal-button
+.delete-button,
+.edit-button,
+.cancle-button {
+  width: 5vw;
 }
 
 /* Create-Delete-Button */
 .todolist-component .buttons-wrapper {
-    box-sizing: border-box;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 2%;
-    background-color: #004ecb;
-    height: 5%;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2%;
+  background-color: #004ecb;
+  height: 5%;
 }
 
-/* Todolists */
-
-/* Temporary Value -Start*/
-
 /* ul-width,height / li-width,height */
-.temporaryClass {
+.todo-list-wrapper {
   flex-direction: column; 
   align-items: center;
 }
 
-
-.modal {
+.edit-delete-modal {
   width: 100%;
   height: 100%;
   opacity: 0.5;
@@ -67,18 +36,17 @@
   align-items: center;
 }
 
-.todo-lists {
+.delete-button {
+  color: red;
+  width: 10vw;
+}
+
+.todo-list {
   width: 90%;
   height: 10%;
 }
 
-/* Temporary Value -End */
-
-.todo-lists .swiper-container {
-  /* background-color: #8c9eff; */
-}
-
-.todo-lists .todo_item {
+.todo-list .todo-item {
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-evenly;
@@ -91,28 +59,20 @@
   border-radius: 10px 10px 10px 10px;
 }
 
-
-
 /* Todolists-Form */
-.todo-lists {
+.todo-list {
     height: 30vh;
     margin: 2.5vh 10vw;
     background-color: #536dfe;
 }
 
-/* .todolist > .info {
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-} */
-
 /* Start-Button-Icon-Size */
-.todo-lists .button--start > i {
+.todo-list .start-button > i {
     font-size: 1.5rem;
 }
 
 /* Edit-Delete-Button-Icon-Position&Size */
-.todo-lists .button--edit-delete-wrapper {
+.todo-list .edit-delete-modal-button-wrapper {
   /* 임시 */
   position: absolute;
   right: 4vw;
@@ -120,11 +80,11 @@
   width: 5%;
 }
 
-.todo-lists .button--edit-delete {
+.todo-list .edit-delete-button {
   
 }
 
-.modalText {
+.todo-item-none-modal {
   height: 200px;
   background-color: #ffffff;
   border-top: #0043ca 20px solid;
@@ -136,13 +96,11 @@
     .todolist-component > .header i {
         font-size: 1.6rem;
     }
-    .todolist-component .button--calendars, 
-    .button--yesterday, 
-    .button--tomorrow,
-    .button--menus,
-    .button--create,
-    .button--delete {
-    width: 5vw;
+    .todolist-component .edit-delete-button,
+    .delete-button,
+    .edit-button,
+    .cancle-button {
+      width: 5vw;
     }
     .todolist-component .today {
         font-size: 0.8rem;

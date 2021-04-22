@@ -1,5 +1,5 @@
 <template>
-  <main class="todo-flex todo-form">
+  <di class="todo-flex todo-form">
     <ul class="todo-flex todo-info">
       <li class="todo-flex todo-title">
         <label for="title">오늘 할 일</label>
@@ -7,15 +7,17 @@
           type="text"
           id="title"
           name="todo-title"
+          placeholder="오늘 할 일"
           v-model.trim="title"
         />
       </li>
-      <li class="todo-flex todo-content">
+      <li class="todo-flex todo-description">
         <label for="description">할 일 내용</label>
         <input
           type="text"
           id="description"
-          name="todo-content"
+          name="todo-description"
+          placeholder="할 일 내용"
           v-model.trim="description"
         />
       </li>
@@ -31,17 +33,17 @@
     </ul>
     <ul class="todo-flex buttons-wrapper">
       <li>
-        <button class="button--create-edit" @click="createUpdateTodoItem">
+        <button class="create-edit-button" @click="createUpdateTodoItem">
           <i class="far fa-edit"></i>
         </button>
       </li>
       <li>
-        <button class="button--home" @click="goCalendarPage">
+        <button class="home-button" @click="goCalendarPage">
           <i class="fas fa-home"></i>
         </button>
       </li>
     </ul>
-  </main>
+  </di>
 </template>
 
 <script lang="ts">
@@ -90,17 +92,18 @@ export default defineComponent({
         time: this.time
       }
       if(this.type === 'edit' && this.item ) {
-        const res = await axios.put("http://localhost:3005/todolists/"+this.item.id, params)
+        const res = await axios
+        .put("http://localhost:3005/todolist/"+this.item.id, params)
         .then(response => {
           console.debug(response.data);
           this.goCalendarPage();
-          //this.$router.push({ name: "Calendar" });
         })
         .catch(error => {
           console.debug(error);
         });
       } else {
-        const res = await axios.post("http://localhost:3005/todolists", params)
+        const res = await axios
+        .post("http://localhost:3005/todolist", params)
         .then(response => {
           console.debug(response.data);
           this.goCalendarPage();

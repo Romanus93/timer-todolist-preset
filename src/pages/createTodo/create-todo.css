@@ -1,18 +1,12 @@
 /* Create-Form */
-.input-form {
+.createTodo-page {
   border: 5px solid teal;
   flex-direction: column;
   align-items: center;
 }
 
-/* Advice */
-.input-form > .advice {
-  border: 5px solid tan;
-  margin-top: 5%;
-}
-
 /* Todolist-info */
-.input-form > .todo-info {
+.createTodo-page > .todo-info {
   border: 5px tomato solid;
   flex-direction: column;
   justify-content: space-around;
@@ -20,17 +14,17 @@
 }
 
 /* Todolist-info-title,content-position */
-.todo-info label, input {
+.createTodo-page label, input {
   display: block;
 }
 
-.todo-info .todo-title, .todo-content {
+.createTodo-page .todo-title, .todo-content {
   flex-direction: column;
   justify-content: space-around;
 }
 
 /* Button-Position-Size.. */
-.input-form > .buttons-wrapper {
+.createTodo-page > .buttons-wrapper {
   border: 5px blue solid;
   width: 25%;
   height: 20vh;
@@ -38,8 +32,8 @@
   align-items: center;
 }
 
-.buttons-wrapper .button--create,
-.button--cancle {
+.buttons-wrapper .create-edit-button,
+.home-button {
     width: 5vw;
 }
 
