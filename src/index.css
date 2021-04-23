@@ -1,47 +1,58 @@
-body{
-  margin: 0;
-  padding: 0;
+:root {
+  /* Color */
+  --white-color: #ffffff;
+  --black-color: #140a00;
+  --red-color: #dd2c00;
+  --light-blue-color: #536dfe;
+  --dark-blue-color: #0043ca;
+  --light-grey-color: #fafafa;
+  --blue-grey-color: #eceff1;
+  /* ellie pick - --grey-dark-color: #909090; --grey-light-color: #e0e0e0;*/
+  /* Size */
+  /* --side-padding: 12px; */
+
+  /* Font Size */
+  /* ellie */
+  --font-large: 18px;
+  --font-medium: 18px;
+  --font-small: 18px;
+  --font-micro: 10px;
+
+  /* 사용시 */
+  /* ex - color: var(--red-color); */
 }
 
-h1, h2, h3, p {
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
-button {
-  padding: 0;
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
 ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
-
-@media screen and (max-width: 765px) {
-  width: ;
-}
-
 
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    background-color: #536dfe;
-    width: 100vw;
-    height: 100vh;
-}
-
-/* Advice-Font__CreateTodo__EditTodo */
-.input-form > .advice > p,
-.edit-form > .advice > p {
-  font-family: 'Nanum Brush Script';
-  font-size: 2rem;
-  font-weight: bold;
+    /* text-align: center; */
+    background: var(--light-blue-color);
+    width: 100%;
+    height: 100%;
 }
 
 /* display-flex */
 .todo-flex {
     display: flex;
+}
+
+/* iPhon 5/SE */
+@media screen and (min-width: 320px) {
+  
 }

@@ -1,25 +1,27 @@
-/* Header-Buttons-Size */
-.todolist-component .edit-delete-modal-button
-.delete-button,
-.edit-button,
-.cancle-button {
-  width: 5vw;
+.todolist-component {
 }
 
-/* Create-Delete-Button */
-.todolist-component .buttons-wrapper {
-  box-sizing: border-box;
+.todo-list {
+  width: 100%;
+  background-color: #536dfe;
+  margin: 0 auto;
+}
+
+.todo-list .todo-item {
+  width: 100%;
+  flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  margin-top: 2%;
-  background-color: #004ecb;
-  height: 5%;
+  /* temporary */
+  background-color: #ffffff;
+  height: 30vh;
+  border-top: #0043ca 20px solid;
+  padding-bottom: 5%;
+  border-radius: 10px 10px 10px 10px;
 }
-
-/* ul-width,height / li-width,height */
-.todo-list-wrapper {
-  flex-direction: column; 
-  align-items: center;
+.todolist .swiper-pagination-fraction, 
+.swiper-pagination-custom, 
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 5px;
 }
 
 .edit-delete-modal {
@@ -36,34 +38,24 @@
   align-items: center;
 }
 
+/* Header-Buttons-Size */
+.todolist-component .edit-delete-modal-button
+.delete-button,
+.edit-button,
+.cancle-button {
+  width: 5vw;
+}
+
+/* ul-width,height / li-width,height */
+.todo-list-wrapper {
+  flex-direction: column; 
+  align-items: center;
+}
+
+
 .delete-button {
   color: red;
   width: 10vw;
-}
-
-.todo-list {
-  width: 90%;
-  height: 10%;
-}
-
-.todo-list .todo-item {
-  box-sizing: border-box;
-  flex-direction: column;
-  justify-content: space-evenly;
-  
-  /* temporary */
-  background-color: #ffffff;
-  height: 210px;
-  border-top: #0043ca 20px solid;
-  padding-bottom: 13px;
-  border-radius: 10px 10px 10px 10px;
-}
-
-/* Todolists-Form */
-.todo-list {
-    height: 30vh;
-    margin: 2.5vh 10vw;
-    background-color: #536dfe;
 }
 
 /* Start-Button-Icon-Size */
@@ -80,10 +72,6 @@
   width: 5%;
 }
 
-.todo-list .edit-delete-button {
-  
-}
-
 .todo-item-none-modal {
   height: 200px;
   background-color: #ffffff;
@@ -92,7 +80,7 @@
   border-radius: 10px 10px 10px 10px;
 }
 
-@media screen and (max-width: 640px) {
+/* @media screen and (max-width: 640px) {
     .todolist-component > .header i {
         font-size: 1.6rem;
     }
@@ -105,4 +93,4 @@
     .todolist-component .today {
         font-size: 0.8rem;
     }
-}
+} */

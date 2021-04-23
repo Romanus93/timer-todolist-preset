@@ -1,49 +1,47 @@
 <template>
-  <div class="todolist-component">
-    <div class="todo-flex todo-list-wrapper">
-      <ul class="todo-list" v-show="!hasTodoItemModal">
-        <swiper
-          :slides-per-view="1"
-          :space-between="50"
-          :pagination="{ clickable: false }"
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
-        >
-          <swiper-slide v-for="(item, index) in todolist" :key="index">
-            <li class="todo-item todo-flex">
-              <div>Title : {{ item.title }}</div>
-              <div>description : {{ item.description }}</div>
-              <div>time : {{ item.time }}</div>
-              <div>
-                <button type="button" class="start-button">
-                  <i class="fas fa-running"></i>
-                </button>
-              </div>
-              <div class="edit-delete-modal-button-wrapper">
-                <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true)">
-                  <i class="fas fa-ellipsis-h"></i>
-                </button>
-              </div>
-              <div class="todo-flex edit-delete-modal" v-show="hasEditDeleteModal" >
-                <ul>
-                  <li>
-                    <button type="button" class="delete-button" @click="deleteItem(item)">삭제하기</button>
-                  </li>
-                  <li>
-                    <button type="button" class="edit-button"  @click="goEditTodoPage(item)">수정하기</button>
-                  </li>
-                  <li>
-                    <button type="button" class="cancle-button" @click="showEditDeleteModal(false)">취소</button>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </swiper-slide>
-        </swiper>
-      </ul>
-      <div class="todo-item-none-modal" v-show="hasTodoItemModal">
-        <img src="src\assets\nothing to do.jpg" alt="뚱이 사진">
-      </div>
+  <div class="todo-flex todolist-component">
+    <ul class="todo-list" v-show="!hasTodoItemModal">
+      <swiper
+        :slides-per-view="1"
+        :space-between="50"
+        :pagination="{ clickable: false }"
+        @swiper="onSwiper"
+        @slideChange="onSlideChange"
+      >
+        <swiper-slide v-for="(item, index) in todolist" :key="index">
+          <li class="todo-item todo-flex">
+            <div>Title : {{ item.title }}</div>
+            <div>description : {{ item.description }}</div>
+            <div>time : {{ item.time }}</div>
+            <div>
+              <button type="button" class="start-button">
+                <i class="fas fa-running"></i>
+              </button>
+            </div>
+            <div class="edit-delete-modal-button-wrapper">
+              <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true)">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </div>
+            <div class="todo-flex edit-delete-modal" v-show="hasEditDeleteModal" >
+              <ul>
+                <li>
+                  <button type="button" class="delete-button" @click="deleteItem(item)">삭제하기</button>
+                </li>
+                <li>
+                  <button type="button" class="edit-button"  @click="goEditTodoPage(item)">수정하기</button>
+                </li>
+                <li>
+                  <button type="button" class="cancle-button" @click="showEditDeleteModal(false)">취소</button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </swiper-slide>
+      </swiper>
+    </ul>
+    <div class="todo-item-none-modal" v-show="hasTodoItemModal">
+      <!-- <img src="src\assets\nothing to do.jpg" style="max-width: 100%; height:auto" alt="뚱이 사진"> -->
     </div>
   </div>
 </template>

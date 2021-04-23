@@ -1,11 +1,13 @@
 <template>
-  <div class="calendar-page">
+  <div class="calendar-page todo-flex">
     <section class="calendar-wrapper">
       <v-date-picker 
         v-model="date"
         ref="calendar"
         color="blue"
+        locale="en-US"
         is-expanded
+        trim-weeks
         :value="null"
         :transition="transition"
       ></v-date-picker>
@@ -20,12 +22,7 @@
         <p>날짜를 선택해주세요!</p>
       </div>
     </section>
-    <section class="action-buttons-wrapper" v-show="inputedDay">
-      <div class="todo-flex create-button-wrapper">
-        <button class="create-button" @click="goCreateTodoPage">
-          Add new <i class="fas fa-plus"></i>
-        </button>
-      </div>
+    <section class="todo-flex action-buttons-wrapper" v-show="inputedDay">
       <!--  어제,오늘,내일 날짜 이동 버튼 -->
       <div class="todo-flex nav-buttons-wrapper">
         <div>
@@ -44,6 +41,11 @@
             <i class="fas fa-chevron-right"></i>
           </button>
         </div>
+      </div>
+      <div class="todo-flex create-button-wrapper">
+        <button class="create-button" @click="goCreateTodoPage">
+          <span>Add new  </span><span><i class="fas fa-plus"></i></span>
+        </button>
       </div>
     </section>
   </div>
