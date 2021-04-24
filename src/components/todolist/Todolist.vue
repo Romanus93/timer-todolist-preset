@@ -48,9 +48,6 @@
     </ul>
     <div class="todo-item-none-modal" v-show="hasTodoItemModal">
     </div>
-    <div class="todo-item-none-modal" style="color: blue;" v-show="loadingPage">
-      <h1>loading page</h1>
-    </div>
   </div>
 </template>
 
@@ -91,10 +88,6 @@ declare module "axios" {
 export default defineComponent({
   name: 'TodoList',
   props: {
-    // date: {
-    //   type: Object,
-    //   required: true
-    // },
     inputedDay: {
       type: [ Object, String ],
       required: true
@@ -108,8 +101,7 @@ export default defineComponent({
     return {
       todolist: [] as object[],
       hasEditDeleteModal: false,
-      todoItem: {} as object,
-      loading: false
+      todoItem: {} as object
     }
   },
   computed: {
