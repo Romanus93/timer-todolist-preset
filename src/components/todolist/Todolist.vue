@@ -89,7 +89,7 @@ export default defineComponent({
   name: 'TodoList',
   props: {
     inputedDay: {
-      type: [ Object, String ],
+      type: [ Number, String ],
       required: true
     }
   },
@@ -113,8 +113,12 @@ export default defineComponent({
   watch: {
     inputedDay(newValue, oldValue) {
       console.log('watch 실행되었습니다.');
-      this.todolist.length = 0;
-      (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 2000);
+      if(newValue == 0){
+        return
+      } else {
+        this.todolist.length = 0;
+        (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 2000);  
+      }
     }
   },
   created() {

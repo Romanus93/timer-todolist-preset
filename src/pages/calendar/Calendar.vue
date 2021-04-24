@@ -72,7 +72,8 @@ export default defineComponent({
       if (this.date != null) {
         return moment(this.date).format("YYYY-MM-DD");
       } else {
-        return this.date;
+        console.log(this.date);
+        return 0;
       }
     },
     today(): string {
