@@ -1,51 +1,62 @@
-.calendar {
-  padding-top: 3vh;
-  padding-bottom: 2vh;
-}
-
-.todolist-wrapper .date-none-modal {
-
-}
-
-/* 임시 */
-/* Footer 762px*/
-.action-buttons-wrapper {
-  box-sizing: border-box;
-  margin-top: 2%;
-  margin-bottom: 2%;
+.calendar-page {
   width: 100%;
-}
-
-.action-buttons-wrapper i {
-  font-size: 2rem;
-}
-
-/* ??Footer-navigation */
-.action-buttons-wrapper .nav {
+  height: 100%;
+  flex-direction: column;
+  align-content: center;
+  /* justify-content: space-between; */
   justify-content: space-evenly;
+  /* justify-content: space-around; */
+}
+
+.calendar-wrapper {
+  margin: 0 auto;
+  /* margin-top: 20px; */
+  width: 90%;
+  border: 5px solid var(--dark-blue-color);
+  border-radius: 10px;
+  background: var(--dark-blue-color);
+}
+
+.todolist-wrapper {
+  width: 90%;
+  text-align: center;
+  /* border: 5px solid red; */
+  margin: 0 auto;
+}
+
+.action-buttons-wrapper {
+  width: 90%;
+  height: 15%;
+  margin: 0 auto;
+  border: 5px solid red;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  background-color: #0043ca;
-  box-sizing: border-box;
 }
 
-.action-buttons-wrapper .today {
-  font-size: 1rem;
+.nav-buttons-wrapper {
+  width: 45%;
+  justify-content: space-between;
 }
 
-/* Footer-Buttons-Size */
-.action-buttons-wrapper .today-button, 
-.yesterday-button, 
-.tomorrow-button,
+/* <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> --> */
+.yesterday-button {
+  
+}
+
+.today-button {
+  
+}
+
+.tomorrow-button {
+
+}
+
 .create-button {
-  width: 5vw;
+  
 }
 
-/* Create-Delete-Button */
-.action-buttons-wrapper .buttons-wrapper {
-  box-sizing: border-box;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 2%;
-  background-color: #004ecb;
-  height: 5%;
+/* iPhon 5/SE */
+@media screen and (min-width: 320px) {
+
 }

@@ -1,19 +1,49 @@
-/* Header-Buttons-Size */
-.todolist-component .edit-delete-modal-button
-.delete-button,
-.edit-button,
-.cancle-button {
-  width: 5vw;
+.todo-list {
+  width: 100%;
+  background-color: #536dfe;
+  margin: 0 auto;
 }
 
-/* Create-Delete-Button */
-.todolist-component .buttons-wrapper {
-  box-sizing: border-box;
+/* Todo-Item*/
+.todo-list .todo-item {
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* temporary */
+  background-color: #ffffff;
+  height: 30vh;
+  border-top: #0043ca 20px solid;
+  padding-bottom: 5%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* Button */
+.edit-delete-modal {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  background-color: var(--dark-blue-color);
+  left: 0;
+  z-index:100;
+}
+
+.edit-delete-modal ul {
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 2%;
-  background-color: #004ecb;
-  height: 5%;
+  height: 30%;
+  top: 35%;
+  position: relative;
+  border: solid red 5px;
+}
+
+.button--modal {
+  width: 30vw;
+  height: 8vh;
+  font-size: 20px;
+  /* border: none; */
 }
 
 /* ul-width,height / li-width,height */
@@ -22,53 +52,9 @@
   align-items: center;
 }
 
-.edit-delete-modal {
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  background-color: orange;
-  left: 0;
-  z-index:100;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .delete-button {
   color: red;
-  width: 10vw;
-}
-
-.todo-list {
-  width: 90%;
-  height: 10%;
-}
-
-.todo-list .todo-item {
-  box-sizing: border-box;
-  flex-direction: column;
-  justify-content: space-evenly;
-  
-  /* temporary */
-  background-color: #ffffff;
-  height: 210px;
-  border-top: #0043ca 20px solid;
-  padding-bottom: 13px;
-  border-radius: 10px 10px 10px 10px;
-}
-
-/* Todolists-Form */
-.todo-list {
-    height: 30vh;
-    margin: 2.5vh 10vw;
-    background-color: #536dfe;
-}
-
-/* Start-Button-Icon-Size */
-.todo-list .start-button > i {
-    font-size: 1.5rem;
 }
 
 /* Edit-Delete-Button-Icon-Position&Size */
@@ -80,19 +66,19 @@
   width: 5%;
 }
 
-.todo-list .edit-delete-button {
-  
-}
-
 .todo-item-none-modal {
-  height: 200px;
+  width: 100%;
+  height: 30vh;
   background-color: #ffffff;
-  border-top: #0043ca 20px solid;
-  padding-bottom: 13px;
-  border-radius: 10px 10px 10px 10px;
+  border: #0043ca 6px solid;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/nothing-to-do1.jpg");
 }
 
-@media screen and (max-width: 640px) {
+/* @media screen and (max-width: 640px) {
     .todolist-component > .header i {
         font-size: 1.6rem;
     }
@@ -105,4 +91,4 @@
     .todolist-component .today {
         font-size: 0.8rem;
     }
-}
+} */

@@ -1,49 +1,50 @@
 <template>
-  <di class="todo-flex todo-form">
-    <ul class="todo-flex todo-info">
-      <li class="todo-flex todo-title">
+  <div class="todo-flex todo-form">
+    <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+    <ul class="todo-flex todo-info todo-info--bg-image">
+      <li class="todo-title">
         <label for="title">오늘 할 일</label>
         <input
           type="text"
           id="title"
-          name="todo-title"
-          placeholder="오늘 할 일"
+          name="title"
+          placeholder="?"
           v-model.trim="title"
         />
       </li>
-      <li class="todo-flex todo-description">
+      <li class="todo-description">
         <label for="description">할 일 내용</label>
         <input
           type="text"
           id="description"
-          name="todo-description"
-          placeholder="할 일 내용"
+          name="description"
+          placeholder="?"
           v-model.trim="description"
         />
       </li>
-      <li>
+      <li class="todo-time">
         <label for="time">Time</label>
         <input
           type="number"
           id="time"
-          name="todo-time"
+          name="time"
           v-model.number="time"
         />
       </li>
     </ul>
     <ul class="todo-flex buttons-wrapper">
       <li>
-        <button class="create-edit-button" @click="createUpdateTodoItem">
-          <i class="far fa-edit"></i>
+        <button class="create-edit-button button--calendr button--calendar-image" @click="createUpdateTodoItem">
+          <i class="fas fa-pencil-alt"></i>
         </button>
       </li>
       <li>
-        <button class="home-button" @click="goCalendarPage">
+        <button class="home-button button--calendr button--calendar-image" @click="goCalendarPage">
           <i class="fas fa-home"></i>
         </button>
       </li>
     </ul>
-  </di>
+  </div>
 </template>
 
 <script lang="ts">
@@ -121,3 +122,7 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+@import "./todo-form.css"
+</style>

@@ -1,11 +1,13 @@
 <template>
-  <div class="calendar-page">
+  <div class="calendar-page todo-flex">
     <section class="calendar-wrapper">
       <v-date-picker 
         v-model="date"
         ref="calendar"
         color="blue"
+        locale="en-US"
         is-expanded
+        trim-weeks
         :value="null"
         :transition="transition"
       ></v-date-picker>
@@ -20,30 +22,28 @@
         <p>날짜를 선택해주세요!</p>
       </div>
     </section>
-    <section class="action-buttons-wrapper" v-show="inputedDay">
-      <div class="todo-flex create-button-wrapper">
-        <button class="create-button" @click="goCreateTodoPage">
-          Add new <i class="fas fa-plus"></i>
-        </button>
-      </div>
-      <!--  어제,오늘,내일 날짜 이동 버튼 -->
-      <div class="todo-flex nav-buttons-wrapper">
+    <section class="todo-flex action-buttons-wrapper" v-show="inputedDay">
+      <!--  어제,오늘,내일 이동 버튼과 todo 생성 버튼 -->
+        <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <div>
-          <button class="yesterday-button" @click="goYesterday">
-            <i class="fas fa-chevron-left"></i>
+          <button class="yesterday-button button--calendr button--calendar-image" @click="goYesterday">
+            <i class="fas fa-arrow-left"></i>
           </button>
         </div>
         <div>
-          <button class="today-button" @click="goToday">
-            <i class="far fa-calendar"></i>
+          <button class="today-button button--calendr button--calendar-image" @click="goToday">
             <span class="today"> {{ today }} </span>
           </button>
         </div>
         <div>
-          <button class="tomorrow-button" @click="goTomorrow">
-            <i class="fas fa-chevron-right"></i>
+          <button class="tomorrow-button button--calendr button--calendar-image" @click="goTomorrow">
+            <i class="fas fa-arrow-right"></i>
           </button>
         </div>
+      <div>
+        <button class="create-button button--calendr button--calendar-image" @click="goCreateTodoPage">
+          <i class="fas fa-plus"></i>
+        </button>
       </div>
     </section>
   </div>
@@ -88,6 +88,7 @@ export default defineComponent({
   methods: {
     //type: string | null
     goToday(): void {
+      console.log('today');
       this.date = new Date();
       this.calendar.move(this.date);
     },
