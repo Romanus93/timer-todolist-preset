@@ -3,17 +3,18 @@
   height: 100%;
   flex-direction: column;
   align-content: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+  /* justify-content: space-around; */
 }
 
 .calendar-wrapper {
-  position: relative;
-  top: 20px;
+  margin: 0 auto;
+  /* margin-top: 20px; */
   width: 90%;
   border: 5px solid var(--dark-blue-color);
   border-radius: 10px;
   background: var(--dark-blue-color);
-  margin: 0 auto;
 }
 
 .todolist-wrapper {
@@ -25,17 +26,34 @@
 
 .action-buttons-wrapper {
   width: 90%;
-  height: 12%;
+  height: 15%;
   margin: 0 auto;
-  margin-bottom: 20px;
   border: 5px solid red;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-button {
-  font-size: 18px;
+.nav-buttons-wrapper {
+  width: 45%;
+  justify-content: space-between;
+}
+
+/* <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> --> */
+.yesterday-button {
+  
+}
+
+.today-button {
+  
+}
+
+.tomorrow-button {
+
+}
+
+.create-button {
+  
 }
 
 /* iPhon 5/SE */

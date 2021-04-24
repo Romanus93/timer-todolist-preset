@@ -37,6 +37,26 @@ ul {
   list-style: none;
 }
 
+button {
+  border: none;
+}
+
+.button--calendr {
+  width: 16vw;
+  height: 7vh;
+  /* 임시 */
+  font-size: 18px;
+  /* border: none; */
+  padding-top: 2.2vh;
+}
+
+.button--calendar-image {
+  background-image: url("./assets/empty-calendar.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
