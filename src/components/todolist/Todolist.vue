@@ -48,9 +48,6 @@
     </ul>
     <div class="todo-item-none-modal" v-show="hasTodoItemModal">
     </div>
-    <div class="todo-item-none-modal" style="color: blue;" v-show="loadingPage">
-      <h1>loading page</h1>
-    </div>
   </div>
 </template>
 
@@ -91,12 +88,8 @@ declare module "axios" {
 export default defineComponent({
   name: 'TodoList',
   props: {
-    // date: {
-    //   type: Object,
-    //   required: true
-    // },
     inputedDay: {
-      type: [ Object, String ],
+      type: [ Number, String ],
       required: true
     }
   },
@@ -108,8 +101,7 @@ export default defineComponent({
     return {
       todolist: [] as object[],
       hasEditDeleteModal: false,
-      todoItem: {} as object,
-      loading: false
+      todoItem: {} as object
     }
   },
   computed: {
@@ -121,8 +113,12 @@ export default defineComponent({
   watch: {
     inputedDay(newValue, oldValue) {
       console.log('watch 실행되었습니다.');
-      this.todolist.length = 0;
-      (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 2000);
+      if(newValue == 0){
+        return
+      } else {
+        this.todolist.length = 0;
+        (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 2000);  
+      }
     }
   },
   created() {

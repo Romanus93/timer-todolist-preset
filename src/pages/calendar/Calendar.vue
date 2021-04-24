@@ -18,13 +18,14 @@
         v-show="inputedDay"
         :inputedDay="inputedDay"
       ></todo-list>
+      <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
       <div class="date-none-modal" v-show="!inputedDay">
-        <p>날짜를 선택해주세요!</p>
+        <p class="date-none-modal__text">날짜를 선택해주세요!</p>
       </div>
     </section>
     <section class="todo-flex action-buttons-wrapper" v-show="inputedDay">
       <!--  어제,오늘,내일 이동 버튼과 todo 생성 버튼 -->
-        <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+        <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <div>
           <button class="yesterday-button button--calendr button--calendar-image" @click="goYesterday">
             <i class="fas fa-arrow-left"></i>
@@ -71,7 +72,8 @@ export default defineComponent({
       if (this.date != null) {
         return moment(this.date).format("YYYY-MM-DD");
       } else {
-        return this.date;
+        console.log(this.date);
+        return 0;
       }
     },
     today(): string {

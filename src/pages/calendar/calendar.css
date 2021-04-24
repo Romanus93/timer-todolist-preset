@@ -24,6 +24,30 @@
   margin: 0 auto;
 }
 
+.date-none-modal {
+  width: 100%;
+  height: 50vh;
+  background-color: #ffffff;
+  border: #0043ca 6px solid;
+  border-radius: 5px;
+  background-size: 90%;
+  /* background-position: center; */
+  background-position: top;
+  background-repeat: no-repeat;
+  /* background-image: url("../../assets/website.svg"); */
+  background-image: url("/src/assets/calendar-warning.svg");
+}
+
+.date-none-modal__text {
+  position: relative;
+  top: 87%;
+  /* top: 72%; */
+  color: var(--black-color);
+  /* 임시 */
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .action-buttons-wrapper {
   width: 90%;
   height: 15%;
