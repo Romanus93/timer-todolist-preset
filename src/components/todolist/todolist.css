@@ -77,18 +77,3 @@
   background-repeat: no-repeat;
   background-image: url("../../assets/nothing-to-do1.jpg");
 }
-
-/* @media screen and (max-width: 640px) {
-    .todolist-component > .header i {
-        font-size: 1.6rem;
-    }
-    .todolist-component .edit-delete-button,
-    .delete-button,
-    .edit-button,
-    .cancle-button {
-      width: 5vw;
-    }
-    .todolist-component .today {
-        font-size: 0.8rem;
-    }
-} */

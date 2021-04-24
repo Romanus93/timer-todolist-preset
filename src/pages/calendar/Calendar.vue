@@ -13,9 +13,9 @@
       ></v-date-picker>
     </section>
     <section class="todolist-wrapper">
+      <!-- :date="date" -->
       <todo-list
         v-show="inputedDay"
-        :date="date"
         :inputedDay="inputedDay"
       ></todo-list>
       <div class="date-none-modal" v-show="!inputedDay">
@@ -83,7 +83,15 @@ export default defineComponent({
     }
   },
   created() {
+    console.log('calendar-page created');
+    console.log('inputtedDay');
+    console.log(this.inputedDay);
     (this.$route.params.dateOfTodoItem !== undefined)&&this.resetDate();
+  },
+  beforeUpdate () {
+    console.log('calendar-page beforeUpdate');
+    console.log('inputtedDay');
+    console.log(this.inputedDay);
   },
   methods: {
     //type: string | null

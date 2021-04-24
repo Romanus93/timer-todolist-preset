@@ -48,6 +48,9 @@
     </ul>
     <div class="todo-item-none-modal" v-show="hasTodoItemModal">
     </div>
+    <div class="todo-item-none-modal" style="color: blue;" v-show="loadingPage">
+      <h1>loading page</h1>
+    </div>
   </div>
 </template>
 
@@ -88,10 +91,10 @@ declare module "axios" {
 export default defineComponent({
   name: 'TodoList',
   props: {
-    date: {
-      type: Object,
-      required: true
-    },
+    // date: {
+    //   type: Object,
+    //   required: true
+    // },
     inputedDay: {
       type: [ Object, String ],
       required: true
@@ -105,36 +108,26 @@ export default defineComponent({
     return {
       todolist: [] as object[],
       hasEditDeleteModal: false,
-      todoItem: {} as object
+      todoItem: {} as object,
+      loading: false
     }
   },
   computed: {
     hasTodoItemModal(): boolean {
+      console.log('computed 실행되었습니다.');
       return (this.todolist.length === 0)? true : false  
     }
   },
   watch: {
     inputedDay(newValue, oldValue) {
+      console.log('watch 실행되었습니다.');
+      this.todolist.length = 0;
       (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 2000);
     }
   },
-  beforeCreate() {
-    console.log('TodoList-Component - beforeCreated hook');
-    console.log(this.todolist);
-    console.log(this.hasTodoItemModal);
-  },
   created() {
-    console.log('TodoList-Component - created hook');
-    console.log(this.hasTodoItemModal);
-    console.log(this.todolist);
-    console.log(this.hasTodoItemModal);
     // 고민
     setTimeout(()=>this.axiosGet(), 2000);
-  },
-  beforeUpdate () {
-    console.log('TodoList-Component - beforeUpdate hook');
-    console.log(this.todolist.length);
-    console.log(this.hasTodoItemModal);
   },
   methods: {
     // Swiper func - onSwiper, onSlideChange
@@ -149,7 +142,8 @@ export default defineComponent({
       this.todoItem = item
     },
     async axiosGet(): Promise<void> {
-      this.todolist.length = 0;
+      console.log('axiosGet');
+      console.log('this.todolist.length  '+ this.todolist.length);
       await axios
         .get(`http://localhost:3005/todolist?date=${this.inputedDay}`)
         .then((response) => {
