@@ -1,25 +1,21 @@
 :root {
   /* Color */
-  --white-color: #ffffff;
-  --black-color: #140a00;
-  --red-color: #dd2c00;
-  --light-blue-color: #536dfe;
-  --dark-blue-color: #0043ca;
-  --light-grey-color: #fafafa;
-  --blue-grey-color: #eceff1;
+  --white: #ffffff;
+  --black: black;
+  --red: red;  
+  --light-blue: #536dfe;
+  --dark-blue: #0043ca;
+  --blue-50: #e3f2fd;
+  --light-grey: #fafafa; /* --grey-50*/
+  --red-500: #f44336;
   /* ellie pick - --grey-dark-color: #909090; --grey-light-color: #e0e0e0;*/
-  /* Size */
   /* --side-padding: 12px; */
-
   /* Font Size */
   /* ellie */
   --font-large: 18px;
   --font-medium: 18px;
   --font-small: 18px;
   --font-micro: 10px;
-
-  /* 사용시 */
-  /* ex - color: var(--red-color); */
 }
 
 * {
@@ -42,12 +38,12 @@ button {
 }
 
 .button--calendr {
-  width: 16vw;
-  height: 7vh;
+  width: 17vw;
+  height: 8vh;
   /* 임시 */
-  font-size: 18px;
+  font-size: 20px;
   /* border: none; */
-  padding-top: 2.2vh;
+  padding-top: 2.8vh;
 }
 
 .button--calendar-image {
@@ -62,7 +58,7 @@ button {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* text-align: center; */
-    background: var(--light-blue-color);
+    background: var(--light-blue);
     width: 100%;
     height: 100%;
 }
@@ -75,4 +71,118 @@ button {
 /* iPhon 5/SE */
 @media screen and (min-width: 320px) {
   
+}
+
+/* 일요일 색 */
+div.vc-weeks > div:nth-child(1) {
+  color: var(--red-500);
+}
+
+/* 토요일 색 */
+div.vc-weeks > div:nth-child(7) {
+  color: var(--light-blue);
+}
+
+/* 일요일 - 년월일 중 일자 색 */
+div.vc-weeks > div.vc-day.weekday-1.weekday-position-1 > span {
+  color: var(--red-500);
+}
+
+/* 토요일 - 년월일 중 일자 색 */
+div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
+  color: var(--light-blue);
+}
+
+@media screen and (min-width: 350px) and (max-width: 500px) {
+  .button--calendr {
+    font-size: 28px;
+    padding-top: 2.9vh;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .button--calendr {
+    width: 18vw;
+    height: 9vh;
+    font-size: 36px;
+    padding-top: 3vh;
+  }
+
+  /*년 월 일 중 년-월 (타이틀) */
+  div.vc-header.align-center > div.vc-title {
+    font-size: 24px;
+  }
+  
+  /* 일요일~토요일 */
+  div.vc-weeks > div {
+    font-size: 18px;
+  }
+  
+  /* 년월일중 일자 */
+  div.vc-day > span {
+    font-size: 18px;
+  }
+
+  /*arrow---move-month-btn*/
+  div.vc-arrows-container.title-center > div > svg {
+    height: 30px;
+    width: 30px;
+  }
+  
+  /* 캘린더 전체 너비*/
+  section.calendar-wrapper > div {
+    /* width: 100%; */
+    border: springgreen solid 5px;
+    /* height: 40vh; */
+  }
+
+  /* 월 이동 버튼 너비 상자*/
+  div.vc-arrows-container.title-center {
+    border: red dotted 3px;
+    height: 7vh;
+  }
+
+  /* 년 월 버튼 너비 상자 */
+  div.vc-header.align-center {
+    border: steelblue solid 5px;
+    height: 7vh;
+    /* height: 20vh; */
+  }
+
+  /* 요일 상자 너비 조정 */
+  div.vc-pane-layout > div > div.vc-weeks {
+    border: yellow solid 5px;
+    height: 30vh;
+  }
+
+  /* 팝업 캘린더 포지션 조정*/
+  /* 팝업 캘린더 폰트 사이즈- */
+  div.vc-popover-content-wrapper.is-interactive > div {
+    top: 1vh;
+    width: 200px;
+    font-size: 18px; 
+  }
+
+  /* 팝업 캘린더 그리드 조정*/
+  /* 팝업 캘린더 요일 vc-nav-items  높이 */
+  div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
+    grid-row-gap: 1vh;
+    padding-left: 5px ;
+  }
+}
+
+@media screen and (min-width: 500px) and (min-height: 800px) { 
+  div.vc-popover-content-wrapper.is-interactive > div {
+    height: 220px;
+  }
+}
+
+@media screen and (min-width: 700px) { 
+  div.vc-popover-content-wrapper.is-interactive > div {
+    width: 300px;
+  }
+
+  div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
+    padding-left: 30px ;
+  }
 }

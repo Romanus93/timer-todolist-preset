@@ -12,17 +12,18 @@
   background-position: center top 10%;
   width: 120%;
   position: relative;
-  right: 11%;
+  right: 10%;
 }
 
 .todo-info {
   flex-direction: column;
   justify-content: space-evenly;
   padding-top: 12%;
-  padding-left: 20%;
+  padding-left: 24%;
   align-items: flex-start;
   height: 70vh;
   border: blanchedalmond solid 5px;
+  font-weight: bold;
 }
 
 .todo-info label, input {
@@ -30,9 +31,13 @@
 }
 
 .todo-info > li input {
+  width: 50vw;
+  height: 24px;
   border: none;
-  border-bottom: solid 2px var(--black-color);
-  background-color: #e3f2fd;
+  border-bottom: solid 2px var(--black);
+  background-color: var(--blue-50);
+  margin-top: 0.5vh;
+  font-size: 16px;
 }
 
 .todo-time {
@@ -49,4 +54,22 @@
   border: 5px solid red;
   justify-content: space-evenly;
   align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .todo-info {
+    padding-top: 16%;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .todo-info {
+    font-size: 24px;
+  }
+  
+  .todo-info li input {
+    font-size: 24px;
+    height: 32px;
+  }
 }

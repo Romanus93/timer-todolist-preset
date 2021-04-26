@@ -11,5 +11,5 @@
 .todo-form-wrapper {
   width: 90%;
   height: 90%;
-  border: 5px solid var(--red-color);
+  border: 5px solid var(--red);
 }

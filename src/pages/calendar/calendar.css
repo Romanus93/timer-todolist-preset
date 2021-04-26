@@ -12,9 +12,9 @@
   margin: 0 auto;
   /* margin-top: 20px; */
   width: 90%;
-  border: 5px solid var(--dark-blue-color);
+  border: 5px solid var(--dark-blue);
   border-radius: 10px;
-  background: var(--dark-blue-color);
+  background: var(--dark-blue);
 }
 
 .todolist-wrapper {
@@ -25,14 +25,14 @@
 }
 
 .date-none-modal {
-  width: 100%;
-  height: 50vh;
-  background-color: #ffffff;
-  border: #0043ca 6px solid;
+  /* width: 100%; */
+  height: 45vh;
+  background-color: var(--white);
+  border: var(--dark-blue) 6px solid;
   border-radius: 5px;
-  background-size: 90%;
-  /* background-position: center; */
-  background-position: top;
+  background-size: 70%;
+  background-position: center;
+  /* background-position: top; */
   background-repeat: no-repeat;
   /* background-image: url("../../assets/website.svg"); */
   background-image: url("/src/assets/calendar-warning.svg");
@@ -40,17 +40,15 @@
 
 .date-none-modal__text {
   position: relative;
-  top: 87%;
-  /* top: 72%; */
-  color: var(--black-color);
-  /* 임시 */
+  top: 50%;
+  color: var(--black);
   font-size: 20px;
   font-weight: bold;
 }
 
 .action-buttons-wrapper {
   width: 90%;
-  height: 15%;
+  height: 11%;
   margin: 0 auto;
   border: 5px solid red;
   flex-direction: row;
@@ -58,29 +56,22 @@
   align-items: center;
 }
 
-.nav-buttons-wrapper {
-  width: 45%;
-  justify-content: space-between;
-}
-
-/* <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> --> */
-.yesterday-button {
-  
-}
-
 .today-button {
-  
+  font-weight: bold;
 }
 
-.tomorrow-button {
-
+@media screen and (min-width: 300px) and (max-width: 350px) {
+  .date-none-modal__text {
+    font-size: 16px;
+  }
 }
+@media screen and (min-width: 600px) and (max-width: 770px){
+  .date-none-modal {
+    background-size: 60%;
+  }
 
-.create-button {
-  
-}
-
-/* iPhon 5/SE */
-@media screen and (min-width: 320px) {
-
+  .date-none-modal__text {
+    font-size: 30px;
+    font-weight: bold;
+  }
 }

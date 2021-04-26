@@ -10,7 +10,7 @@
       >
         <swiper-slide v-for="(item, index) in todolist" :key="index">
           <li class="todo-item todo-flex">
-            <div>Title : {{ item.title }}</div>
+            <div>Title : {{ item.title }}sdsdsdsdsds</div>
             <div>description : {{ item.description }}</div>
             <div>time : {{ item.time }}</div>
             <div>
