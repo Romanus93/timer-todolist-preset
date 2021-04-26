@@ -26,6 +26,7 @@
   font-weight: bold;
 }
 
+
 .todo-info label, input {
   display: block;
 }
@@ -41,12 +42,26 @@
 }
 
 .todo-time {
-  width: 30%;
+  width: 80%;
+  border: 5px solid salmon;
+  justify-content: space-around;
 }
 
-.todo-time input {
-  width: 40%;
-  padding-left: 15%;
+.time-wrapper {
+  flex-direction: column;
+}
+
+.todo-time .time-hms {
+  display: inline-block;
+}
+
+.todo-time .time-hms {
+  width: 3rem;
+  padding-left: 0;
+}
+
+.todo-time span {
+  padding-right: 10px;
 }
 
 .buttons-wrapper {

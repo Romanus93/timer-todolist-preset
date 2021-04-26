@@ -21,7 +21,12 @@ export default defineComponent({
       type: Object,
       required: true
     }
-  }
+  },
+  created () {
+    console.log(this.$route);
+    console.log('created - editodo');
+    console.log(this.todolistData.time);
+  },
 });
 </script>
 

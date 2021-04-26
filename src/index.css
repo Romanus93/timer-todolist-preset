@@ -73,6 +73,11 @@ button {
   
 }
 
+/* Swiper-pagination-point */
+div.swiper-pagination.swiper-pagination-bullets {
+  bottom: 2px;
+}
+
 /* 일요일 색 */
 div.vc-weeks > div:nth-child(1) {
   color: var(--red-500);

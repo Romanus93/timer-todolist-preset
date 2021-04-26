@@ -9,15 +9,27 @@
         @slideChange="onSlideChange"
       >
         <swiper-slide v-for="(item, index) in todolist" :key="index">
-          <li class="todo-item todo-flex">
-            <div>Title : {{ item.title }}sdsdsdsdsds</div>
-            <div>description : {{ item.description }}</div>
-            <div>time : {{ item.time }}</div>
-            <div>
-              <button type="button" class="start-button">
-                <i class="fas fa-running"></i>
-              </button>
-            </div>
+          <li class="todo-flex item-modal-wrapper">
+            <div class="todo-item todo-flex">
+              <div>{{ item.title }}</div>
+              <div>{{ item.description }}</div>
+              <div class="todo-flex time-start-button-wrapper">
+                <span>
+                  {{ twoDigit(item.time.hours) }} &nbsp :
+                </span>
+                <span>
+                  {{ twoDigit(item.time.minutes) }} &nbsp :
+                </span>
+                <span>
+                  {{ twoDigit(item.time.minutes) }}
+                </span>
+                <span>
+                  <button type="button" class="start-button">
+                    시작
+                  </button>
+                </span>
+              </div>
+            </div>  
             <div class="edit-delete-modal-button-wrapper">
               <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true, item)">
                 <i class="fas fa-ellipsis-h"></i>
@@ -108,6 +120,9 @@ export default defineComponent({
     hasTodoItemModal(): boolean {
       console.log('computed 실행되었습니다.');
       return (this.todolist.length === 0)? true : false  
+    },
+    towDigit(param:number): string {
+      return (param < 10 ? '0' : '') + param; 
     }
   },
   watch: {
@@ -126,6 +141,9 @@ export default defineComponent({
     setTimeout(()=>this.axiosGet(), 2000);
   },
   methods: {
+    twoDigit(param:number): string {
+      return (param < 10 ? '0' : '') + param; 
+    },
     // Swiper func - onSwiper, onSlideChange
     onSwiper(swiper: any): void {
         console.log(swiper);

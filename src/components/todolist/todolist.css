@@ -4,32 +4,64 @@
   margin: 0 auto;
 }
 
-/* Todo-Item*/
-.todo-list .todo-item {
+.item-modal-wrapper {
   width: 100%;
-  flex-direction: column;
   justify-content: space-evenly;
   font-size: 18px;
   background-color: var(--white);
   height: 30vh;
   border-top: var(--dark-blue) 20px solid;
-  padding-bottom: 5%;
   border-radius: 10px;
+}
+
+/* Todo-Item*/
+.todo-list .todo-item {
+  width: 82%;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+  /* background-color: var(--white);
+  height: 30vh;
+  border-top: var(--dark-blue) 20px solid;
+  padding-bottom: 5%;
+  border-radius: 10px; */
+  padding: 15px 0 25px 0;
+  padding-left: 15%;
+}
+
+.todo-item .time-start-button-wrapper {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.start-button {
+  font-size: 18px;
+  width: 46px;
+  height: 100%;
+  border: 3px solid var(--dark-blue);
+  border-radius: 5px;
+}
+
+.todo-list .title-modal-wrapper {
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* Edit-Delete-Button-Icon-Position&Size */
 .todo-list .edit-delete-modal-button-wrapper {
-  position: absolute;
-  right: 2vw;
-  top: 30px;
+  width: 12%;
+  position: relative;
+  padding-top: 15px;
+  right: 15px;
 }
 
 .edit-delete-modal-button {
-  width: 9VW;
-  height: 9VW;
+  width: 100%;
+  height: 15%;
+  font-size: 18px;
 }
 
-/* Button */
+/* Edit-Delete-Button */
 .edit-delete-modal {
   width: 100%;
   height: 100%;
@@ -56,15 +88,7 @@
   height: 8vh;
   font-size: 20px;
   font-weight: 600;
-  /* border: none; */
 }
-
-/* ul-width,height / li-width,height */
-.todo-list-wrapper {
-  flex-direction: column; 
-  align-items: center;
-}
-
 
 .delete-button {
   color: var(--red);
@@ -83,34 +107,53 @@
 }
 
 @media screen and (min-width: 500px) {
+
+
   .todo-item-none-modal {
     background-position: 50% 30%;
     background-image: url("../../assets/nothing-to-do-690x521.jpg");
   }
 
-  .todo-item {
+  .todo-item > div {
     font-size: 24px;
-    font-weight: 600;
+  }
+
+  .start-button {
+    font-size: 24px;
+  }
+
+  .start-button {
+    font-size: 24px;
+    width: 61px;
+    height: 40px;
+    border: 3px solid var(--dark-blue);
+    border-radius: 5px;
   }
 
   .button--modal {
     font-size: 30px;
   }
-}
-/* @media screen and (max-width: 500px) {
-  .todo-info {
-    padding-top: 16%;
-    font-size: 18px;
-  }
-} */
 
-/* @media screen and (min-width: 500px) {
-  .todo-info {
+  .todo-list .edit-delete-modal-button-wrapper {
     font-size: 24px;
   }
-  
-  .todo-info li input {
-    font-size: 24px;
-    height: 32px;
+}
+
+@media screen and (min-width: 700px) {
+  .todo-list .edit-delete-modal-button-wrapper {
+
   }
-} */
+}
+
+@media screen and (min-height: 700px) { 
+  .todo-list .edit-delete-modal-button-wrapper {
+    padding-top: 25px;
+  }
+
+  .todo-list .todo-item {
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 25px 0 25px 0;
+    padding-left: 15%;
+  }
+}
