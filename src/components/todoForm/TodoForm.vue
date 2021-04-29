@@ -22,14 +22,23 @@
           v-model.trim="description"
         />
       </li>
-      <li class="todo-time">
-        <label for="time">Time</label>
-        <input
-          type="number"
-          id="time"
-          name="time"
-          v-model.number="time"
-        />
+      <li class="todo-time todo-flex">
+        <span class="time-wrapper todo-flex">
+          <label class="time-hms" for="hours">시간</label>
+          <span>
+            <input id="hour" class="time-hms" type="number" placeholder="00" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" /> :
+          </span>
+        </span>
+        <span class="time-wrapper todo-flex">
+          <label class="time-hms" for="minutes">&nbsp분</label>
+          <span>
+            <input id="minutes" class="time-hms" type="number" placeholder="00" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" /> :
+          </span>
+        </span>
+        <span class="time-wrapper todo-flex">
+          <label class="time-hms" for="seconds">&nbsp초</label>
+          <input id="seconds" class="time-hms" type="number" placeholder="00" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
+        </span>
       </li>
     </ul>
     <ul class="todo-flex buttons-wrapper">
@@ -73,16 +82,30 @@ export default defineComponent({
       date: this.dateOfTodoItem,
       title: '',
       description: '',
-      time: 0,
+      hours: '' as any,
+      minutes: '' as any,
+      seconds: '' as any,
     }
   },
   created () {
+    console.log('todoform-created');
     if(this.item){
       this.date = this.item.date;
       this.title = this.item.title;
       this.description = this.item.description;
-      this.time = this.item.time;
+      this.hours = this.item.hours;
+      this.minutes = this.item.minutes;
+      this.seconds = this.item.seconds;
     };
+  },
+  mounted () {
+    console.log('aaaaa');
+  },
+  beforeUpdate () {
+    console.log('beforeUpdate');
+    (this.hours.length != 0) && this.hrs();
+    (this.minutes.length != 0) && this.min();
+    (this.seconds.length != 0) && this.sec();
   },
   methods: {
     async createUpdateTodoItem() {
@@ -90,7 +113,9 @@ export default defineComponent({
         date: this.date,
         title: this.title,
         description: this.description,
-        time: this.time
+        hours: this.hours,
+        minutes: this.minutes,
+        seconds: this.seconds
       }
       if(this.type === 'edit' && this.item ) {
         const res = await axios
@@ -113,6 +138,30 @@ export default defineComponent({
         .catch(error => {
           console.debug(error);
         });
+      }
+    },
+    hrs(): any {
+      this.hours = Math.floor(this.hours);
+      return Math.floor(this.hours)
+    },
+    min(): any {
+      if(this.minutes >= 60) {
+        console.log('if-m');
+        this.minutes = 0;
+        return this.minutes
+      } else {
+        console.log('if-else-m');
+        this.minutes = Math.floor(this.minutes);
+        return Math.floor(this.minutes)
+      }
+    },
+    sec(): any {
+      if(this.seconds >= 60) {
+        this.seconds = 0;
+        return this.seconds
+      } else {
+        this.seconds = Math.floor(this.seconds)
+        return Math.floor(this.seconds)
       }
     },
     goCalendarPage(): void {

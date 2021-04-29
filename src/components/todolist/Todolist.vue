@@ -14,7 +14,15 @@
               <div>{{ item.title }}</div>
               <div>{{ item.description }}</div>
               <div class="todo-flex time-start-button-wrapper">
-                <span>{{ item.time }}</span>
+                <span>
+                  {{ twoDigit(item.hours) }} &nbsp :
+                </span>
+                <span>
+                  {{ twoDigit(item.minutes) }} &nbsp :
+                </span>
+                <span>
+                  {{ twoDigit(item.minutes) }}
+                </span>
                 <span>
                   <button type="button" class="start-button">
                     시작
@@ -112,6 +120,9 @@ export default defineComponent({
     hasTodoItemModal(): boolean {
       console.log('computed 실행되었습니다.');
       return (this.todolist.length === 0)? true : false  
+    },
+    towDigit(param:number): string {
+      return (param < 10 ? '0' : '') + param; 
     }
   },
   watch: {
@@ -130,6 +141,9 @@ export default defineComponent({
     setTimeout(()=>this.axiosGet(), 2000);
   },
   methods: {
+    twoDigit(param:number): string {
+      return (param < 10 ? '0' : '') + param; 
+    },
     // Swiper func - onSwiper, onSlideChange
     onSwiper(swiper: any): void {
         console.log(swiper);
