@@ -21,7 +21,7 @@
                   {{ twoDigit(item.minutes) }} &nbsp :
                 </span>
                 <span>
-                  {{ twoDigit(item.minutes) }}
+                  {{ twoDigit(item.seconds) }}
                 </span>
                 <span>
                   <button type="button" class="start-button">
@@ -80,19 +80,23 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 SwiperCore.use([Pagination, Scrollbar, A11y]);
 
 interface TodoItem {
+  date: string;
   title: string;
   description: string;
-  time: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
   id: number;
-  date: string;
 }
 
 declare module "axios" {
   interface AxiosRequestConfig {
     title: string;
     description: string;
-    time: number;
     id: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
     date?: string;
   }
 }
@@ -151,9 +155,10 @@ export default defineComponent({
     onSlideChange(): void {
         console.log('slide change');
     },
-    showEditDeleteModal (boolean: boolean, item: object) :void {
+    showEditDeleteModal (boolean: boolean, item: TodoItem) :void {
       this.hasEditDeleteModal = boolean;
-      this.todoItem = item
+      this.todoItem = item;
+      console.log(this.todoItem);
     },
     async axiosGet(): Promise<void> {
       console.log('axiosGet');
@@ -172,12 +177,7 @@ export default defineComponent({
     },
     async axiosDelete(item: TodoItem): Promise<void> {
       await axios
-        .delete(`http://localhost:3005/todolist/${item.id}`, {
-          id: item.id,
-          title: item.title,
-          description: item.description,
-          time: item.time
-        })
+        .delete(`http://localhost:3005/todolist/${item.id}`)
         .then(response => {
           console.debug(response);
         })

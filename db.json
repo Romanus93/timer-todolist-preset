@@ -5,18 +5,9 @@
       "title": "2021-04-29",
       "description": "불고기 닭고기 등등등",
       "hours": 21,
-      "minutes": 8,
-      "seconds": 0,
+      "minutes": 0,
+      "seconds": 1,
       "id": 1
-    },
-    {
-      "date": "2021-04-29",
-      "title": "2021-04-29",
-      "description": "sdsdsdsd",
-      "hours": 112,
-      "minutes": 51,
-      "seconds": 20,
-      "id": 2
     }
   ]
 }
