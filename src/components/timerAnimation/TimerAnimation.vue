@@ -1,7 +1,7 @@
 <template>
   <div class="image-egg todo-flex image-background" :class="{ 'sad-background-image': failure }">
     <img :class="shakingAnimation" :src="eggImage" v-show="success">
-    <img class="translate-y" src="../../assets/animation/hatched-chick.svg" alt="" v-show="success">
+    <img class="translate-y" src="../../assets/animation/hatched-chick.svg" alt="" v-show="!success">
   </div>
 </template>
 
@@ -25,10 +25,10 @@
         } else if( this.time >= 1) {
           return '/src/assets/animation/craked-egg.svg';
         } else if( this.time == 0 ) {
-          setTimeout(()=> this.happy= false, 1000)
+          setTimeout(()=> this.success= false, 1000)
           return '/src/assets/animation/born-egg.svg'
         } else {
-          this.sad = true;
+          this.failure = true;
           return '/src/assets/animation/broken-egg.svg'
         }
       },

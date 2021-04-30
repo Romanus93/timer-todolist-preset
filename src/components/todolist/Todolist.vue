@@ -124,9 +124,6 @@ export default defineComponent({
     hasTodoItemModal(): boolean {
       console.log('computed 실행되었습니다.');
       return (this.todolist.length === 0)? true : false  
-    },
-    towDigit(param:number): string {
-      return ((param < 10 ? '0' : '') + param); 
     }
   },
   watch: {
@@ -156,6 +153,9 @@ export default defineComponent({
       this.hasEditDeleteModal = boolean;
       this.todoItem = item;
       console.log(this.todoItem);
+    },
+    twoDigit(param:number): string {
+      return ((param < 10 ? '0' : '') + param); 
     },
     async axiosGet(): Promise<void> {
       console.log('axiosGet');
@@ -191,6 +191,7 @@ export default defineComponent({
     goStartTodoPage(todoItem: any): void {
       console.log('a');
       console.log(todoItem);
+      console.log(typeof todoItem.hours, typeof todoItem.minutes, typeof todoItem.seconds);
       this.$router.push({ name: "StartTodo", params: todoItem });
     },
     async deleteItem(item: TodoItem): Promise<void> {

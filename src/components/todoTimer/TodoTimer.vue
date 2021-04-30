@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="app-timer">
-      <div class="timer" v-if="isVisible">
+      <div class="timer">
         <span class="hour"> {{ hours }} </span>
         <span>:</span>
         <span class="minute">{{ minutes }}</span>
@@ -24,14 +24,22 @@
     data() {
       return {
         timer: null,
-        totalTime: this.todoTime,
-        title: "Countdown to rest time!",
-        isVisible: true
+        totalTime: this.todoTime
       }
+    },
+    created() {
+      console.log(typeof this.todoTime);
+    },
+    mounted () {
+      this.startTimer();
+    },
+    beforeUpdate() {
+      console.log('beforeUpdate', this.totalTime);
+      this.$emit('checkTime',this.totalTime);
     },
     methods: {
       startTimer: function() {
-        this.timer = setInterval(() => this.totalTime--, 1000); //1000ms = 1 second
+        this.timer = setInterval(() => this.totalTime--, 1000);
         this.resetButton = true;
       },
       twoDigitTime: function(time){
@@ -41,23 +49,37 @@
     },
     computed: {
       hours: function(){
-        console.log(this.totalTime);
-        const hours = Math.floor(this.totalTime / (60*60));
-        console.log(hours);
-        return this.twoDigitTime(hours);
+        if(this.totalTime !== undefined) {
+          const hours = Math.floor(this.totalTime / (60*60));
+          return this.twoDigitTime(hours);   
+        } else {
+          return this.twoDigitTime(0);
+        }
       },
       minutes: function(){
-        const minutes = Math.floor((this.totalTime - (this.hours * 60 * 60)) / 60);
-        return this.twoDigitTime(minutes);
+        if(this.totalTime !== undefined) {
+          const minutes = Math.floor((this.totalTime - (this.hours * 60 * 60)) / 60);
+          return this.twoDigitTime(minutes);
+        } else {
+          return this.twoDigitTime(0);
+        }
       },
       seconds: function() {
-        const seconds = this.totalTime - (this.hours * 60 *60) - (this.minutes * 60);
-        return this.twoDigitTime(seconds);
-      }
+        if(this.totalTime !== undefined) {
+          const seconds = this.totalTime - (this.hours * 60 *60) - (this.minutes * 60);
+          return this.twoDigitTime(seconds);
+        } else {
+          console.log('undefinde follow');
+          return this.twoDigitTime(0);
+        }
+      },
     },
-    mounted () {
-      this.startTimer();
-    },
+    watch: {
+      totalTime(newValue, oldValue) {
+        (newValue === 0)&&(console.log('watch',this.totalTime),clearInterval(this.timer));
+        (newValue === undefined)&&(console.log('watch',this.totalTime),clearInterval(this.timer));
+      },
+    }
   }
 </script>
 

@@ -1,17 +1,20 @@
-<template>
-  <div>
-    <div>
+section<template>
+  <section>
+    <div class="container todo-timer-wrapper">
       <TodoTimer 
         :todoTime= todoTime
+        @checkTime="checkTime"
       />
     </div>
-    <div class="container">
-      <timer-animation />
+    <div class="container todo-timer-animation-wrapper">
+      <timer-animation 
+        :todoTime="time"
+      />
     </div>
-    <div class="container">
+    <div class="container todo-button-wrapper">
       <button type="button" @click="goCalendarPage">완료</button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -30,13 +33,20 @@ export default {
       required: true
     },
   },
+  data() {
+    return {
+      time: null
+    }
+  },
   computed: {
     todoTime() {
       console.log('computed');
       console.log(typeof this.todoItem.hours, typeof this.todoItem.minutes, typeof this.todoItem.seconds);
-      return this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;
+      let integer = this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;
+      return parseInt(integer,10);
     }
   },
+
   beforeCreate() {
     console.log('beforeCreate');
     console.log(this.$route);
@@ -47,6 +57,7 @@ export default {
     console.log('created');
     console.log(this.$route);
     console.log(this.todoItem);
+    console.log(typeof this.todoItem.hours, typeof this.todoItem.minutes, typeof this.todoItem.seconds);
   },
   beforeMount () {
     console.log('beforeMount');
@@ -68,7 +79,11 @@ export default {
           console.debug(error);
         });
       this.$router.push({ name: "Calendar" });
-    }
+    },
+    checkTime (param) {
+        console.log('checkTime', param);
+        this.time = param;
+      }
   },
 } 
 </script>
