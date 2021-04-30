@@ -3,7 +3,7 @@
     <section class="todo-form-wrapper">
       <todo-form 
         type="edit" 
-        :item="todolistData">
+        :item="todoItem">
       </todo-form>
     </section>
   </div>
@@ -17,7 +17,7 @@ export default defineComponent({
   components: { TodoForm },
   name: "EditTodo",
   props: {
-    todolistData: {
+    todoItem: {
       type: Object,
       required: true
     }
@@ -25,7 +25,7 @@ export default defineComponent({
   created () {
     console.log(this.$route);
     console.log('created - editodo');
-    console.log(this.todolistData.time);
+    console.log(this.todoItem.time);
   },
 });
 </script>

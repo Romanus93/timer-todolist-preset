@@ -24,7 +24,7 @@
                   {{ twoDigit(item.seconds) }}
                 </span>
                 <span>
-                  <button type="button" class="start-button">
+                  <button type="button" class="start-button" @click="goStartTodoPage(item)">
                     시작
                   </button>
                 </span>
@@ -126,7 +126,7 @@ export default defineComponent({
       return (this.todolist.length === 0)? true : false  
     },
     towDigit(param:number): string {
-      return (param < 10 ? '0' : '') + param; 
+      return ((param < 10 ? '0' : '') + param); 
     }
   },
   watch: {
@@ -136,18 +136,15 @@ export default defineComponent({
         return
       } else {
         this.todolist.length = 0;
-        (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 2000);  
+        (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 1000);  
       }
     }
   },
   created() {
     // 고민
-    setTimeout(()=>this.axiosGet(), 2000);
+    setTimeout(()=>this.axiosGet(), 1000);
   },
   methods: {
-    twoDigit(param:number): string {
-      return (param < 10 ? '0' : '') + param; 
-    },
     // Swiper func - onSwiper, onSlideChange
     onSwiper(swiper: any): void {
         console.log(swiper);
@@ -190,6 +187,11 @@ export default defineComponent({
     },
     goCalendarPage(): void {
       this.$router.push({ name: "Calendar" });
+    },
+    goStartTodoPage(todoItem: any): void {
+      console.log('a');
+      console.log(todoItem);
+      this.$router.push({ name: "StartTodo", params: todoItem });
     },
     async deleteItem(item: TodoItem): Promise<void> {
       await this.axiosDelete(item);

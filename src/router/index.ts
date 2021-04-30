@@ -3,6 +3,7 @@ import Calendar from "../pages/calendar/Calendar.vue";
 import CreateTodo from "../pages/createTodo/CreateTodo.vue";
 import EditTodo from "../pages/editTodo/EditTodo.vue";
 import Expage from "../pages/Expage.vue";
+import StartTodo from "../pages/startTodo/StartTodo.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,13 +21,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/editTodo",
     name: "EditTodo",
-    props: (route) => ({ todolistData: route.params }),
+    props: (route) => ({ todoItem: route.params }),
     component: EditTodo
   },
   {
     path: "/exPage",
     name: "Expage",
     component: Expage
+  },
+  {
+    path: "/startTodo",
+    name: "StartTodo",
+    props: (route) => ({ todoItem: route.params }),
+    component: StartTodo
   }
 ];
 
