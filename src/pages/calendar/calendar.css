@@ -34,8 +34,8 @@
   background-position: center;
   /* background-position: top; */
   background-repeat: no-repeat;
-  /* background-image: url("../../assets/website.svg"); */
-  background-image: url("/src/assets/calendar-warning.svg");
+  /* background-image: url("/src//assets/form-background-image/website.svg"); */
+  background-image: url("/src/assets/form-background-image/calendar-warning.svg");
 }
 
 .date-none-modal__text {

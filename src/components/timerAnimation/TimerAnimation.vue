@@ -9,7 +9,8 @@
   export default {
     props: {
       time: {
-        type: Number
+        type: Number,
+        required: true
       },
     },
     data() {
@@ -57,7 +58,11 @@
           }
         }
       }
-    }
+    },
+    created () {
+      console.log('TimerAnimation');
+      console.log(this.time);;
+    },
   }
 </script>
 

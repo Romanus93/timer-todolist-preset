@@ -103,7 +103,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("../../assets/nothing-to-do-460X307.jpg");
+  background-image: url("/src/assets/nothing-to-do/nothing-to-do-460X307.jpg");
 }
 
 @media screen and (min-width: 500px) {
@@ -111,7 +111,7 @@
 
   .todo-item-none-modal {
     background-position: 50% 30%;
-    background-image: url("../../assets/nothing-to-do-690x521.jpg");
+    background-image: url("/src/assets/nothing-to-do/nothing-to-do-690x521.jpg");
   }
 
   .todo-item > div {

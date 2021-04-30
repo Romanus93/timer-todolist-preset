@@ -6,7 +6,7 @@
 }
 
 .todo-info--bg-image {
-  background-image: url("../../assets/roll-out.png");
+  background-image: url("/src/assets/form-background-image/roll-out.png");
   background-size: 95% 100%;
   background-repeat: no-repeat;
   background-position: center top 10%;

@@ -47,7 +47,7 @@ button {
 }
 
 .button--calendar-image {
-  background-image: url("./assets/empty-calendar.svg");
+  background-image: url("/src/assets/calendar/empty-calendar.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

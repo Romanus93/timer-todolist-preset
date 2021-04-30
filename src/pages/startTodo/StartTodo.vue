@@ -8,7 +8,7 @@ section<template>
     </div>
     <div class="container todo-timer-animation-wrapper">
       <timer-animation 
-        :todoTime="time"
+        :time="time"
       />
     </div>
     <div class="container todo-button-wrapper">

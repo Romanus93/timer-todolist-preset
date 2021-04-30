@@ -10,7 +10,7 @@
 }
 
 .image-background {
-  background-image: url("../assets/chicken-cute.svg");
+  background-image: url("/src/assets/animation/chicken-cute.svg");
   background-repeat: repeat-x;
   background-position: 0% 50%;
   background-size: contain;
@@ -18,7 +18,7 @@
 }
 
 .sad-background-image {
-  background-image: url("../assets/chicken-dark.svg");
+  background-image: url("/src/assets/chicken-dark.svg");
 }
 
 .slight-shaking {
