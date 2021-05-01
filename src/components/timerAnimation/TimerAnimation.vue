@@ -21,7 +21,7 @@
     },
     computed: {
       eggImage() {
-        if(this.time > 20 || this.time === null) {
+        if(this.time > 20) {
           return '/src/assets/animation/white-egg.svg';
         } else if( this.time >= 1) {
           return '/src/assets/animation/craked-egg.svg';
@@ -34,7 +34,7 @@
         }
       },
       shakingAnimation() {
-        if(this.time > 20 || this.time === null) {
+        if(this.time > 20) {
           return {
             'slight-shaking': true 
           }

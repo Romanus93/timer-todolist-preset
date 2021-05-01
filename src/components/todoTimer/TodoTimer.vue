@@ -54,11 +54,10 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
     },
     created() {
       console.log('created', this.totalTime);
-      // this.timeAnimation = this.totalTime;
+      this.timeAnimation = this.totalTime;
     },
     mounted () {
       this.startTimer();
-      // this.timeAnimation = this.totalTime;
       console.log('mounted', this.totalTime);
     },
     beforeUpdate() {
