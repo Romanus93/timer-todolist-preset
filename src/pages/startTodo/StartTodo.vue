@@ -3,7 +3,6 @@ section<template>
     <div class="container todo-timer-wrapper">
       <TodoTimer 
         :todoTime="todoTime"
-        @checkTime="checkTime"
       />
     </div>
     <!-- <div class="container todo-button-wrapper">
