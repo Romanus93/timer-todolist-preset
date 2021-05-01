@@ -2,7 +2,7 @@ section<template>
   <section>
     <div class="container todo-timer-wrapper">
       <TodoTimer 
-        :todoTime= todoTime
+        :todoTime="todoTime"
         @checkTime="checkTime"
       />
     </div>
@@ -12,8 +12,11 @@ section<template>
       />
     </div>
     <div class="container todo-button-wrapper">
-      <button type="button" @click="goCalendarPage">완료</button>
+      <button style="width: 100px; height: 100px;" type="button" @click="stopTimer(true)">STOP</button>
     </div>
+    <!-- <div class="container todo-button-wrapper">
+      <button type="button" @click="goCalendarPage">완료</button>
+    </div> -->
   </section>
 </template>
 
@@ -35,38 +38,40 @@ export default {
   },
   data() {
     return {
-      time: null
+      time: null,
+      stop: false
     }
   },
   computed: {
     todoTime() {
-      console.log('computed');
-      console.log(typeof this.todoItem.hours, typeof this.todoItem.minutes, typeof this.todoItem.seconds);
-      let integer = this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;
-      return parseInt(integer,10);
+      console.log('todoIime', this.stop);
+      if(this.stop == true) {
+        return -999
+        } else {
+        let integer = this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;
+        return parseInt(integer,10);
+      }
     }
   },
 
   beforeCreate() {
     console.log('beforeCreate');
-    console.log(this.$route);
-    console.log(this.todoTime);
-    console.log(this.fullTime);
   },
   created () {
     console.log('created');
-    console.log(this.$route);
-    console.log(this.todoItem);
-    console.log(typeof this.todoItem.hours, typeof this.todoItem.minutes, typeof this.todoItem.seconds);
   },
   beforeMount () {
     console.log('beforeMount');
+    console.log('checkTime', this.time);
+
   },
   mounted () {
     console.log('mounted');    
   },
   beforeUpdate () {
     console.log('beforeUpdate');
+    console.log('checkTime', this.time);
+
   },
   methods: {
     async goCalendarPage() {
@@ -83,7 +88,11 @@ export default {
     checkTime (param) {
         console.log('checkTime', param);
         this.time = param;
-      }
+    },
+    stopTimer (param) {
+      console.log('a', param);
+      this.stop = param;
+    }
   },
 } 
 </script>

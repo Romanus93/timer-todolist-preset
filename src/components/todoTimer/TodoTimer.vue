@@ -28,10 +28,11 @@
       }
     },
     created() {
-      console.log(typeof this.todoTime);
+      console.log('created', this.totalTime);
     },
     mounted () {
       this.startTimer();
+      console.log('mounted', this.totalTime);
     },
     beforeUpdate() {
       console.log('beforeUpdate', this.totalTime);
