@@ -155,6 +155,7 @@ export default defineComponent({
       console.log(this.todoItem);
     },
     twoDigit(param:number): string {
+      console.log('two Digit', param);
       return ((param < 10 ? '0' : '') + param); 
     },
     async axiosGet(): Promise<void> {

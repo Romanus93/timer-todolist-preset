@@ -117,7 +117,7 @@ export default defineComponent({
         minutes: this.minutes,
         seconds: this.seconds
       }
-      console.log(typeof params.hours, typeof params.minutes, typeof params.seconds);
+      // console.log(typeof params.hours, typeof params.minutes, typeof params.seconds);
       if(this.type === 'edit' && this.item ) {
         const res = await axios
         .put("http://localhost:3005/todolist/"+this.item.id, params)
@@ -134,7 +134,6 @@ export default defineComponent({
         .then(response => {
           console.debug(response.data);
           this.goCalendarPage();
-          //this.$router.push({ name: "Calendar" });
         })
         .catch(error => {
           console.debug(error);

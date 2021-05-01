@@ -18,7 +18,7 @@
 }
 
 .sad-background-image {
-  background-image: url("/src/assets/chicken-dark.svg");
+  background-image: url("/src/assets/animation/chicken-dark.svg");
 }
 
 .slight-shaking {
@@ -91,7 +91,7 @@
 }
 
 .stronger-shaking {
-  animation: stronger-shake 1s infinite;
+  animation: stronger-shake 0.5s infinite;
   
 }
 

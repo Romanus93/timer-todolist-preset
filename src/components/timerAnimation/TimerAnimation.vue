@@ -1,7 +1,7 @@
 <template>
   <div class="image-egg todo-flex image-background" :class="{ 'sad-background-image': failure }">
     <img :class="shakingAnimation" :src="eggImage" v-show="success">
-    <img class="translate-y" src="../../assets/animation/hatched-chick.svg" alt="" v-show="!success">
+    <img class="translate-y" src="/src/assets/animation/hatched-chick.svg" alt="" v-show="!success">
   </div>
 </template>
 
@@ -10,7 +10,7 @@
     props: {
       time: {
         type: Number,
-        required: true
+        default: 100
       },
     },
     data() {
@@ -59,10 +59,18 @@
         }
       }
     },
-    created () {
-      console.log('TimerAnimation');
-      console.log(this.time);;
-    },
+    // created () {
+    //   console.log('Created-TimerAnimation');
+    //   console.log(this.time);
+    // },
+    // beforeMount () {
+    //   console.log('BeforeMount-TimerAnimation');
+    //   console.log(this.time);
+    // },
+    // beforeUpdate () {
+    //   console.log('BeforeUpdate-TimerAnimation');
+    //   console.log(this.time);
+    // }
   }
 </script>
 
