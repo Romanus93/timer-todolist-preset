@@ -3,11 +3,9 @@ section<template>
     <div class="container todo-timer-wrapper">
       <TodoTimer 
         :todoTime="todoTime"
+        @deleteTodoItem="deleteTodoItem"
       />
     </div>
-    <!-- <div class="container todo-button-wrapper">
-      <button type="button" @click="goCalendarPage">완료</button>
-    </div> -->
   </section>
 </template>
 
@@ -15,6 +13,7 @@ section<template>
 import TodoTimer from "../../components/todoTimer/TodoTimer.vue"
 import TimerAnimation from "../../components/timerAnimation/TimerAnimation.vue"
 import axios from "axios"
+import moment from "moment"
 
 export default {
   components: {
@@ -25,7 +24,7 @@ export default {
     todoItem: {
       type: Object,
       required: true
-    },
+    }
   },
   computed: {
     todoTime() {
@@ -34,7 +33,7 @@ export default {
     }
   },
   methods: {
-    async goCalendarPage() {
+    async deleteTodoItem() {
       const res = await axios
         .delete(`http://localhost:3005/todolist/${this.todoItem.id}`)
         .then(response => {
@@ -43,7 +42,11 @@ export default {
         .catch(error => {
           console.debug(error);
         });
-      this.$router.push({ name: "Calendar" });
+      this.goCalendarPage();
+    },
+    goCalendarPage() {
+      const today = moment(new Date()).format("YYYY-MM-DD");
+      (today == this.todoItem.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.todoItem.date} });
     }
   }
 } 

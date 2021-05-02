@@ -15,13 +15,13 @@
         />
     </div>
     <div class="container-b todo-button-wrapper todo-flex">
-      <transition name="no-mode-fade" mode="out-in">
+      <transition name="mode-fade" mode="out-in">
         <div v-if="on" key="on">
-          <button style="width: 100px; height: 100px; background-color: green;" type="button" @click="pauseTimer()">STOP Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, exercitationem!</button>
+          <button style="width: 100px; height: 100px; background-color: green;" type="button" @click="pauseTimer()">STOP STOP STOP</button>
         </div>
         <div class="restart-exit-button todo-flex" v-else key="off">
-          <button style="width: 100px; height: 100px; background-color: green;" type="button" @click="restartTimer()">Restart Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, exercitationem!</button>
-          <button style="width: 100px; height: 100px; background-color: red;" type="button" @click="offTimer()">Restart Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, exercitationem!</button>
+          <button style="width: 100px; height: 100px; background-color: green;" type="button" @click="restartTimer()">Restart Restart Restart</button>
+          <button style="width: 100px; height: 100px; background-color: red;" type="button" @click="offTimer(-999, 2000)">OFF OFF OFFF</button>
         </div>
       </transition>
     </div>
@@ -30,6 +30,7 @@
 
 <script>
 import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
+
 
   export default {
     name: "TodoTimer",
@@ -48,32 +49,25 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
         timer: null,
         totalTime: this.todoTime,
         on: true
-        //@click="on = false"
-        //@click="on = true"
       }
     },
     created() {
-      console.log('created', this.totalTime);
       this.timeAnimation = this.totalTime;
     },
     mounted () {
       this.startTimer();
-      console.log('mounted', this.totalTime);
     },
     beforeUpdate() {
-      console.log('beforeUpdate');
-      console.log('beforeUpdate', this.totalTime);
-      console.log('beforeUpdate', this.timeAnimation);
       this.timeAnimation = this.totalTime;
     },
     methods: {
-      startTimer: function() {
-        this.timer = setInterval(() => this.totalTime--, 1000);
-        console.log('startTimer', this.timer);
-      },
       twoDigitTime: function(time){
         console.log(time);
         return (time < 10 ? '0' : '') + time;
+      },
+      startTimer: function() {
+        this.timer = setInterval(() => this.totalTime--, 1000);
+        console.log('startTimer', this.timer);
       },
       pauseTimer(param) {
         console.log('pauseTimer', this.totalTime);
@@ -84,11 +78,11 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
         this.timer = setInterval(() => this.totalTime--, 1000);
         this.on = true;
       },
-      offTimer() {
+      offTimer(totalTime, delayTime) {
         console.log('offTimer')
         clearInterval(this.timer);
-        this.totalTime = -999;
-        console.log(this.totalTime);
+        this.totalTime = totalTime;
+        setTimeout(()=> this.$emit('deleteTodoItem'), delayTime);
       }
     },
     computed: {
@@ -119,9 +113,8 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
     },
     watch: {
       totalTime(newValue, oldValue) {
-        console.log('watch', this.totalTime);
-        (newValue === 0)&&(console.log('watch',this.totalTime),clearInterval(this.timer));
-      },
+        (newValue === 0)&&(console.log('watch',this.totalTime),this.offTimer(0, 3000));
+      }
     }
   }
 </script>
@@ -156,21 +149,11 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
   justify-content: space-evenly;
 }
 
-
-
 .mode-fade-enter-active, .mode-fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
 .mode-fade-enter-from, .mode-fade-leave-to {
-  opacity: 0;
-}
-/*  */
-.no-mode-fade-enter-active, .no-mode-fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.no-mode-fade-enter-from, .no-mode-fade-leave-to {
   opacity: 0;
 }
 </style>
