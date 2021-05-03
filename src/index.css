@@ -114,22 +114,22 @@ div.swiper-pagination.swiper-pagination-bullets {
   }
 
   /*년 월 일 중 년-월 (타이틀) */
-  .calendar-wrapper div.vc-header.align-center > div.vc-title {
+  section.calendar-wrapper div.vc-header.align-center > div.vc-title {
     font-size: 24px;
   }
   
   /* 일요일~토요일 */
-  .calendar-wrapper div.vc-weeks > div {
+  section.calendar-wrapper div.vc-weeks > div {
     font-size: 18px;
   }
   
   /* 년월일중 일자 */
-  .calendar-wrapper div.vc-day > span {
+  section.calendar-wrapper div.vc-day > span {
     font-size: 18px;
   }
 
   /*arrow---move-month-btn*/
-  .calendar-wrapper div.vc-arrows-container.title-center > div > svg {
+  section.calendar-wrapper div.vc-arrows-container.title-center > div > svg {
     height: 30px;
     width: 30px;
   }
@@ -142,27 +142,27 @@ div.swiper-pagination.swiper-pagination-bullets {
   }
 
   /* 월 이동 버튼 너비 상자*/
-  .calendar-wrapper div.vc-arrows-container.title-center {
+  section.calendar-wrapper div.vc-arrows-container.title-center {
     border: red dotted 3px;
     height: 7vh;
   }
 
   /* 년 월 버튼 너비 상자 */
-  .calendar-wrapper div.vc-header.align-center {
-    border: steelblue solid 5px;
+  section.calendar-wrapper div.vc-header.align-center {
+    border: blueviolet solid 5px;
     height: 7vh;
     /* height: 20vh; */
   }
 
   /* 요일 상자 너비 조정 */
-  .calendar-wrapper div.vc-pane-layout > div > div.vc-weeks {
+  section.calendar-wrapper div.vc-pane-layout > div > div.vc-weeks {
     border: yellow solid 5px;
     height: 30vh;
   }
 
   /* 팝업 캘린더 포지션 조정*/
   /* 팝업 캘린더 폰트 사이즈- */
-  .calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
+  section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
     top: 1vh;
     width: 200px;
     font-size: 18px; 
@@ -170,24 +170,24 @@ div.swiper-pagination.swiper-pagination-bullets {
 
   /* 팝업 캘린더 그리드 조정*/
   /* 팝업 캘린더 요일 vc-nav-items  높이 */
-  .calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
+  section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
     grid-row-gap: 1vh;
     padding-left: 5px ;
   }
 }
 
 @media screen and (min-width: 500px) and (min-height: 800px) { 
-  .calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
-    height: 220px;
+  section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
+    height: 240px;
   }
 }
 
 @media screen and (min-width: 700px) { 
-  .calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
+  section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
     width: 300px;
   }
 
-  .calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
+  section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
     padding-left: 30px ;
   }
 }

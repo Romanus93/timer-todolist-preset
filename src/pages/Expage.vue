@@ -7,7 +7,7 @@
   </div>
   <div style="margin-top: 100px">
     <todo-date 
-      :date="date"
+      :dateOfTodoItem="date"
     />
     <button>x</button>
   </div>

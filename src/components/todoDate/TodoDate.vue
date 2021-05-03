@@ -1,78 +1,54 @@
 <template>
-  <div class="xpenfl">
+  <div class="calendar-wrapper todo-flex">
     <v-date-picker 
-      :attributes="attrs"
-      ref="calendar"
       color="blue"
       locale="en-US"
       trim-weeks
-      v-model="todoDate"
+      v-model="date"
     />
-    <!-- <h2>{{ calendarComputed }}</h2> -->
-    <h3>{{ todoDate }}</h3>
+    <div>
+      <button></button>
+    </div>
   </div>
-  <button @click="focusDatey(todoDate)">Lorem ipsum dolor sit.</button>
-  <button @click="focusDatey(todoDate)">Lorem ipsum dolor sit.</button>
+    <h2>{{ changedDate }}</h2>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import moment from 'moment'
 
 export default defineComponent({
   props: {
-    date: {
+    dateOfTodoItem: {
       type: Date as any
     },
   },
   data() {
     return {
-      todoDate: this.date as any,
-      attrs: [
-        {
-          highlight: true,
-          dates: null
-        }
-      ]
+      date: this.dateOfTodoItem as any
     }
   },
-  // computed: {
-  //   calendarComputed: {
-  //     get(): any {
-  //       return this.todoDate
-  //     },
-  //     set(newValue: any): any {
-  //       (newValue == null)&&(this.todoDate = this.date)
-  //     }
-  //   }
-  // },
-  methods: {
-    focusDatey(): void {
-      console.log('focusDate');
-      const calendar: any = this.$refs.calendar;
-      calendar.focusDate(this.date);
-      console.log('a');
+  computed: {
+    changedDate: {
+      get(): string {
+        return moment(this.date).format("YYYY-MM-DD");
+      },
+      set(newValue: any): void {
+        (newValue == null)&&(this.date = this.dateOfTodoItem)
+      }
     }
   },
   beforeUpdate() {
-    console.log('TodoDate-beforeUpdate');
+    console.log('date-beforeUpdate');
+    console.log('this date',this.dateOfTodoItem);
     console.log('this date',this.date);
-    console.log('this todoDATE',this.todoDate);
-    console.log('attrs[0]',this.attrs[0].dates);
-    if(this.todoDate == null){
-      // this.todoDate = this.date;
-      this.attrs[0].dates=this.date;
-      this.focusDatey();
-      console.log('!?!')
-    } else {
-      this.attrs[0].dates= null;
-        console.log('?');
-    }
+    (this.date == null)&&(this.date = this.dateOfTodoItem);
+    console.log(this.calendarComputed)
   },
   updated() {
-    console.log('TodoDate-updated');
+    console.log('date-updated');
+    console.log(this.dateOfTodoItem );
     console.log(this.date);
-    console.log(this.todoDate);
-    
   },
 })
 </script>
