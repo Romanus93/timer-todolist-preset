@@ -19,7 +19,7 @@
           type="text"
           id="title"
           name="title"
-          placeholder="?"
+          placeholder=" ?"
           v-model.trim="title"
         />
       </li>
@@ -29,7 +29,7 @@
           type="text"
           id="description"
           name="description"
-          placeholder="?"
+          placeholder=" ?"
           v-model.trim="description"
         />
       </li>

@@ -60,6 +60,9 @@
     </ul>
     <div class="todo-item-none-modal" v-show="hasTodoItemModal">
     </div>
+    <!-- <div class="todo-item-none-modal todo-loading" v-show="loadingPage">
+      <span><img class="rotate" src="/src/assets/and-so-on/loader.svg" alt=""></span>
+    </div> -->
   </div>
 </template>
 
@@ -117,7 +120,8 @@ export default defineComponent({
     return {
       todolist: [] as object[],
       hasEditDeleteModal: false,
-      todoItem: {} as object
+      todoItem: {} as object,
+      loadingPage: true
     }
   },
   computed: {
@@ -138,6 +142,7 @@ export default defineComponent({
     }
   },
   created() {
+    console.log('this.todolist.length',this.todolist.length);
     // 고민
     setTimeout(()=>this.axiosGet(), 1000);
   },

@@ -20,7 +20,7 @@ export default defineComponent({
   name: 'TodoDate',
   props: {
     dateOfTodoItem: {
-      type: Date as any
+      type: String as any
     },
     show :{
       type: Boolean
@@ -28,7 +28,7 @@ export default defineComponent({
   },
   data() {
     return {
-      date: this.dateOfTodoItem as any,
+      date: this.dateOfTodoItem,
       isVisible: this.show
     }
   },

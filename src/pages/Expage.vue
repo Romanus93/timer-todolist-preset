@@ -11,6 +11,9 @@
     />
     <button>x</button>
   </div>
+  <div>
+    <span><img class="rotate" src="/src/assets/and-so-on/loader.svg" alt=""></span>
+  </div>
 </template>
 
 <script lang="ts">
@@ -36,5 +39,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  
+  .rotate {
+    animation: rotation 3s infinite steps(10, start);
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
