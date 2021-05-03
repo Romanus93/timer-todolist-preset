@@ -1,6 +1,6 @@
 <template>
   <div class="todo-flex todolist-component">
-    <ul class="todo-list" v-show="!hasTodoItemModal">
+    <ul class="todo-list" v-show="!loadingPage&&!itemModal">
       <swiper
         :slides-per-view="1"
         :space-between="50"
@@ -58,11 +58,11 @@
         </ul>
       </li>
     </ul>
-    <div class="todo-item-none-modal" v-show="hasTodoItemModal">
+    <div class="todo-item-none-modal" v-show="!loadingPage&&itemModal">
     </div>
-    <!-- <div class="todo-item-none-modal todo-loading" v-show="loadingPage">
-      <span><img class="rotate" src="/src/assets/and-so-on/loader.svg" alt=""></span>
-    </div> -->
+    <div class="todo-item-none-modal todo-flex todo-loading" v-show="loadingPage">
+      <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="">
+    </div>
   </div>
 </template>
 
@@ -121,7 +121,8 @@ export default defineComponent({
       todolist: [] as object[],
       hasEditDeleteModal: false,
       todoItem: {} as object,
-      loadingPage: true
+      loadingPage: true,
+      itemModal: true
     }
   },
   computed: {
@@ -136,16 +137,21 @@ export default defineComponent({
       if(newValue == 0){
         return
       } else {
-        this.todolist.length = 0;
-        (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 1000);  
+        this.loadingPage = true;
+        (oldValue !== newValue)&&setTimeout(()=>this.axiosGet(), 500);  
       }
     }
   },
   created() {
     console.log('todolist-created');
     console.log('this.todolist.length',this.todolist.length);
-    // 고민
-    setTimeout(()=>this.axiosGet(), 1000);
+    setTimeout(()=>this.axiosGet(), 500);
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate');
+    console.log('todo-list',!this.itemModal&&!this.showModal);
+    console.log('modal',!this.loadingPage&&this.itemModal);
+    console.log(this.todolist.length);
   },
   methods: {
     // Swiper func - onSwiper, onSlideChange
@@ -163,6 +169,11 @@ export default defineComponent({
       // console.log('two Digit', param);
       return ((param < 10 ? '0' : '') + param); 
     },
+    showModal(param: object[] ) {
+      console.log(param.length);
+      this.loadingPage = false;
+      this.itemModal = (param.length == 0)? true : false;
+    },
     async axiosGet(): Promise<void> {
       console.log('axiosGet');
       console.log('this.todolist.length  '+ this.todolist.length);
@@ -177,6 +188,7 @@ export default defineComponent({
           // handle error
           console.debug(error);
         });
+      this.showModal(this.todolist);  
     },
     async axiosDelete(item: TodoItem): Promise<void> {
       await axios
