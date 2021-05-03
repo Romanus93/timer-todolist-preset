@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-flex todolist-component">
+  <div class="todolist-component">
     <ul class="todo-list" v-show="!hasTodoItemModal">
       <swiper
         :slides-per-view="1"
