@@ -72,7 +72,6 @@ export default defineComponent({
       if (this.date != null) {
         return moment(this.date).format("YYYY-MM-DD");
       } else {
-        console.log(this.date);
         return 0;
       }
     },
@@ -85,15 +84,7 @@ export default defineComponent({
     }
   },
   created() {
-    console.log('calendar-page created');
-    console.log('inputtedDay');
-    console.log(this.inputedDay);
     (this.$route.params.dateOfTodoItem !== undefined)&&this.resetDate();
-  },
-  beforeUpdate () {
-    console.log('calendar-page beforeUpdate');
-    console.log('inputtedDay');
-    console.log(this.inputedDay);
   },
   methods: {
     //type: string | null
@@ -127,12 +118,8 @@ export default defineComponent({
       this.$router.push({ name: "CreateTodo" , params: { dateOfTodoItem: this.inputedDay }});
     },
     resetDate(){
-      //
       const resetDateOfTodoItem: any = moment(this.$route.params.dateOfTodoItem);
-      console.log('function-init');
-      console.log(this.date);
       this.date = resetDateOfTodoItem._d;
-      console.log(this.date);
       return;
     }
   }

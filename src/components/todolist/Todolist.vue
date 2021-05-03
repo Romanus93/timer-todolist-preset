@@ -142,6 +142,7 @@ export default defineComponent({
     }
   },
   created() {
+    console.log('todolist-created');
     console.log('this.todolist.length',this.todolist.length);
     // 고민
     setTimeout(()=>this.axiosGet(), 1000);
@@ -157,10 +158,9 @@ export default defineComponent({
     showEditDeleteModal (boolean: boolean, item: TodoItem) :void {
       this.hasEditDeleteModal = boolean;
       this.todoItem = item;
-      console.log(this.todoItem);
     },
     twoDigit(param:number): string {
-      console.log('two Digit', param);
+      // console.log('two Digit', param);
       return ((param < 10 ? '0' : '') + param); 
     },
     async axiosGet(): Promise<void> {
@@ -195,9 +195,8 @@ export default defineComponent({
       this.$router.push({ name: "Calendar" });
     },
     goStartTodoPage(todoItem: any): void {
-      console.log('a');
       console.log(todoItem);
-      console.log(typeof todoItem.hours, typeof todoItem.minutes, typeof todoItem.seconds);
+      // console.log(typeof todoItem.hours, typeof todoItem.minutes, typeof todoItem.seconds);
       this.$router.push({ name: "StartTodo", params: todoItem });
     },
     async deleteItem(item: TodoItem): Promise<void> {
