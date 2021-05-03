@@ -1,3 +1,13 @@
 {
-  "todolist": []
+  "todolist": [
+    {
+      "date": "2021-05-01",
+      "title": "",
+      "description": "",
+      "hours": "",
+      "minutes": "",
+      "seconds": 1,
+      "id": 1
+    }
+  ]
 }

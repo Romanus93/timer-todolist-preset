@@ -2,6 +2,9 @@
   <div class="todo-flex todo-form">
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
+      <li class="todo-date">
+        <button type="button" @click="log"> {{ dateOfTodoItem }} </button>
+      </li>
       <li class="todo-title">
         <label for="title">오늘 할 일</label>
         <input
@@ -89,6 +92,7 @@ export default defineComponent({
   },
   created () {
     console.log('todoform-created');
+    console.log(this.dateOfTodoItem);
     if(this.item){
       this.date = this.item.date;
       this.title = this.item.title;
@@ -167,7 +171,11 @@ export default defineComponent({
     goCalendarPage(): void {
       const today: string = moment(new Date()).format("YYYY-MM-DD");
       (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
+    },
+    log() {
+      console.log('console')
     }
+    
   }
 })
 </script>
