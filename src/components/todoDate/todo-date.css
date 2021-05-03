@@ -1,7 +1,14 @@
-div.calendar-wrapper {
+div.pocket-calendar-wrapper {
+}
+div.pocket-calendar-wrapper > div.vc-container {
   border: 5px solid var(--dark-blue);
-  background-color: var(--dark-blue);
-  display: inline-block;
-  /* border-top: 20px solid var(--dark-blue); */
-  /* width: 262px; */
+}
+
+div.pocket-calendar-wrapper > div.change-button-wrapper {
+  position: relative;
+  top: -37px;
+  left: 213px; 
+  z-index:400; 
+  width: 2rem;
+  border: steelblue 2px solid;
 }

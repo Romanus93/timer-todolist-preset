@@ -3,7 +3,15 @@
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
-        <button type="button" @click="log"> {{ dateOfTodoItem }} </button>
+        <button type="button" @click="showshowshow(true)"> {{ date }} </button>
+        <div  v-if="show">
+          <todo-date
+          :dateOfTodoItem="dateOfTodoItem"
+          show="show"
+          @changeDate="changeDate"
+          @showshowshow="showshowshow"
+          />
+        </div>
       </li>
       <li class="todo-title">
         <label for="title">오늘 할 일</label>
@@ -27,19 +35,19 @@
       </li>
       <li class="todo-time todo-flex">
         <span class="time-wrapper todo-flex">
-          <label class="time-hms" for="hours">시간</label>
+          <label for="hours">시간</label>
           <span>
             <input id="hour" class="time-hms" type="number" placeholder="00" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" /> :
           </span>
         </span>
         <span class="time-wrapper todo-flex">
-          <label class="time-hms" for="minutes">&nbsp분</label>
+          <label for="minutes">&nbsp분</label>
           <span>
             <input id="minutes" class="time-hms" type="number" placeholder="00" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" /> :
           </span>
         </span>
         <span class="time-wrapper todo-flex">
-          <label class="time-hms" for="seconds">&nbsp초</label>
+          <label for="seconds">&nbsp초</label>
           <input id="seconds" class="time-hms" type="number" placeholder="00" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
         </span>
       </li>
@@ -63,9 +71,13 @@
 import axios from 'axios'
 import moment from 'moment'
 import { defineComponent, ref } from 'vue'
+import TodoDate from '../../components/todoDate/TodoDate.vue'
 
 export default defineComponent({
   name: 'TodoForm',
+  components: {
+    TodoDate
+  },
   props: {
     type: {
       type: String,
@@ -88,6 +100,7 @@ export default defineComponent({
       hours: '' as any,
       minutes: '' as any,
       seconds: '' as any,
+      show: false
     }
   },
   created () {
@@ -172,8 +185,16 @@ export default defineComponent({
       const today: string = moment(new Date()).format("YYYY-MM-DD");
       (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
     },
-    log() {
-      console.log('console')
+    log(param: any) {
+      console.log(`${param}`)
+    },
+    showshowshow(param: boolean):void {
+      this.show = param;
+      console.log('abcdefghrty');
+    },
+    changeDate(changedDate: any) {
+      this.date = changedDate;
+      console.log(this.date);
     }
     
   }

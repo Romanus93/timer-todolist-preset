@@ -10,18 +10,18 @@
   background-size: 95% 100%;
   background-repeat: no-repeat;
   background-position: center top 10%;
-  width: 120%;
+  width: 123%;
   position: relative;
-  right: 10%;
+  right: 12%;
 }
 
 .todo-info {
   flex-direction: column;
   justify-content: space-evenly;
-  padding-top: 12%;
-  padding-left: 24%;
+  padding-bottom: 8%;
+  padding-left: 28%;
   align-items: flex-start;
-  height: 70vh;
+  height: 73vh;
   border: blanchedalmond solid 5px;
   font-weight: bold;
 }
@@ -41,6 +41,22 @@
   font-size: 16px;
 }
 
+.todo-date {
+  height: 24px;
+  border-bottom: solid 2px var(--black);
+  /* font-size: 18px; */
+}
+
+.todo-date button {
+  font-size: 18px;;
+}
+
+.todo-date div {
+  position: absolute;
+  right: 8%;
+  top: 20%;
+}
+
 .todo-time {
   width: 80%;
   border: 5px solid salmon;
@@ -56,7 +72,7 @@
 }
 
 .todo-time .time-hms {
-  width: 3rem;
+  width: 2em;
   padding-left: 0;
 }
 
@@ -73,7 +89,7 @@
 
 @media screen and (max-width: 500px) {
   .todo-info {
-    padding-top: 16%;
+    /* padding-top: 16%; */
     font-size: 18px;
   }
 }
