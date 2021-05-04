@@ -1,10 +1,10 @@
 <template>
-  <div class="todo-flex todolist-component">
-    <ul class="todo-list" v-show="!loadingPage&&!itemModal">
+  <div class="todolist-component">
+    <ul class="todo-list" v-show="on">
       <swiper
         :slides-per-view="1"
         :space-between="50"
-        :pagination="{ clickable: false }"
+        :pagination="{ clickable: true }"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
       >
@@ -58,7 +58,7 @@
         </ul>
       </li>
     </ul>
-    <div class="todo-item-none-modal" v-show="!loadingPage&&itemModal">
+    <div class="todo-item-none-modal" v-show="!on">
     </div>
     <div class="todo-item-none-modal todo-flex todo-loading" v-show="loadingPage">
       <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="">
@@ -72,15 +72,14 @@ import axios from "axios";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 // import Swiper core and required modules
-import SwiperCore, { Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Pagination, A11y } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
 
  // install Swiper modules
-SwiperCore.use([Pagination, Scrollbar, A11y]);
+SwiperCore.use([Pagination, A11y]);
 
 interface TodoItem {
   date: string;
@@ -129,6 +128,9 @@ export default defineComponent({
     hasTodoItemModal(): boolean {
       console.log('computed 실행되었습니다.');
       return (this.todolist.length === 0)? true : false  
+    },
+    on(): boolean {
+      return (this.itemModal===false) ? true : false;
     }
   },
   watch: {
@@ -147,11 +149,11 @@ export default defineComponent({
     console.log('this.todolist.length',this.todolist.length);
     setTimeout(()=>this.axiosGet(), 500);
   },
+  mounted () {
+    console.log('todolist-mounted');
+  },
   beforeUpdate() {
-    console.log('beforeUpdate');
-    console.log('todo-list',!this.itemModal&&!this.showModal);
-    console.log('modal',!this.loadingPage&&this.itemModal);
-    console.log(this.todolist.length);
+    console.log('todolist-beforeUpdate');
   },
   methods: {
     // Swiper func - onSwiper, onSlideChange
@@ -170,7 +172,7 @@ export default defineComponent({
       return ((param < 10 ? '0' : '') + param); 
     },
     showModal(param: object[] ) {
-      console.log(param.length);
+      console.log('param.length',param.length);
       this.loadingPage = false;
       this.itemModal = (param.length == 0)? true : false;
     },

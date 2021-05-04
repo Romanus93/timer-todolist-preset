@@ -84,7 +84,14 @@ export default defineComponent({
     }
   },
   created() {
+    console.log('calendar-created');
     (this.$route.params.dateOfTodoItem !== undefined)&&this.resetDate();
+  },
+  mounted () {
+    console.log('calendar-mounted');
+  },
+  beforeUpdate() {
+    console.log('calendar-beforeUpdate');
   },
   methods: {
     //type: string | null

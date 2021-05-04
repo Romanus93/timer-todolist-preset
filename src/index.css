@@ -74,9 +74,10 @@ button {
 }
 
 /* Swiper-pagination-point */
-div.swiper-pagination.swiper-pagination-bullets {
+/* div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   bottom: 2px;
-}
+  height: 20px;
+} */
 
 /* 일요일 색 */
 .calendar-wrapper div.vc-weeks > div:nth-child(1) {

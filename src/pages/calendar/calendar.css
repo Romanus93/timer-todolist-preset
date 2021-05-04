@@ -19,7 +19,7 @@
 .todolist-wrapper {
   width: 90%;
   text-align: center;
-  /* border: 5px solid red; */
+  border: 5px solid red;
   margin: 0 auto;
 }
 
