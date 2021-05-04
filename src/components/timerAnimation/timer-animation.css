@@ -9,23 +9,12 @@
   justify-content: center;
 }
 
-.image-background {
-  background-image: url("/src/assets/animation/chicken-cute.svg");
-  background-repeat: repeat-x;
-  background-position: 30% 50%;
-  background-size: contain;
-}
-
-.sad-background-image {
-  background-image: url("/src/assets/animation/chicken-dark.svg");
-}
-
 .slight-shaking {
-  animation: slight-shake 3s infinite;
+  animation: slight-shaking 3s infinite;
   
 }
 
-@keyframes slight-shake {
+@keyframes slight-shaking {
   10%, 90% {
     transform: translate3d(-2px, 0, 0);
   }
@@ -44,11 +33,11 @@
 }
 
 .medium-shaking {
-  animation: medium-shake 2s infinite;
+  animation: medium-shaking 2s infinite;
   
 }
 
-@keyframes medium-shake {
+@keyframes medium-shaking {
   10%, 90% {
     transform: translate3d(-4px, 5px, 0);
   }
@@ -67,11 +56,11 @@
 }
 
   .strong-shaking {
-  animation: strong-shake 1s infinite;
+  animation: strong-shaking 1s infinite;
   
 }
 
-@keyframes strong-shake {
+@keyframes strong-shaking {
   10%, 90% {
     transform: translate3d(-5px, 5px, 0);
   }
@@ -90,11 +79,11 @@
 }
 
 .stronger-shaking {
-  animation: stronger-shake 0.5s infinite;
+  animation: stronger-shaking 0.5s infinite;
   
 }
 
-@keyframes stronger-shake {
+@keyframes stronger-shaking {
   10%, 90% {
     transform: translate3d(-10px, 12px, 0);
   }
@@ -112,7 +101,7 @@
   }
 }
 
-.translate-y {
+.y-axis-animation {
     animation: translate-y 2s infinite linear;
   }
 
