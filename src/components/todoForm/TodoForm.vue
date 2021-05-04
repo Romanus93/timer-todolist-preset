@@ -121,9 +121,11 @@ export default defineComponent({
   beforeUpdate () {
     console.log('beforeUpdate');
     console.log('this.hours.length',this.hours.length);
-    (this.hours.length != 0) && this.hrs();
-    (this.minutes.length != 0) && this.min();
-    (this.seconds.length != 0) && this.sec();
+    console.log('this.minutes.length',this.minutes.length);
+    console.log('this.seconds.length',this.seconds.length);
+    (this.hours.length != 0 || this.hours.length == 0) && this.hrs();
+    (this.minutes.length != 0 || this.minutes.length == 0) && this.min();
+    (this.seconds.length != 0 || this.seconds.length == 0) && this.sec();
   },
   methods: {
     async createUpdateTodoItem() {
@@ -158,10 +160,18 @@ export default defineComponent({
       }
     },
     hrs(): any {
+      console.log('this.hrs', this.hours);
+      console.log('this.hrs', this.hours === '');
+      (this.hours === '')&&(this.hours = 0);
+      console.log('this.hrs', this.hours);
       this.hours = Math.floor(this.hours);
       return Math.floor(this.hours)
     },
     min(): any {
+      console.log('this.min', this.minutes);
+      console.log('this.min', this.minutes === '');
+      (this.minutes === '')&&(this.minutes = 0);
+      console.log('this.min', this.minutes);
       if(this.minutes >= 60) {
         console.log('if-m');
         this.minutes = 0;
@@ -173,6 +183,10 @@ export default defineComponent({
       }
     },
     sec(): any {
+      console.log('this.sec', this.seconds);
+      console.log('this.sec', this.seconds === '');
+      (this.seconds === '')&&(this.seconds = 0);
+      console.log('this.sec', this.seconds);
       if(this.seconds >= 60) {
         this.seconds = 0;
         return this.seconds
