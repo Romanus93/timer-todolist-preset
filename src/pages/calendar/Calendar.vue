@@ -96,7 +96,6 @@ export default defineComponent({
   methods: {
     //type: string | null
     goToday(): void {
-      console.log('today');
       this.date = new Date();
       this.calendar.move(this.date);
     },

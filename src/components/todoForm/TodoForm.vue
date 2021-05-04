@@ -37,18 +37,18 @@
         <span class="time-wrapper todo-flex">
           <label for="hours">시간</label>
           <span>
-            <input id="hour" class="time-hms" type="number" placeholder="00" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" /> :
+            <input id="hour" class="time-hms" type="number" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" /> :
           </span>
         </span>
         <span class="time-wrapper todo-flex">
           <label for="minutes">&nbsp분</label>
           <span>
-            <input id="minutes" class="time-hms" type="number" placeholder="00" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" /> :
+            <input id="minutes" class="time-hms" type="number" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" /> :
           </span>
         </span>
         <span class="time-wrapper todo-flex">
           <label for="seconds">&nbsp초</label>
-          <input id="seconds" class="time-hms" type="number" placeholder="00" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
+          <input id="seconds" class="time-hms" type="number" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
         </span>
       </li>
     </ul>
@@ -97,9 +97,9 @@ export default defineComponent({
       date: this.dateOfTodoItem,
       title: '',
       description: '',
-      hours: '' as any,
-      minutes: '' as any,
-      seconds: '' as any,
+      hours: 0 as any,
+      minutes: 0 as any,
+      seconds: 0 as any,
       show: false
     }
   },
