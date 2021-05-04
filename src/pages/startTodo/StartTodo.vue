@@ -1,11 +1,9 @@
 section<template>
-  <section>
-    <div class="container todo-timer-wrapper">
+  <section class="todo-flex startTodo-page">
       <TodoTimer 
         :todoTime="todoTime"
         @deleteTodoItem="deleteTodoItem"
       />
-    </div>
   </section>
 </template>
 
@@ -54,7 +52,5 @@ export default {
 </script>
 
 <style  scoped>
-  .container {
-    border: tomato 5px solid;
-  }
+  @import "./start-todo.css";
 </style>

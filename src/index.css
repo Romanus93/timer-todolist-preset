@@ -37,7 +37,7 @@ button {
   border: none;
 }
 
-.button--calendr {
+.button--calendar {
   width: 17vw;
   height: 8vh;
   /* 임시 */
@@ -79,34 +79,34 @@ ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-b
 }
 
 /* 일요일 색 */
-.calendar-wrapper div.vc-weeks > div:nth-child(1) {
+div.vc-weeks > div:nth-child(1) {
   color: var(--red-500);
 }
 
 /* 토요일 색 */
-.calendar-wrapper div.vc-weeks > div:nth-child(7) {
+div.vc-weeks > div:nth-child(7) {
   color: var(--light-blue);
 }
 
 /* 일요일 - 년월일 중 일자 색 */
-.calendar-wrapper div.vc-weeks > div.vc-day.weekday-1.weekday-position-1 > span {
+div.vc-weeks > div.vc-day.weekday-1.weekday-position-1 > span {
   color: var(--red-500);
 }
 
 /* 토요일 - 년월일 중 일자 색 */
-.calendar-wrapper div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
+div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   color: var(--light-blue);
 }
 
 @media screen and (min-width: 350px) and (max-width: 500px) {
-  .button--calendr {
+  .button--calendar {
     font-size: 28px;
     padding-top: 2.9vh;
   }
 }
 
 @media screen and (min-width: 500px) {
-  .button--calendr {
+  .button--calendar {
     width: 18vw;
     height: 9vh;
     font-size: 36px;

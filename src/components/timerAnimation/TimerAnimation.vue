@@ -58,19 +58,7 @@
           }
         }
       }
-    },
-    // created () {
-    //   console.log('Created-TimerAnimation');
-    //   console.log(this.time);
-    // },
-    // beforeMount () {
-    //   console.log('BeforeMount-TimerAnimation');
-    //   console.log(this.time);
-    // },
-    // beforeUpdate () {
-    //   console.log('BeforeUpdate-TimerAnimation');
-    //   console.log(this.time);
-    // }
+    }
   }
 </script>
 

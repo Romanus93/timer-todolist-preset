@@ -54,12 +54,12 @@
     </ul>
     <ul class="todo-flex buttons-wrapper">
       <li>
-        <button class="create-edit-button button--calendr button--calendar-image" @click="createUpdateTodoItem">
+        <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodoItem">
           <i class="fas fa-pencil-alt"></i>
         </button>
       </li>
       <li>
-        <button class="home-button button--calendr button--calendar-image" @click="goCalendarPage">
+        <button class="home-button button--calendar button--calendar-image" @click="goCalendarPage">
           <i class="fas fa-home"></i>
         </button>
       </li>

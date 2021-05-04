@@ -1,5 +1,5 @@
 .image-egg img {
-  width: 50%;
+  height: 100%;
 }
 
 .image-egg {
@@ -12,9 +12,8 @@
 .image-background {
   background-image: url("/src/assets/animation/chicken-cute.svg");
   background-repeat: repeat-x;
-  background-position: 0% 50%;
+  background-position: 30% 50%;
   background-size: contain;
-  background-color: #1565c0;
 }
 
 .sad-background-image {

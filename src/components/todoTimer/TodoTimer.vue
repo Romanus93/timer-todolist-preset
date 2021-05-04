@@ -1,27 +1,25 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="timer">
-        <span class="hour"> {{ hours }} </span>
-        <span>:</span>
-        <span class="minute">{{ minutes }}</span>
-        <span>:</span>
-        <span class="seconds">{{ seconds }}</span>
-      </div>
+  <div class="todo-flex todo-timer-component">
+    <div class="todo-flex time">
+      <span class="hour"> {{ hours }} </span>
+      <span>:</span>
+      <span class="minute">{{ minutes }}</span>
+      <span>:</span>
+      <span class="seconds">{{ seconds }}</span>
     </div>
-    <div class="container-a todo-timer-animation-wrapper">
+    <div class="todo-flex todo-timer-animation-wrapper">
         <timer-animation 
           :time="timeAnimation"
         />
     </div>
-    <div class="container-b todo-button-wrapper todo-flex">
+    <div class="container-bcdf  todo-flex todo-timer-button-wrapper">
       <transition name="mode-fade" mode="out-in">
         <div v-if="on" key="on">
-          <button style="width: 100px; height: 100px; background-color: green;" type="button" @click="pauseTimer()">STOP STOP STOP</button>
+          <button class="button--timer" style="background-color: red;" type="button" @click="pauseTimer()">일시정지</button>
         </div>
         <div class="restart-exit-button todo-flex" v-else key="off">
-          <button style="width: 100px; height: 100px; background-color: green;" type="button" @click="restartTimer()">Restart Restart Restart</button>
-          <button style="width: 100px; height: 100px; background-color: red;" type="button" @click="offTimer(-999, 2000)">OFF OFF OFFF</button>
+          <button class="button--timer" style="background-color: green;" type="button" @click="restartTimer()">계속</button>
+          <button class="button--timer" style="background-color: red;" type="button" @click="offTimer(-999, 2000)">종료</button>
         </div>
       </transition>
     </div>
@@ -120,40 +118,5 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
 </script>
 
 <style scoped>
-.container {
-  height: 50%;
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  background-color: #222831;
-}
-
-.container-A {
-  width: 90%;
-  height: 50%;
-}
-
-.timer {
-  font-size: 5rem;
-  color: #EEEEEE;
-}
-
-.todo-button-wrapper {
-  justify-content: center;
-}
-
-.restart-exit-button {
-  width: 100%;
-  justify-content: space-evenly;
-}
-
-.mode-fade-enter-active, .mode-fade-leave-active {
-  transition: opacity 0.4s ease;
-}
-
-.mode-fade-enter-from, .mode-fade-leave-to {
-  opacity: 0;
-}
+@import "./todo-timer.css"
 </style>

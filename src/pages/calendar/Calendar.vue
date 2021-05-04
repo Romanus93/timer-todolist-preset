@@ -27,22 +27,22 @@
       <!--  어제,오늘,내일 이동 버튼과 todo 생성 버튼 -->
         <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <div>
-          <button class="yesterday-button button--calendr button--calendar-image" @click="goYesterday">
+          <button class="yesterday-button button--calendar button--calendar-image" @click="goYesterday">
             <i class="fas fa-arrow-left"></i>
           </button>
         </div>
         <div>
-          <button class="today-button button--calendr button--calendar-image" @click="goToday">
+          <button class="today-button button--calendar button--calendar-image" @click="goToday">
             <span class="today"> {{ today }} </span>
           </button>
         </div>
         <div>
-          <button class="tomorrow-button button--calendr button--calendar-image" @click="goTomorrow">
+          <button class="tomorrow-button button--calendar button--calendar-image" @click="goTomorrow">
             <i class="fas fa-arrow-right"></i>
           </button>
         </div>
       <div>
-        <button class="create-button button--calendr button--calendar-image" @click="goCreateTodoPage">
+        <button class="create-button button--calendar button--calendar-image" @click="goCreateTodoPage">
           <i class="fas fa-plus"></i>
         </button>
       </div>
