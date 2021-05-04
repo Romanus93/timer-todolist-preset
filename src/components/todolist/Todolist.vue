@@ -154,7 +154,7 @@ export default defineComponent({
       this.todoItem = item;
     },
     twoDigit(param:number): string {
-      // console.log('two Digit', param);
+      console.log('two Digit', param);
       return ((param < 10 ? '0' : '') + param); 
     },
     showNothingTodoModal(param: object[] ) {

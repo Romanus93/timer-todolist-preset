@@ -120,6 +120,7 @@ export default defineComponent({
   },
   beforeUpdate () {
     console.log('beforeUpdate');
+    console.log('this.hours.length',this.hours.length);
     (this.hours.length != 0) && this.hrs();
     (this.minutes.length != 0) && this.min();
     (this.seconds.length != 0) && this.sec();
