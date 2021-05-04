@@ -10,7 +10,6 @@
 
 .calendar-wrapper {
   margin: 0 auto;
-  /* margin-top: 20px; */
   width: 90%;
   border: 5px solid var(--dark-blue);
   border-radius: 10px;
@@ -20,7 +19,7 @@
 .todolist-wrapper {
   width: 90%;
   text-align: center;
-  /* border: 5px solid red; */
+  border: 5px solid red;
   margin: 0 auto;
 }
 
@@ -52,7 +51,7 @@
   margin: 0 auto;
   border: 5px solid red;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 

@@ -73,8 +73,8 @@ button {
   
 }
 
-/* Swiper-pagination-point */
-div.swiper-pagination.swiper-pagination-bullets {
+/* Swiper-pagination-bullets */
+ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   bottom: 2px;
 }
 
