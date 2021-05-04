@@ -12,7 +12,7 @@
           :time="timeAnimation"
         />
     </div>
-    <div class="container-bcdf  todo-flex todo-timer-button-wrapper">
+    <div class="container-bcdf  todo-flex todo-timer-button-wrapper" v-show="buttons">
       <transition name="mode-fade" mode="out-in">
         <div v-if="on" key="on">
           <button class="button--timer" style="background-color: red;" type="button" @click="pauseTimer()">일시정지</button>
@@ -46,7 +46,8 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
         timeAnimation: null,
         timer: null,
         totalTime: this.todoTime,
-        on: true
+        on: true,
+        buttons: true
       }
     },
     created() {
@@ -60,7 +61,6 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
     },
     methods: {
       twoDigitTime: function(time){
-        console.log(time);
         return (time < 10 ? '0' : '') + time;
       },
       startTimer: function() {
@@ -78,6 +78,7 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
       },
       offTimer(totalTime, delayTime) {
         console.log('offTimer')
+        this.buttons = false;
         clearInterval(this.timer);
         this.totalTime = totalTime;
         setTimeout(()=> this.$emit('deleteTodoItem'), delayTime);

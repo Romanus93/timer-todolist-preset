@@ -37,13 +37,13 @@
         <span class="time-wrapper todo-flex">
           <label for="hours">시간</label>
           <span>
-            <input id="hour" class="time-hms" type="number" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" /> :
+            <input id="hour" class="time-hms" type="number" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:
           </span>
         </span>
         <span class="time-wrapper todo-flex">
           <label for="minutes">&nbsp분</label>
           <span>
-            <input id="minutes" class="time-hms" type="number" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" /> :
+            <input id="minutes" class="time-hms" type="number" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:
           </span>
         </span>
         <span class="time-wrapper todo-flex">
@@ -103,6 +103,14 @@ export default defineComponent({
       show: false
     }
   },
+  computed: {
+    chrs(): any {
+      console.log('chrs-computed');
+      (this.hours === '')&&(this.hours = 0);
+      this.hours = Math.floor(this.hours);
+      return Math.floor(this.hours)
+    }
+  },
   created () {
     console.log('todoform-created');
     console.log(this.dateOfTodoItem);
@@ -120,7 +128,7 @@ export default defineComponent({
   },
   beforeUpdate () {
     console.log('beforeUpdate');
-    this.hrs();
+    // this.hrs();
     this.min();
     this.sec();
   },
@@ -130,7 +138,7 @@ export default defineComponent({
         date: this.date,
         title: this.title,
         description: this.description,
-        hours: this.hours,
+        hours: this.chrs,
         minutes: this.minutes,
         seconds: this.seconds
       }
@@ -157,11 +165,13 @@ export default defineComponent({
       }
     },
     hrs(): any {
+      console.log('hrs');
       (this.hours === '')&&(this.hours = 0);
       this.hours = Math.floor(this.hours);
       return Math.floor(this.hours)
     },
     min(): any {
+      console.log('min');
       (this.minutes === '')&&(this.minutes = 0);
       if(this.minutes >= 60) {
         this.minutes = 0;
@@ -172,6 +182,7 @@ export default defineComponent({
       }
     },
     sec(): any {
+      console.log('sec');
       (this.seconds === '')&&(this.seconds = 0);
       if(this.seconds >= 60) {
         this.seconds = 0;
