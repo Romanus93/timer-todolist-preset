@@ -3,13 +3,13 @@
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
-        <button type="button" @click="showshowshow(true)"> {{ date }} </button>
+        <button type="button" @click="showPocketCalendar(true)"> {{ date }} </button>
         <div  v-if="show">
           <todo-date
           :dateOfTodoItem="dateOfTodoItem"
           show="show"
           @changeDate="changeDate"
-          @showshowshow="showshowshow"
+          @showPocketCalendar="showPocketCalendar"
           />
         </div>
       </li>
@@ -103,14 +103,6 @@ export default defineComponent({
       show: false
     }
   },
-  computed: {
-    chrs(): any {
-      console.log('chrs-computed');
-      (this.hours === '')&&(this.hours = 0);
-      this.hours = Math.floor(this.hours);
-      return Math.floor(this.hours)
-    }
-  },
   created () {
     console.log('todoform-created');
     console.log(this.dateOfTodoItem);
@@ -128,7 +120,7 @@ export default defineComponent({
   },
   beforeUpdate () {
     console.log('beforeUpdate');
-    // this.hrs();
+    this.hrs();
     this.min();
     this.sec();
   },
@@ -138,10 +130,18 @@ export default defineComponent({
         date: this.date,
         title: this.title,
         description: this.description,
-        hours: this.chrs,
+        hours: this.hours,
         minutes: this.minutes,
         seconds: this.seconds
-      }
+      };
+
+      let totalTime: number = this.hours + this.minutes + this.seconds;
+      if(totalTime === 0){
+        alert('0');
+        return
+      };
+      // (totalTime === 0)&&(alert('0'));
+      console.log('0이 아님');
       if(this.type === 'edit' && this.item ) {
         const res = await axios
         .put("http://localhost:3005/todolist/"+this.item.id, params)
@@ -196,10 +196,7 @@ export default defineComponent({
       const today: string = moment(new Date()).format("YYYY-MM-DD");
       (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
     },
-    log(param: any) {
-      console.log(`${param}`)
-    },
-    showshowshow(param: boolean):void {
+    showPocketCalendar(param: boolean):void {
       this.show = param;
       console.log('abcdefghrty');
     },

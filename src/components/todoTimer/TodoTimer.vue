@@ -19,7 +19,7 @@
         </div>
         <div class="restart-exit-button todo-flex" v-else key="off">
           <button class="button--timer" style="background-color: green;" type="button" @click="restartTimer()">계속</button>
-          <button class="button--timer" style="background-color: red;" type="button" @click="offTimer(-999, 2000)">종료</button>
+          <button class="button--timer" style="background-color: black;" type="button" @click="offTimer(-999, 2000)">종료</button>
         </div>
       </transition>
     </div>

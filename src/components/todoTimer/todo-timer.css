@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .todo-timer-animation-wrapper {
@@ -12,8 +12,8 @@
 }
 
 .time {
-  height: 20%;
-  font-size: 5rem;
+  height: 25%;
+  font-size: 4.5rem;
   color: var(--white);
   width: 100%;
   /* background-color: #222831; */
@@ -24,15 +24,17 @@
 .todo-timer-button-wrapper {
   justify-content: center;
   width: 100%;
-  height: 11%;
+  height: 12%;
   border: 5px solid red;
   align-items: center;
 }
 
 .button--timer {
-  width: 40vw;
+  width: 25vw;
   height: 8vh;
   color: var(--white);
+  border-radius: 2vw;
+  border: 1vw solid var(--white);
 }
 
 .restart-exit-button {

@@ -1,24 +1,6 @@
 {
   "todolist": [
     {
-      "date": "2021-05-05",
-      "title": "",
-      "description": "",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 0,
-      "id": 3
-    },
-    {
-      "date": "2021-05-05",
-      "title": "",
-      "description": "",
-      "hours": 6,
-      "minutes": 0,
-      "seconds": 0,
-      "id": 4
-    },
-    {
       "date": "2021-05-04",
       "title": "",
       "description": "",
@@ -35,6 +17,15 @@
       "minutes": 1,
       "seconds": 0,
       "id": 6
+    },
+    {
+      "date": "2021-05-05",
+      "title": "",
+      "description": "",
+      "hours": 0,
+      "minutes": 1,
+      "seconds": 0,
+      "id": 7
     }
   ]
 }

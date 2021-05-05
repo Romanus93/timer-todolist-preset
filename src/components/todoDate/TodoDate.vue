@@ -54,7 +54,7 @@ export default defineComponent({
   methods: {
     changeDate() {
       this.$emit('changeDate',this.changedDate);
-      this.$emit('showshowshow',false);
+      this.$emit('showPocketCalendar',false);
     }
   },
 })
