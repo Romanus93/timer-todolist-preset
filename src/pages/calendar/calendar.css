@@ -71,6 +71,16 @@
   }
 }
 
+@media screen and (min-width: 500px) {
+  .calendar-page section.action-buttons-wrapper {
+    justify-content: flex-end;
+  }
+  
+  .calendar-page section.action-buttons-wrapper button.button--calendar {
+    margin-left: 4vw;
+  }
+}
+
 @media screen and (min-width: 600px) and (max-width: 770px){
   .date-none-modal {
     background-size: 60%;
@@ -82,3 +92,16 @@
   }
 }
 
+@media screen and (min-width: 600px) and (min-height: 850px) {
+  .button--calendar {
+    width: 80px;
+    height: 75px;
+    font-size: 32px;
+    /* border: none; */
+    padding-top: 26px;
+  }
+
+  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 10px;
+  }
+}

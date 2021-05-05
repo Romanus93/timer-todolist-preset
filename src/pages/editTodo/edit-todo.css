@@ -1,15 +1,9 @@
 /* Edit-Form */
-.editTodo-page {
+.edit-todo-page {
   width: 100%;
   height: 100%;
   border: 5px solid teal;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-}
-
-.todo-form-wrapper {
-  width: 90%;
-  height: 90%;
-  border: 5px solid var(--red);
 }

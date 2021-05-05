@@ -1,5 +1,5 @@
 section<template>
-  <section class="todo-flex startTodo-page">
+  <section class="start-todo-page">
       <TodoTimer 
         :todoTime="todoTime"
         @deleteTodoItem="deleteTodoItem"

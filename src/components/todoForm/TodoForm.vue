@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-flex todo-form">
+  <div class="todo-flex todo-form-wrapper">
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">

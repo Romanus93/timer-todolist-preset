@@ -8,6 +8,8 @@
   --blue-50: #e3f2fd;
   --light-grey: #fafafa; /* --grey-50*/
   --red-500: #f44336;
+  --teal-600: #00897b;
+  --green: green;
   /* ellie pick - --grey-dark-color: #909090; --grey-light-color: #e0e0e0;*/
   /* --side-padding: 12px; */
   /* Font Size */
@@ -92,14 +94,20 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   color: var(--light-blue);
 }
 
-
-
-/* iPhon 5/SE */
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 500px) {
+  div.vc-header.align-center {
+    padding-top: 5px;
+  }
   
+  div.vc-arrows-container.title-center {
+    padding-top: 5px;
+  }  
 }
 
 @media screen and (min-width: 500px) {
+  div.vc-header.align-center {
+    padding-top: 0;
+  }
 
   /*년 월 일 중 년-월 (타이틀) */
   section.calendar-wrapper div.vc-header.align-center > div.vc-title {
@@ -139,7 +147,6 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   section.calendar-wrapper div.vc-header.align-center {
     border: blueviolet solid 5px;
     height: 7vh;
-    /* height: 20vh; */
   }
 
   /* 요일 상자 너비 조정 */
@@ -188,24 +195,13 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   }
 } 
 
-@media screen and (min-width: 500px) {
-  .calendar-page section.action-buttons-wrapper {
-    justify-content: flex-end;
-  }
-  
-  .button--calendar {
-    margin-left: 3vw;
-  }
-}
-
-@media screen and (min-width: 600px) and (min-height: 850px) {
+@media screen and (min-width: 600px) and (min-height: 850px) {  
   .button--calendar {
     width: 80px;
     height: 75px;
     font-size: 32px;
     /* border: none; */
     padding-top: 26px;
-    margin-left: 4vw;
   }
 
   div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {

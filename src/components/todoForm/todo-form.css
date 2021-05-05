@@ -1,8 +1,10 @@
 /* Todo-Form */
-.todo-form {
-  height: 100%;
+.todo-form-wrapper {
+  width: 90%;
+  height: 90%;
   flex-direction: column;
   justify-content: space-between;
+  border: 5px solid blue;
 }
 
 .todo-info--bg-image {
@@ -17,10 +19,11 @@
 
 .todo-info {
   flex-direction: column;
-  justify-content: space-evenly;
-  padding-bottom: 8%;
-  padding-left: 22%;
-  height: 73vh;
+  justify-content: space-around;
+  padding-bottom: 9%;
+  padding-left: 23%;
+  padding-top: 4%;
+  height: 80%;
   border: blanchedalmond solid 5px;
   font-weight: bold;
 }
@@ -30,28 +33,30 @@
   display: block;
 }
 
+.todo-info > li label {
+  font-size: 20px;
+}
+
 .todo-info > li input {
   width: 70%;
-  height: 24px;
+  height: 1.5em;
   border: none;
   border-bottom: solid 2px var(--black);
   background-color: var(--blue-50);
-  margin-top: 0.5vh;
-  font-size: 16px;
+  margin-top: 0.1em;
+  font-size: 18px;
 }
 
 .todo-date {
-  height: 24px;
   border-bottom: solid 2px var(--black);
-  /* font-size: 18px; */
 }
 
-li.todo-date  {
+.todo-date  {
   border: none;
 }
 
 .todo-date button {
-  font-size: 18px;
+  font-size: 20px;
   border-bottom: solid 2px var(--black);
 }
 
@@ -62,7 +67,7 @@ li.todo-date  {
 }
 
 .todo-time {
-  width: 60%;
+  width: 9rem;
   border: 5px solid salmon;
   justify-content: space-between;
 }
@@ -84,6 +89,10 @@ li.todo-date  {
   padding-left: 0;
 }
 
+/* li.todo-time span:nth-child(3) {
+  justify-content: space-between;
+} */
+
 .buttons-wrapper {
   height: 15%;
   border: 5px solid red;
@@ -91,20 +100,58 @@ li.todo-date  {
   align-items: center;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 400px) and (min-height: 700px) {
   .todo-info {
-    /* padding-top: 16%; */
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width: 500px) {
-  .todo-info {
-    font-size: 24px;
+    padding-bottom: 10%;
+    height: 80%;
   }
   
-  .todo-info li input {
+  .todo-info > li label {
     font-size: 24px;
-    height: 32px;
+  }
+
+  .todo-info > li input {
+    width: 70%;
+    font-size: 20px;
+  }
+
+  .todo-date button {
+    font-size: 24px;
+  }
+
+  .todo-time {
+    width: 10rem;
+  }
+
+  ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 5px;
+  }
+} 
+
+@media screen and (min-width: 600px) and (min-height: 850px) {
+  
+  .todo-info {
+    padding-bottom: 10%;
+    height: 82%;
+  }
+
+  .todo-info > li label {
+    font-size: 32px;
+  }
+
+  .todo-info > li input {
+    font-size: 24px;
+  }
+
+  .todo-time {
+    width: 12rem;
+  }
+
+  .todo-date button {
+    font-size: 32px;
+  }
+
+  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 10px;
   }
 }

@@ -31,8 +31,8 @@
 
 .start-button {
   font-size: 18px;
-  width: 50px;
-  height: 1.8em;
+  width: 2.5em;
+  height: 1.6em;
   border: 3px solid var(--dark-blue);
   border-radius: 5px;
   background-color: var(--light-grey);
@@ -80,10 +80,13 @@
 }
 
 .button--modal {
-  width: 40vw;
-  height: 8vh;
+  width: 7em;
+  height: 2.5em;
   font-size: 20px;
   font-weight: 600;
+  border: 5px solid;
+  border-radius: 12px;
+  background-color: var(--light-grey);
 }
 
 .delete-button {
@@ -116,41 +119,16 @@
 
 
 @media screen and (min-width: 500px) {
-
-
   .todo-item-none-modal {
     background-position: 50% 30%;
     background-image: url("/src/assets/nothing-to-do/nothing-to-do-690x521.jpg");
   }
 
-  /* .todo-item > div {
-    font-size: 24px;
-  } */
-
-  .start-button {
-    font-size: 24px;
-  }
-
-  .start-button {
-    font-size: 24px;
-    width: 61px;
-    height: 40px;
-    border: 3px solid var(--dark-blue);
-    border-radius: 5px;
-  }
-
-  .button--modal {
-    font-size: 30px;
-  }
-
-  .todo-list .edit-delete-modal-button-wrapper {
-    font-size: 24px;
-  }
 }
 
 @media screen and (min-width: 400px) and (min-height: 700px) {
   .todo-list .todo-item {
-    font-size: 20px;
+    font-size: 24px;
     padding: 30px 0;
     padding-left: 10%;
   }
@@ -158,6 +136,15 @@
   .todo-list .edit-delete-modal-button-wrapper {
     padding-top: 30px;
   }
+
+  .start-button {
+    font-size: 24px;
+  }
+
+  .button--modal {
+    font-size: 24px;
+  }
+  
 }
 
 @media screen and (min-width: 600px) and (min-height: 850px) {
@@ -169,6 +156,23 @@
 
   .todo-list .edit-delete-modal-button-wrapper {
     padding-top: 35px;
+  }
+
+  .start-button {
+    font-size: 32px;
+  }
+
+  /* ...? */
+  /* .todo-list .edit-delete-modal-button-wrapper {
+    font-size: 24px;
+  } */
+  /* 위 대체 */
+  .todo-list .edit-delete-modal-button {
+    font-size: 24px;
+  }
+
+  .button--modal {
+    font-size: 32px;
   }
 }
 

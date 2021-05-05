@@ -7,21 +7,23 @@
       <span>:</span>
       <span class="seconds">{{ seconds }}</span>
     </div>
-    <div class="todo-flex todo-timer-animation-wrapper">
+    <div class="todo-timer-animation-wrapper">
         <timer-animation 
           :time="timeAnimation"
         />
     </div>
-    <div class="container-bcdf  todo-flex todo-timer-button-wrapper" v-show="buttons">
-      <transition name="mode-fade" mode="out-in">
-        <div v-if="on" key="on">
-          <button class="button--timer" style="background-color: red;" type="button" @click="pauseTimer()">일시정지</button>
-        </div>
-        <div class="restart-exit-button todo-flex" v-else key="off">
-          <button class="button--timer" style="background-color: green;" type="button" @click="restartTimer()">계속</button>
-          <button class="button--timer" style="background-color: black;" type="button" @click="offTimer(-999, 2000)">종료</button>
-        </div>
-      </transition>
+    <div class="todo-timer-buttons-wrapper">
+      <div class="todo-flex todo-timer-buttons" v-show="buttons">
+        <transition name="mode-fade" mode="out-in">
+          <div v-if="on" key="on">
+            <button class="button--timer pause-button" type="button" @click="pauseTimer()">일시정지</button>
+          </div>
+          <div class="restart-exit-button todo-flex" v-else key="off">
+            <button class="button--timer restart-button" type="button" @click="restartTimer()">계속</button>
+            <button class="button--timer off-button" type="button" @click="offTimer(-999, 200000)">종료</button>
+          </div>
+        </transition>
+      </div>
     </div>
   </div>
 </template>

@@ -1,11 +1,9 @@
 <template>
-  <div class="todo-flex editTodo-page">
-    <section class="todo-form-wrapper">
-      <todo-form 
-        type="edit" 
-        :item="todoItem">
-      </todo-form>
-    </section>
+  <div class="todo-flex edit-todo-page">
+    <todo-form 
+      type="edit" 
+      :item="todoItem"
+    ></todo-form>
   </div>
 </template>
 
