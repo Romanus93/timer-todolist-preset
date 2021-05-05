@@ -92,12 +92,6 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   color: var(--light-blue);
 }
 
-/* @media screen and (min-width: 350px) and (max-width: 500px) {
-  .button--calendar {
-    font-size: 28px;
-    padding-top: 2.9vh;
-  }
-} */
 
 
 /* iPhon 5/SE */
@@ -106,12 +100,6 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 }
 
 @media screen and (min-width: 500px) {
-  /* .button--calendar {
-    width: 80px;
-    height: 70px;
-    font-size: 32px;
-    padding-top: 22px;
-  } */
 
   /*년 월 일 중 년-월 (타이틀) */
   section.calendar-wrapper div.vc-header.align-center > div.vc-title {
@@ -176,21 +164,6 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   }
 }
 
-@media screen and (min-width: 500px) and (min-height: 800px) { 
-  /* .button--calendar {
-    width: 80px;
-    height: 9vh;
-    font-size: 36px;
-    padding-top: 3vh;
-  } */
-}
-
-@media screen and (min-width: 650px) { 
-  
-}
-
-
-
 @media screen and (min-width: 700px) { 
   section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
     width: 300px;
@@ -201,15 +174,6 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   }
 }
 
-/* div.xpenfl .vc-day-content:focus {
-  background-color: slateblue;
-} */
-
-
-/* .vc-day-box-center-center > span.vc-day-content:focus {
-  background-color: hsl(0deg 0% 100% / 40%);
-} */
-
 @media screen and (min-width: 400px) and (min-height: 700px) {
   .button--calendar {
     width: 70px;
@@ -217,7 +181,10 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
     font-size: 24px;
     /* border: none; */
     padding-top: 22px;
-    /* margin-left: 3vw; */
+  }
+
+  ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 5px;
   }
 } 
 
@@ -239,5 +206,9 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
     /* border: none; */
     padding-top: 26px;
     margin-left: 4vw;
+  }
+
+  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 10px;
   }
 }

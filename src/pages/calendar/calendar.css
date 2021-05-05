@@ -64,6 +64,13 @@
     font-size: 16px;
   }
 }
+
+@media screen and (min-width: 400px) and (min-height: 700px) {
+  .date-none-modal__text {
+    font-size: 16px;
+  }
+}
+
 @media screen and (min-width: 600px) and (max-width: 770px){
   .date-none-modal {
     background-size: 60%;

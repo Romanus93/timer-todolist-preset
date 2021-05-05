@@ -16,13 +16,15 @@
                 <div>{{ item.description }}</div>
                 <div class="todo-flex time-start-button-wrapper">
                   <span>
-                    {{ twoDigit(item.hours) }} &nbsp :
-                  </span>
-                  <span>
-                    {{ twoDigit(item.minutes) }} &nbsp :
-                  </span>
-                  <span>
-                    {{ twoDigit(item.seconds) }}
+                    <span>
+                      {{ twoDigit(item.hours) }} :
+                    </span>
+                    <span>
+                      {{ twoDigit(item.minutes) }} :
+                    </span>
+                    <span>
+                      {{ twoDigit(item.seconds) }}
+                    </span>
                   </span>
                   <span>
                     <button type="button" class="start-button" @click="goStartTodoPage(item)">
