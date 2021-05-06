@@ -60,12 +60,6 @@
   border-bottom: solid 2px var(--black);
 }
 
-.todo-date div {
-  position: absolute;
-  right: 8%;
-  top: 20%;
-}
-
 .todo-time {
   width: 9rem;
   border: 5px solid salmon;

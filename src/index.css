@@ -74,6 +74,35 @@ ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-b
   bottom: 2px;
 }
 
+@media screen and (min-width: 400px) and (min-height: 700px) {
+  .button--calendar {
+    width: 70px;
+    height: 60px;
+    font-size: 24px;
+    /* border: none; */
+    padding-top: 22px;
+  }
+
+  ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 5px;
+  }
+} 
+
+@media screen and (min-width: 600px) and (min-height: 850px) {  
+  .button--calendar {
+    width: 80px;
+    height: 75px;
+    font-size: 32px;
+    /* border: none; */
+    padding-top: 26px;
+  }
+
+  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 10px;
+  }
+}
+
+/* calendar - css */
 /* 일요일 색 */
 div.vc-weeks > div:nth-child(1) {
   color: var(--red-500);
@@ -95,17 +124,17 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 }
 
 @media screen and (max-width: 500px) {
-  div.vc-header.align-center {
+  section.calendar-wrapper div.vc-header.align-center {
     padding-top: 5px;
   }
   
-  div.vc-arrows-container.title-center {
+  section.calendar-wrapper div.vc-arrows-container.title-center {
     padding-top: 5px;
   }  
 }
 
 @media screen and (min-width: 500px) {
-  div.vc-header.align-center {
+  section.calendar-wrapper div.vc-header.align-center {
     padding-top: 0;
   }
 
@@ -134,7 +163,11 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   section.calendar-wrapper > div {
     /* width: 100%; */
     border: springgreen solid 5px;
-    /* height: 40vh; */
+    height: 40vh;
+  }
+
+  li.todo-date div.vc-pane-container > div.vc-pane-layout > div > div.vc-weeks {
+
   }
 
   /* 월 이동 버튼 너비 상자*/
@@ -172,6 +205,21 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 }
 
 @media screen and (min-width: 700px) { 
+  section.calendar-wrapper div.vc-header.align-center > div.vc-title {
+    font-size: 32px;
+  }
+
+    /* 일요일~토요일 */
+    section.calendar-wrapper div.vc-weeks > div {
+      font-size: 24px;
+    }
+    
+    /* 년월일중 일자 */
+    section.calendar-wrapper div.vc-day > span {
+      font-size: 24px;
+    }
+  
+
   section.calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
     width: 300px;
   }
@@ -181,30 +229,119 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   }
 }
 
-@media screen and (min-width: 400px) and (min-height: 700px) {
-  .button--calendar {
-    width: 70px;
-    height: 60px;
+/* pocket-calendar */
+@media screen and (min-width: 500px) {
+  div.pocket-calendar-wrapper div.vc-header.align-center {
+    padding-top: 0;
+    border: 1px solid black;
+  }
+  
+  /* 일요일~토요일 */
+  div.pocket-calendar-wrapper div.vc-weeks > div {
+    font-size: 16px;
+    border: 1px solid brown;
+  }
+  
+  /* 년월일중 일자 */
+  div.pocket-calendar-wrapper div.vc-day > span {
+    font-size: 16px;
+    border: 1px solid blue;
+  }
+
+  div.pocket-calendar-wrapper div.vc-arrows-container.title-center {
+    border: 1px solid green;
+  }
+  /*arrow---move-month-btn*/
+  div.pocket-calendar-wrapper div.vc-arrows-container.title-center > div > svg {
+    /* height: 30px;
+    width: 30px; */
+    border: 1px solid green;
+  }
+  
+  /* 캘린더 전체 너비*/
+  div.pocket-calendar-wrapper > div {
+    width: 60vw;
+    /* height: 33vh; */
+  }
+
+  /* 전 월, 다음 월 이동 버튼 너비*/
+  div.pocket-calendar-wrapper div.vc-arrows-container.title-center {
+    border: red dotted 3px;
+    height: 5vh;
+    min-height: 19px;
+  }
+
+  /* 년 월 버튼 너비ex) May 2021 */
+  div.pocket-calendar-wrapper div.vc-header.align-center {
+    border: blueviolet solid 5px;
+    height: 5vh;
+    min-height: 19px;
+  }
+
+  /* 요일 상자 너비 조정 */
+  div.pocket-calendar-wrapper div.vc-pane-layout > div > div.vc-weeks {
+    border: yellow solid 5px;
+    height: 27vh;
+    min-width: 310px;
+    min-height: 256px;
+  }
+
+  li.todo-date div.vc-header.align-center > div.vc-title {
+    font-size: 20px;
+  }
+
+
+  /* 팝업 캘린더 포지션 조정*/
+  /* 팝업 캘린더 폰트 사이즈- */
+  div.pocket-calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
+    top: 1vh;
+    width: 200px;
+    font-size: 16px;
+  }
+
+  /* 팝업 캘린더 그리드 조정*/
+  /* 팝업 캘린더 요일 vc-nav-items  높이 */
+  div.pocket-calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
+    grid-row-gap: 1vh;
+    padding-left: 5px ;
+  }
+}
+
+@media screen and (min-width: 600px) { 
+  div.pocket-calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
+    font-size: 18px; 
+  }
+}
+
+@media screen and (min-width: 700px) { 
+  li.todo-date div.vc-header.align-center > div.vc-title {
     font-size: 24px;
-    /* border: none; */
-    padding-top: 22px;
   }
 
-  ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
-    bottom: 5px;
+  /* 일요일~토요일 */
+  div.pocket-calendar-wrapper div.vc-weeks > div {
+    font-size: 18px;
+    border: 1px solid brown;
   }
-} 
-
-@media screen and (min-width: 600px) and (min-height: 850px) {  
-  .button--calendar {
-    width: 80px;
-    height: 75px;
-    font-size: 32px;
-    /* border: none; */
-    padding-top: 26px;
+  
+  /* 년월일중 일자 */
+  div.pocket-calendar-wrapper div.vc-day > span {
+    font-size: 18px;
+    border: 1px solid blue;
   }
 
-  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
-    bottom: 10px;
+  div.pocket-calendar-wrapper div.vc-arrows-container.title-center > div > svg {
+    height: 30px;
+    width: 30px;
+  }
+
+  div.pocket-calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div {
+    width: 240px;
+    top: 1vh;
+    font-size: 18px;
+  }
+
+  div.pocket-calendar-wrapper div.vc-popover-content-wrapper.is-interactive > div > div > div.vc-nav-items {
+    padding-left: 20px;
   }
 }

@@ -7,7 +7,9 @@
       v-model="date"
     />
     <div class="change-button-wrapper">
-      <button class="change-button" @click="changeDate">선택</button>
+      <button class="change-button" @click="changeDate">
+        <i class="fas fa-check"></i>
+      </button>
     </div>
   </div>
 </template>

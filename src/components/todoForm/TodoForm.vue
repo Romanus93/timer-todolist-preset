@@ -4,14 +4,14 @@
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
         <button type="button" @click="showPocketCalendar(true)"> {{ date }} </button>
-        <div  v-if="show">
-          <todo-date
-          :dateOfTodoItem="dateOfTodoItem"
-          show="show"
-          @changeDate="changeDate"
-          @showPocketCalendar="showPocketCalendar"
-          />
-        </div>
+        <button> 변경, 선택</button>
+        <todo-date
+        :dateOfTodoItem="dateOfTodoItem"
+        show="show"
+        @changeDate="changeDate"
+        @showPocketCalendar="showPocketCalendar"
+        v-if="show"
+        />
       </li>
       <li class="todo-title">
         <label for="title">오늘 할 일</label>

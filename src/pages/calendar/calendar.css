@@ -73,12 +73,13 @@
 
 @media screen and (min-width: 500px) {
   .calendar-page section.action-buttons-wrapper {
-    justify-content: flex-end;
+    justify-content: space-around;
   }
   
-  .calendar-page section.action-buttons-wrapper button.button--calendar {
+  /* .calendar-page section.action-buttons-wrapper button.button--calendar {
     margin-left: 4vw;
-  }
+  } */
+
 }
 
 @media screen and (min-width: 600px) and (max-width: 770px){

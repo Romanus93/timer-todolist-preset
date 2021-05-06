@@ -1,14 +1,75 @@
-div.pocket-calendar-wrapper {
+li.todo-date div.vc-container {
+  border: 5px solid orange;
 }
+
+/* 기존 값 
 div.pocket-calendar-wrapper > div.vc-container {
   border: 5px solid var(--dark-blue);
+} */
+
+.todo-date div.pocket-calendar-wrapper {
+  position: absolute;
+  left: 6vw;
+  top: 16%;
+  border: 5px solid var(--dark-blue);
+  background-color: var(--white);
 }
 
 div.pocket-calendar-wrapper > div.change-button-wrapper {
-  position: relative;
-  top: -37px;
-  left: 213px; 
-  z-index:400; 
-  width: 2rem;
-  border: steelblue 2px solid;
+  border: 5px solid green;
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
 }
+
+li.todo-date > div.pocket-calendar-wrapper > div.change-button-wrapper > button.change-button {
+  width: 2em;
+  height: 1em;
+  background-color: var(--white);
+  color: var(--teal-600);
+  font-size: 24px;
+}
+
+
+@media screen and (min-width: 350px) {
+  .todo-date div.pocket-calendar-wrapper {
+    left: 12vw;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .todo-date div.pocket-calendar-wrapper {
+    left: 18%;
+    top: 16%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  li.todo-date div.vc-container {
+    min-width: 320px;
+    min-height: 306px;
+  }
+
+  div.pocket-calendar-wrapper > div.change-button-wrapper {
+  }
+
+  li.todo-date > div.pocket-calendar-wrapper > div.change-button-wrapper > button.change-button {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  
+}
+
+/* size */
+
+/* @media screen and (max-width: 500px) {
+  section.calendar-wrapper div.vc-header.align-center {
+    padding-top: 5px;
+  }
+  
+  section.calendar-wrapper div.vc-arrows-container.title-center {
+    padding-top: 5px;
+  }  
+} */
