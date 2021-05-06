@@ -141,7 +141,7 @@
     width: 12rem;
   }
 
-  .todo-date button {
+  .todo-date span,button {
     font-size: 32px;
   }
 

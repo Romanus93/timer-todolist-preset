@@ -6,11 +6,6 @@
       trim-weeks
       v-model="date"
     />
-    <div class="change-button-wrapper">
-      <button class="change-button" @click="changeDate">
-        <i class="fas fa-check"></i>
-      </button>
-    </div>
   </div>
 </template>
 
@@ -23,40 +18,26 @@ export default defineComponent({
   props: {
     dateOfTodoItem: {
       type: String as any
-    },
-    show :{
-      type: Boolean
     }
   },
   data() {
     return {
-      date: this.dateOfTodoItem,
-      isVisible: this.show
-    }
-  },
-  computed: {
-    changedDate: {
-      get(): string {
-        return moment(this.date).format("YYYY-MM-DD");
-      },
-      set(newValue: any): void {
-        (newValue == null)&&(this.date = this.dateOfTodoItem)
-      }
+      date: this.dateOfTodoItem
     }
   },
   beforeUpdate() {
     console.log('date-beforeUpdate');
-    (this.date == null)&&(this.date = this.dateOfTodoItem);
-    console.log(this.changedDate)
-  },
-  updated() {
-    console.log('date-updated');
-    console.log(this.changedDate)
+    this.changeDate();
   },
   methods: {
-    changeDate() {
-      this.$emit('changeDate',this.changedDate);
-      this.$emit('showPocketCalendar',false);
+    sendDate(changedDate: string): void {
+      console.log('sendDate');  
+      this.$emit('checkDate',changedDate);
+    },
+    changeDate(): any {
+      (this.date === null)&&(this.date = this.dateOfTodoItem)
+      let changedDate = moment(this.date).format("YYYY-MM-DD")
+      this.sendDate(changedDate);
     }
   },
 })

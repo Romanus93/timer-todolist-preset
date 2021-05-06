@@ -3,12 +3,13 @@
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
-        <button type="button" @click="showPocketCalendar(true)"> {{ date }} </button>
-        <button> 변경, 선택</button>
+        <span> {{ date }} </span>
+        <button type="button" @click="showPocketCalendar(true)"> 변경 </button>
+        <button type="button" @click="showPocketCalendar(false)"> 선택 </button>
         <todo-date
         :dateOfTodoItem="dateOfTodoItem"
         show="show"
-        @changeDate="changeDate"
+        @checkDate="checkDate"
         @showPocketCalendar="showPocketCalendar"
         v-if="show"
         />
@@ -200,7 +201,8 @@ export default defineComponent({
       this.show = param;
       console.log('abcdefghrty');
     },
-    changeDate(changedDate: any) {
+    checkDate(changedDate: any) {
+      console.log(changedDate);
       this.date = changedDate;
       console.log(this.date);
     }
