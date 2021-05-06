@@ -50,7 +50,7 @@
             </li>
             <li>
               <button type="button" class="edit-button button--modal"  @click="goEditTodoPage(todoItem)">
-                <i class="fas fa-eraser"></i> 수정하기
+                <i class="far fa-edit"></i> 수정하기
               </button>
             </li>
             <li>

@@ -4,8 +4,8 @@
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
         <span> {{ date }} </span>
-        <button type="button" @click="showPocketCalendar(true)"> 변경 </button>
-        <button type="button" @click="showPocketCalendar(false)"> 선택 </button>
+        <button class="change-date-button" type="button" @click="showPocketCalendar(true)" v-show="!show"> <i class="far fa-edit"></i> </button>
+        <button class="check-date-button" type="button" @click="showPocketCalendar(false)" v-show="show"> <i class="far fa-check-circle"></i>  </button>
         <todo-date
         :dateOfTodoItem="dateOfTodoItem"
         show="show"
@@ -206,7 +206,6 @@ export default defineComponent({
       this.date = changedDate;
       console.log(this.date);
     }
-    
   }
 })
 </script>
