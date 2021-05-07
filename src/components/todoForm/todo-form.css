@@ -17,7 +17,7 @@
   right: 5%;
 }
 
-li > label,input {
+li label,input {
   display: block;
 }
 
@@ -75,31 +75,27 @@ li > label,input {
 }
 
 .todo-time {
-  width: 10rem;
+  width: 195px;
   border: 5px solid salmon;
-  justify-content: space-between;
 }
 
 .time-wrapper {
-  flex-direction: column;
+  border: 1px solid yellow;
 }
 
 .todo-time .time-hms {
-  display: inline-block;
-}
-
-.todo-time label {
   display: inline-block;
 }
 
 .todo-time .time-hms {
   width: 2em;
-  padding-left: 0;
+  padding-left: 0.5em;
 }
 
 .buttons-wrapper {
   height: 15%;
   border: 5px solid red;
+  justify-content: space-around;
   align-items: center;
 }
 

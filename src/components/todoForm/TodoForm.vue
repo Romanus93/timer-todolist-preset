@@ -35,22 +35,22 @@
         />
       </li>
       <li class="todo-time todo-flex">
-        <span class="time-wrapper todo-flex">
+        <div class="time-wrapper">
           <label for="hours">시간</label>
           <span>
-            <input id="hour" class="time-hms" type="number" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
+            <input id="hour" class="time-hms" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
-        </span>
-        <span class="time-wrapper todo-flex">
+        </div>
+        <div class="time-wrapper">
           <label for="minutes">&nbsp분</label>
           <span>
-            <input id="minutes" class="time-hms" type="number" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
+            <input id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
-        </span>
-        <span class="time-wrapper todo-flex">
+        </div>
+        <div class="time-wrapper">
           <label for="seconds">&nbsp초</label>
-          <input id="seconds" class="time-hms" type="number" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
-        </span>
+          <input id="seconds" class="time-hms" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
+        </div>
       </li>
     </ul>
     <div>
