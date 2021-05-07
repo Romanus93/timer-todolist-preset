@@ -38,13 +38,13 @@
         <span class="time-wrapper todo-flex">
           <label for="hours">시간</label>
           <span>
-            <input id="hour" class="time-hms" type="number" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:
+            <input id="hour" class="time-hms" type="number" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
         </span>
         <span class="time-wrapper todo-flex">
           <label for="minutes">&nbsp분</label>
           <span>
-            <input id="minutes" class="time-hms" type="number" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:
+            <input id="minutes" class="time-hms" type="number" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
         </span>
         <span class="time-wrapper todo-flex">
@@ -53,6 +53,10 @@
         </span>
       </li>
     </ul>
+    <div>
+      <label for="">lorem</label>
+      <input type="text">
+    </div>
     <ul class="todo-flex buttons-wrapper">
       <li>
         <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodoItem">
