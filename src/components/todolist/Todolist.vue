@@ -62,7 +62,7 @@
         </li>
       </ul>
     </div>
-    <div class="todo-item-none-modal" v-show="nothingTodoModal">
+    <div class="todo-item-none-modal todo-item-none-image" v-show="nothingTodoModal">
     </div>
     <div class="todo-item-none-modal todo-flex todo-loading" v-show="loadingModal">
       <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="loader">
@@ -141,6 +141,8 @@ export default defineComponent({
   created() {
     console.log('todolist-created');
     console.log('this.todolist.length',this.todolist.length);
+    console.log('nothingTodoModal');
+    console.log(this.nothingTodoModal);
     setTimeout(()=>this.axiosGet(), 500);
   },
   methods: {
@@ -160,8 +162,10 @@ export default defineComponent({
       return ((param < 10 ? '0' : '') + param); 
     },
     showNothingTodoModal(param: object[] ) {
+      console.log('showNothingTodoModal');
       this.loadingModal = false;
-      this.nothingTodoModal = (param.length == 0)? true : false;
+      this.nothingTodoModal = (param.length === 0)? true : false;
+      console.log(this.nothingTodoModal);
     },
     async axiosGet(): Promise<void> {
       console.log('axiosGet이 실행');

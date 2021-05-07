@@ -99,6 +99,9 @@
   background-color: var(--white);
   border: var(--dark-blue) 5px solid;
   border-radius: 10px;
+}
+
+.todo-item-none-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -106,20 +109,16 @@
 }
 
 .todo-loading {
-  background-image: none;
   justify-content: center;
   align-items: center;
-  border: var(--dark-blue) 5px solid;
-  border-radius: 10px;
 }
 
 .todo-loading img {
   height: 70%;
 }
 
-
 @media screen and (min-width: 500px) {
-  .todo-item-none-modal {
+  .todo-item-none-image {
     background-position: 50% 30%;
     background-image: url("/src/assets/nothing-to-do/nothing-to-do-690x521.jpg");
   }

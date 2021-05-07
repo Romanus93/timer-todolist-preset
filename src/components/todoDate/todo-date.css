@@ -1,5 +1,5 @@
 li.todo-date div.vc-container {
-  border: 5px solid orange;
+  border: 5px solid var(--dark-blue);
 }
 
 .todo-date div.pocket-calendar-wrapper {

@@ -20,10 +20,12 @@
 .todo-info {
   flex-direction: column;
   justify-content: space-around;
-  padding-bottom: 9%;
+  /* padding-bottom: 9%; */
+  padding-bottom: 11%;
   padding-left: 23%;
   padding-top: 4%;
-  height: 80%;
+  /* height: 80%; */
+  height: 83%;
   border: blanchedalmond solid 5px;
   font-weight: bold;
 }
@@ -74,7 +76,7 @@
 }
 
 .todo-time {
-  width: 9rem;
+  width: 10rem;
   border: 5px solid salmon;
   justify-content: space-between;
 }
@@ -122,12 +124,8 @@
     font-size: 20px;
   }
 
-  .todo-date button {
+  .todo-date span {
     font-size: 24px;
-  }
-
-  .todo-time {
-    width: 10rem;
   }
 
   ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
@@ -154,7 +152,11 @@
     width: 12rem;
   }
 
-  .todo-date span,button {
+  .todo-date span {
+    font-size: 32px;
+  }
+
+  .todo-date button {
     font-size: 32px;
   }
 
