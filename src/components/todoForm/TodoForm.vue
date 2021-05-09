@@ -137,39 +137,40 @@ export default defineComponent({
   methods: {
     async createUpdateTodoItem() {
       let totalTime: number = this.hours + this.minutes + this.seconds;
-      if(this.title === '' && this.description === '' && totalTime === 0 ){
+      if(this.title === '' || this.description === '' || totalTime === 0 ){
         this.error=true;
         return console.log('값이 비어있음.');
-      } 
-      let params = {
-        date: this.date,
-        title: this.title,
-        description: this.description,
-        hours: this.hours,
-        minutes: this.minutes,
-        seconds: this.seconds
-      };
-      console.log('0이 아님');
-      if(this.type === 'edit' && this.item ) {
-        const res = await axios
-        .put("http://localhost:3005/todolist/"+this.item.id, params)
-        .then(response => {
-          console.debug(response.data);
-          this.goCalendarPage();
-        })
-        .catch(error => {
-          console.debug(error);
-        });
       } else {
-        const res = await axios
-        .post("http://localhost:3005/todolist", params)
-        .then(response => {
-          console.debug(response.data);
-          this.goCalendarPage();
-        })
-        .catch(error => {
-          console.debug(error);
-        });
+          let params = {
+          date: this.date,
+          title: this.title,
+          description: this.description,
+          hours: this.hours,
+          minutes: this.minutes,
+          seconds: this.seconds
+        };
+        console.log('0이 아님');
+        if(this.type === 'edit' && this.item ) {
+          const res = await axios
+          .put("http://localhost:3005/todolist/"+this.item.id, params)
+          .then(response => {
+            console.debug(response.data);
+            this.goCalendarPage();
+          })
+          .catch(error => {
+            console.debug(error);
+          });
+        } else {
+          const res = await axios
+          .post("http://localhost:3005/todolist", params)
+          .then(response => {
+            console.debug(response.data);
+            this.goCalendarPage();
+          })
+          .catch(error => {
+            console.debug(error);
+          });
+        }
       }
     },
     hrs(): any {
