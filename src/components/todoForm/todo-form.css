@@ -75,7 +75,7 @@ li label,input {
 }
 
 .todo-time {
-  width: 195px;
+  width: 162px;
   border: 5px solid salmon;
 }
 
@@ -97,6 +97,38 @@ li label,input {
   border: 5px solid red;
   justify-content: space-around;
   align-items: center;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-text {
+  border: 5px solid var(--dark-blue);
+  background-color: var(--white);
+  border-radius: 5px;
+  width: 11em;
+  height: 6em;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 1.2em;
+}
+/* red-300 */
+.modal-text button {
+  background-color: #e57373;
+  color: var(--white);
+  width: 4em;
+  height: 1.5em;
+  font-size: 16px;
+  margin-top: 0.5em;
+  border-radius: 0.5em;
 }
 
 @media screen and (min-width: 400px) and (min-height: 700px) {
@@ -121,6 +153,18 @@ li label,input {
   ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
     bottom: 5px;
   }
+
+  .todo-time {
+    width: 220px;
+  }
+
+  .modal-text {
+    font-size: 24px;
+  }
+
+  .modal-text button {
+    font-size: 20px;
+  }
 } 
 
 @media screen and (min-width: 600px) and (min-height: 850px) {
@@ -138,10 +182,6 @@ li label,input {
     font-size: 24px;
   }
 
-  .todo-time {
-    width: 12rem;
-  }
-
   .todo-date span {
     font-size: 32px;
   }
@@ -152,5 +192,13 @@ li label,input {
 
   div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
     bottom: 10px;
+  }
+
+  .modal-text {
+    font-size: 32px;
+  }
+
+  .modal-text button {
+    font-size: 24px;
   }
 }

@@ -53,10 +53,6 @@
         </div>
       </li>
     </ul>
-    <div>
-      <label for="">lorem</label>
-      <input type="text">
-    </div>
     <ul class="todo-flex buttons-wrapper">
       <li>
         <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodoItem">
@@ -69,6 +65,12 @@
         </button>
       </li>
     </ul>
+    <div class="modal todo-flex" v-show="error">
+      <div class="modal-text">
+        <p>값을 확인해주세요.</p>
+        <button @click="error = false"><i class="fas fa-times"></i> 닫기</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -105,7 +107,10 @@ export default defineComponent({
       hours: 0 as any,
       minutes: 0 as any,
       seconds: 0 as any,
-      show: false
+      show: false,
+      error: false,
+      isActive: false,
+      hasError: true
     }
   },
   created () {
@@ -131,6 +136,11 @@ export default defineComponent({
   },
   methods: {
     async createUpdateTodoItem() {
+      let totalTime: number = this.hours + this.minutes + this.seconds;
+      if(this.title === '' && this.description === '' && totalTime === 0 ){
+        this.error=true;
+        return console.log('값이 비어있음.');
+      } 
       let params = {
         date: this.date,
         title: this.title,
@@ -139,13 +149,6 @@ export default defineComponent({
         minutes: this.minutes,
         seconds: this.seconds
       };
-
-      let totalTime: number = this.hours + this.minutes + this.seconds;
-      if(totalTime === 0){
-        alert('0');
-        return
-      };
-      // (totalTime === 0)&&(alert('0'));
       console.log('0이 아님');
       if(this.type === 'edit' && this.item ) {
         const res = await axios
@@ -171,9 +174,16 @@ export default defineComponent({
     },
     hrs(): any {
       console.log('hrs');
-      (this.hours === '')&&(this.hours = 0);
-      this.hours = Math.floor(this.hours);
-      return Math.floor(this.hours)
+      // (this.hours === '')&&(this.hours = 0);
+      // this.hours = Math.floor(this.hours);
+      // return Math.floor(this.hours)
+      if(this.hours >= 100 || this.hours === '') {
+        this.hours = 0;
+        return this.hours;
+      } else {
+        this.hours = Math.floor(this.hours);
+        return Math.floor(this.hours);
+      }
     },
     min(): any {
       console.log('min');
