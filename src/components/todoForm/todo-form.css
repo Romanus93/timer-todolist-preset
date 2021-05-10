@@ -115,7 +115,7 @@ li label,input {
   padding-top: 1.2em;
 }
 
-.check-modal-text button {
+.check-modal__text button {
   background-color: var(--red-300);
   color: var(--white);
   width: 4em;

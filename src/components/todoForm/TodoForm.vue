@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-flex todo-form-component">
+  <section class="todo-flex todo-form-component">
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
@@ -71,7 +71,7 @@
         <button @click="error = false"><i class="fas fa-times"></i> 닫기</button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
