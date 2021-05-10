@@ -139,9 +139,9 @@
       "date": "2021-05-11",
       "title": "added a new quote",
       "description": "불고기 닭고기 등등등",
-      "hours": 1,
-      "minutes": 0,
-      "seconds": 0,
+      "hours": "1",
+      "minutes": "0",
+      "seconds": "0",
       "id": 21
     },
     {
@@ -152,6 +152,15 @@
       "minutes": 0,
       "seconds": 0,
       "id": 22
+    },
+    {
+      "date": "2021-05-11",
+      "title": "1111111111111",
+      "description": "불고기 닭고기 등등등",
+      "hours": 1,
+      "minutes": 0,
+      "seconds": 0,
+      "id": 23
     }
   ]
 }

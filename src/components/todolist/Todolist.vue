@@ -52,11 +52,6 @@
           </button>
         </li>
         <li>
-          <button type="button" class="edit-button button--modal"  @click="goEditTodoPage2(todoItem)">
-            <i class="far fa-edit"></i> 수정연습하기
-          </button>
-        </li>
-        <li>
           <button type="button" class="cancle-button button--modal" @click="showEditDeleteModal(false)">
             <i class="fas fa-times"></i> 취소
           </button>
@@ -188,13 +183,9 @@ export default defineComponent({
         });
     },
     goEditTodoPage(todoItem: any): void {
-      this.$router.push({ name: "EditTodo", params: todoItem });
-    },
-    goEditTodoPage2(todoItem: any): void {
-      console.log(todoItem);
       todoItem.type = 'edit'
       todoItem.path= 'edit-todo'
-      this.$router.push({ name: "CopyTodo", params: todoItem });
+      this.$router.push({ name: "CreateEditTodo", params: todoItem });
     },
     goCalendarPage(): void {
       this.$router.push({ name: "Calendar" });

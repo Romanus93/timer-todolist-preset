@@ -45,11 +45,6 @@
           <i class="fas fa-plus"></i>
         </button>
       </div>
-      <div>
-        <button type="button" class="create-button button--calendar button--calendar-image" @click="goCopy">
-          <i class="fas fa-plus"></i>
-        </button>
-      </div>
     </section>
   </main>
 </template>
@@ -118,18 +113,12 @@ export default defineComponent({
       });
     },
     goCreateTodoPage(): void {
-      console.log(this.inputedDay);
-      this.$router.push({ name: "CreateTodo" , params: { dateOfTodoItem: this.inputedDay } });
-    },
-    goCopy(): void {
-      console.log(this.inputedDay);
       let todoItem:any = {
         date : this.inputedDay,
         path: 'create-todo',
         type: 'create'
       }
-      // this.$router.push({ name: "CopyTodo" , params: { date: this.inputedDay, path: 'createCopyTodo', type: 'create' } });
-      this.$router.push({ name: "CopyTodo" , params: todoItem });
+      this.$router.push({ name: "CreateEditTodo" , params: todoItem });
     },
     resetDate(){
       const resetDateOfTodoItem: any = moment(this.$route.params.dateOfTodoItem);
