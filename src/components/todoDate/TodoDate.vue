@@ -1,5 +1,5 @@
 <template>
-  <div class="pocket-calendar-wrap">
+  <div class="pocket-calendar-component">
     <v-date-picker 
       color="blue"
       locale="en-US"
@@ -26,12 +26,10 @@ export default defineComponent({
     }
   },
   beforeUpdate() {
-    console.log('date-beforeUpdate');
     this.changeDate();
   },
   methods: {
     sendDate(changedDate: string): void {
-      console.log('sendDate');  
       this.$emit('checkDate',changedDate);
     },
     changeDate(): any {

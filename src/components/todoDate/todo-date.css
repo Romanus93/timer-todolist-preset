@@ -1,40 +1,33 @@
-li.todo-date div.vc-container {
-  border: 5px solid var(--dark-blue);
-}
-
-.todo-date div.pocket-calendar-wrap {
+/* 달력 위치 */
+.pocket-calendar-component {
   position: absolute;
   left: 6vw;
   top: 16%;
 }
 
+/* 달력 테두리 */
+.pocket-calendar-component div.vc-container {
+  border: 5px solid var(--dark-blue);
+}
+
+/* 달력 위치 */
 @media screen and (min-width: 350px) {
-  .todo-date div.pocket-calendar-wrap {
+  .pocket-calendar-component {
     left: 12vw;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .todo-date div.pocket-calendar-wrap {
+  .pocket-calendar-component {
     left: 18%;
     top: 16%;
   }
 }
 
+/* 달력 크기 */
 @media screen and (min-width: 500px) {
-  li.todo-date div.vc-container {
+  .pocket-calendar-component div.vc-container {
     min-width: 320px;
     min-height: 306px;
   }
 }
-/* size */
-
-/* @media screen and (max-width: 500px) {
-  section.calendar-wrap div.vc-header.align-center {
-    padding-top: 5px;
-  }
-  
-  section.calendar-wrap div.vc-arrows-container.title-center {
-    padding-top: 5px;
-  }  
-} */

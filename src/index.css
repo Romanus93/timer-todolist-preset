@@ -231,55 +231,55 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 
 /* pocket-calendar */
 @media screen and (min-width: 500px) {
-  div.pocket-calendar-wrap div.vc-header.align-center {
+  div.pocket-calendar-component div.vc-header.align-center {
     padding-top: 0;
     border: 1px solid black;
   }
   
   /* 일요일~토요일 */
-  div.pocket-calendar-wrap div.vc-weeks > div {
+  div.pocket-calendar-component div.vc-weeks > div {
     font-size: 16px;
     border: 1px solid brown;
   }
   
   /* 년월일중 일자 */
-  div.pocket-calendar-wrap div.vc-day > span {
+  div.pocket-calendar-component div.vc-day > span {
     font-size: 16px;
     border: 1px solid blue;
   }
 
-  div.pocket-calendar-wrap div.vc-arrows-container.title-center {
+  div.pocket-calendar-component div.vc-arrows-container.title-center {
     border: 1px solid green;
   }
   /*arrow---move-month-btn*/
-  div.pocket-calendar-wrap div.vc-arrows-container.title-center > div > svg {
+  div.pocket-calendar-component div.vc-arrows-container.title-center > div > svg {
     /* height: 30px;
     width: 30px; */
     border: 1px solid green;
   }
   
   /* 캘린더 전체 너비*/
-  div.pocket-calendar-wrap > div {
+  div.pocket-calendar-component > div {
     width: 60vw;
     /* height: 33vh; */
   }
 
   /* 전 월, 다음 월 이동 버튼 너비*/
-  div.pocket-calendar-wrap div.vc-arrows-container.title-center {
+  div.pocket-calendar-component div.vc-arrows-container.title-center {
     border: red dotted 3px;
     height: 5vh;
     min-height: 19px;
   }
 
   /* 년 월 버튼 너비ex) May 2021 */
-  div.pocket-calendar-wrap div.vc-header.align-center {
+  div.pocket-calendar-component div.vc-header.align-center {
     border: blueviolet solid 5px;
     height: 5vh;
     min-height: 19px;
   }
 
   /* 요일 상자 너비 조정 */
-  div.pocket-calendar-wrap div.vc-pane-layout > div > div.vc-weeks {
+  div.pocket-calendar-component div.vc-pane-layout > div > div.vc-weeks {
     border: yellow solid 5px;
     height: 27vh;
     min-width: 310px;
@@ -293,7 +293,7 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 
   /* 팝업 캘린더 포지션 조정*/
   /* 팝업 캘린더 폰트 사이즈- */
-  div.pocket-calendar-wrap div.vc-popover-content-wrap.is-interactive > div {
+  div.pocket-calendar-component div.vc-popover-content-wrap.is-interactive > div {
     top: 1vh;
     width: 200px;
     font-size: 16px;
@@ -301,14 +301,14 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 
   /* 팝업 캘린더 그리드 조정*/
   /* 팝업 캘린더 요일 vc-nav-items  높이 */
-  div.pocket-calendar-wrap div.vc-popover-content-wrap.is-interactive > div > div > div.vc-nav-items {
+  div.pocket-calendar-component div.vc-popover-content-wrap.is-interactive > div > div > div.vc-nav-items {
     grid-row-gap: 1vh;
     padding-left: 5px ;
   }
 }
 
 @media screen and (min-width: 600px) { 
-  div.pocket-calendar-wrap div.vc-popover-content-wrap.is-interactive > div {
+  div.pocket-calendar-component div.vc-popover-content-wrap.is-interactive > div {
     font-size: 18px; 
   }
 }
@@ -319,29 +319,29 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   }
 
   /* 일요일~토요일 */
-  div.pocket-calendar-wrap div.vc-weeks > div {
+  div.pocket-calendar-component div.vc-weeks > div {
     font-size: 18px;
     border: 1px solid brown;
   }
   
   /* 년월일중 일자 */
-  div.pocket-calendar-wrap div.vc-day > span {
+  div.pocket-calendar-component div.vc-day > span {
     font-size: 18px;
     border: 1px solid blue;
   }
 
-  div.pocket-calendar-wrap div.vc-arrows-container.title-center > div > svg {
+  div.pocket-calendar-component div.vc-arrows-container.title-center > div > svg {
     height: 30px;
     width: 30px;
   }
 
-  div.pocket-calendar-wrap div.vc-popover-content-wrap.is-interactive > div {
+  div.pocket-calendar-component div.vc-popover-content-wrap.is-interactive > div {
     width: 240px;
     top: 1vh;
     font-size: 18px;
   }
 
-  div.pocket-calendar-wrap div.vc-popover-content-wrap.is-interactive > div > div > div.vc-nav-items {
+  div.pocket-calendar-component div.vc-popover-content-wrap.is-interactive > div > div > div.vc-nav-items {
     padding-left: 20px;
   }
 }
