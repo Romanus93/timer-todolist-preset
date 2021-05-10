@@ -14,12 +14,12 @@
   align-items: center;
 }
 
-.todo-timer-animation-wrapper {
+.todo-timer-animation-wrap {
   height: 60%;
   border: chartreuse 5px solid;
 }
 
-.todo-timer-buttons-wrapper {
+.todo-timer-buttons-wrap {
   height: 12%;
   border: 5px solid yellow;
 }

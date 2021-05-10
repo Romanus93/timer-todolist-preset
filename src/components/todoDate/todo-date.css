@@ -2,20 +2,20 @@ li.todo-date div.vc-container {
   border: 5px solid var(--dark-blue);
 }
 
-.todo-date div.pocket-calendar-wrapper {
+.todo-date div.pocket-calendar-wrap {
   position: absolute;
   left: 6vw;
   top: 16%;
 }
 
 @media screen and (min-width: 350px) {
-  .todo-date div.pocket-calendar-wrapper {
+  .todo-date div.pocket-calendar-wrap {
     left: 12vw;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .todo-date div.pocket-calendar-wrapper {
+  .todo-date div.pocket-calendar-wrap {
     left: 18%;
     top: 16%;
   }
@@ -30,11 +30,11 @@ li.todo-date div.vc-container {
 /* size */
 
 /* @media screen and (max-width: 500px) {
-  section.calendar-wrapper div.vc-header.align-center {
+  section.calendar-wrap div.vc-header.align-center {
     padding-top: 5px;
   }
   
-  section.calendar-wrapper div.vc-arrows-container.title-center {
+  section.calendar-wrap div.vc-arrows-container.title-center {
     padding-top: 5px;
   }  
 } */

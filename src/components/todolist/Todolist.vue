@@ -10,11 +10,11 @@
           @slideChange="onSlideChange"
         >
           <swiper-slide v-for="(item, index) in todolist" :key="index">
-            <li class="todo-flex item-modal-wrapper">
+            <li class="todo-flex todo-item-wrap">
               <div class="todo-item todo-flex">
                 <div>{{ item.title }}</div>
                 <div>{{ item.description }}</div>
-                <div class="todo-flex time-start-button-wrapper">
+                <div class="todo-flex time-start-buttons-wrap">
                   <span>
                     <span>
                       {{ twoDigit(item.hours) }} :
@@ -32,8 +32,8 @@
                     </button>
                   </span>
                 </div>
-              </div>  
-              <div class="edit-delete-modal-button-wrapper">
+              </div>
+              <div class="edit-delete-modal-button-wrap">
                 <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true, item)">
                   <i class="fas fa-ellipsis-h"></i>
                 </button>
@@ -41,7 +41,7 @@
             </li>
           </swiper-slide>
         </swiper>
-        <li class="edit-delete-modal" v-show="editDeleteModal" >
+        <div class="edit-delete-buttons-modal" v-show="editDeleteModal" >
           <ul class="todo-flex">
             <li>
               <button type="button" class="delete-button button--modal" @click="deleteTodoItem(todoItem)">
@@ -59,12 +59,12 @@
               </button>
             </li>
           </ul>
-        </li>
+        </div>
       </ul>
     </div>
-    <div class="todo-item-none-modal todo-item-none-image" v-show="nothingTodoModal">
+    <div class="none-todo-item-modal none-todo-item-image" v-show="nothingTodoModal">
     </div>
-    <div class="todo-item-none-modal todo-loading todo-flex " v-show="loadingModal">
+    <div class="none-todo-item-modal todo-loading todo-flex " v-show="loadingModal">
       <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="loader">
     </div>
   </div>

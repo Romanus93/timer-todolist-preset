@@ -1,10 +1,12 @@
+/* 할일 목록 */
 .todo-list {
   width: 100%;
   background-color: var(--light-blue);
   margin: 0 auto;
 }
 
-.item-modal-wrapper {
+/* 할일 */
+.todo-item-wrap {
   width: 100%;
   justify-content: space-between;
   font-size: 18px;
@@ -14,8 +16,7 @@
   border-radius: 10px;
 }
 
-/* Todo-Item*/
-.todo-list .todo-item {
+.todo-item {
   width: 82%;
   flex-direction: column;
   justify-content: space-between;
@@ -24,7 +25,8 @@
   padding-left: 10%;
 }
 
-.todo-item .time-start-button-wrapper {
+/* 할일 시작 버튼 */
+.time-start-buttons-wrap {
   justify-content: space-evenly;
   align-items: center;
 }
@@ -38,13 +40,8 @@
   background-color: var(--light-grey);
 }
 
-.todo-list .title-modal-wrapper {
-  flex-direction: row;
-  justify-content: center;
-}
-
-/* Edit-Delete-Button-Icon-Position&Size */
-.todo-list .edit-delete-modal-button-wrapper {
+/* 할일 삭제 수정 메뉴 버튼 */
+.edit-delete-modal-button-wrap {
   width: 12%;
   position: relative;
   padding-top: 15px;
@@ -57,8 +54,8 @@
   font-size: 18px;
 }
 
-/* Edit-Delete-Button */
-.edit-delete-modal {
+/* 할일 삭제 수정 버튼 */
+.edit-delete-buttons-modal {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -68,7 +65,7 @@
   background: rgba(0, 0, 0, 0.4);
 }
 
-.edit-delete-modal ul {
+.edit-delete-buttons-modal ul {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -92,7 +89,8 @@
   color: var(--red);
 }
 
-.todo-item-none-modal {
+/* 로딩화면과 할일 없을 시 */
+.none-todo-item-modal {
   width: 100%;
   height: 30vh;
   background-color: var(--white);
@@ -100,7 +98,7 @@
   border-radius: 10px;
 }
 
-.todo-item-none-image {
+.none-todo-item-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -117,7 +115,7 @@
 }
 
 @media screen and (min-width: 500px) {
-  .todo-item-none-image {
+  .none-todo-item-image {
     background-position: 50% 30%;
     background-image: url("/src/assets/nothing-to-do/nothing-to-do-690x521.jpg");
   }
@@ -131,7 +129,7 @@
     padding-left: 10%;
   }
 
-  .todo-list .edit-delete-modal-button-wrapper {
+  .edit-delete-modal-button-wrap {
     padding-top: 30px;
   }
 
@@ -152,7 +150,7 @@
     padding-left: 10%;
   }
 
-  .todo-list .edit-delete-modal-button-wrapper {
+  .edit-delete-modal-button-wrap {
     padding-top: 35px;
   }
 
@@ -160,12 +158,7 @@
     font-size: 32px;
   }
 
-  /* ...? */
-  /* .todo-list .edit-delete-modal-button-wrapper {
-    font-size: 24px;
-  } */
-  /* 위 대체 */
-  .todo-list .edit-delete-modal-button {
+.edit-delete-modal-button {
     font-size: 24px;
   }
 
@@ -174,7 +167,7 @@
   }
 }
 
-/* animation */
+/* 로딩화면 애니메이션 */
 .rotate {
   animation: rotation 3s infinite steps(10, start);
 }

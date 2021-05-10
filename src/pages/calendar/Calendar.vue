@@ -1,6 +1,6 @@
 <template>
   <div class="calendar-page todo-flex">
-    <section class="calendar-wrapper">
+    <section class="calendar-wrap">
       <v-date-picker 
         v-model="date"
         ref="calendar"
@@ -12,7 +12,7 @@
         :transition="transition"
       ></v-date-picker>
     </section>
-    <section class="todolist-wrapper">
+    <section class="todolist-wrap">
       <!-- :date="date" -->
       <todo-list
         v-show="inputedDay"
@@ -23,7 +23,7 @@
         <p class="date-none-modal__text">날짜를 선택해주세요!</p>
       </div>
     </section>
-    <section class="todo-flex action-buttons-wrapper" v-show="inputedDay">
+    <section class="todo-flex action-buttons-wrap" v-show="inputedDay">
       <!--  어제,오늘,내일 이동 버튼과 todo 생성 버튼 -->
         <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <div>

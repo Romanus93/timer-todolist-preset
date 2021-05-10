@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-flex todo-form-wrapper">
+  <div class="todo-flex todo-form-wrap">
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
@@ -35,25 +35,25 @@
         />
       </li>
       <li class="todo-time todo-flex">
-        <div class="time-wrapper">
+        <div class="time-wrap">
           <label for="hours">시간</label>
           <span>
             <input id="hour" class="time-hms" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
         </div>
-        <div class="time-wrapper">
+        <div class="time-wrap">
           <label for="minutes">&nbsp분</label>
           <span>
             <input id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
         </div>
-        <div class="time-wrapper">
+        <div class="time-wrap">
           <label for="seconds">&nbsp초</label>
           <input id="seconds" class="time-hms" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
         </div>
       </li>
     </ul>
-    <ul class="todo-flex buttons-wrapper">
+    <ul class="todo-flex buttons-wrap">
       <li>
         <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodoItem">
           <i class="fas fa-pencil-alt"></i>

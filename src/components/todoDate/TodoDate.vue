@@ -1,5 +1,5 @@
 <template>
-  <div class="pocket-calendar-wrapper">
+  <div class="pocket-calendar-wrap">
     <v-date-picker 
       color="blue"
       locale="en-US"

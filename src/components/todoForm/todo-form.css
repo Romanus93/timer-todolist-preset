@@ -1,5 +1,5 @@
 /* Todo-Form */
-.todo-form-wrapper {
+.todo-form-wrap {
   width: 90%;
   height: 90%;
   flex-direction: column;
@@ -79,7 +79,7 @@ li label,input {
   border: 5px solid salmon;
 }
 
-.time-wrapper {
+.time-wrap {
   border: 1px solid yellow;
 }
 
@@ -92,7 +92,7 @@ li label,input {
   padding-left: 0.5em;
 }
 
-.buttons-wrapper {
+.buttons-wrap {
   height: 15%;
   border: 5px solid red;
   justify-content: space-around;

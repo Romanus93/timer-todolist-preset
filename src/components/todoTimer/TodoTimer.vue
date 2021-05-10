@@ -7,12 +7,12 @@
       <span>:</span>
       <span class="seconds">{{ seconds }}</span>
     </div>
-    <div class="todo-timer-animation-wrapper">
+    <div class="todo-timer-animation-wrap">
         <timer-animation 
           :time="timeAnimation"
         />
     </div>
-    <div class="todo-timer-buttons-wrapper">
+    <div class="todo-timer-buttons-wrap">
       <div class="todo-flex todo-timer-buttons" v-show="buttons">
         <transition name="mode-fade" mode="out-in">
           <div v-if="on" key="on">

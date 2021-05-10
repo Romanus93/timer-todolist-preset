@@ -8,7 +8,7 @@
   /* justify-content: space-around; */
 }
 
-.calendar-wrapper {
+.calendar-wrap {
   margin: 0 auto;
   width: 90%;
   border: 5px solid var(--dark-blue);
@@ -16,7 +16,7 @@
   background: var(--dark-blue);
 }
 
-.todolist-wrapper {
+.todolist-wrap {
   width: 90%;
   text-align: center;
   border: 5px solid red;
@@ -45,7 +45,7 @@
   font-weight: bold;
 }
 
-.action-buttons-wrapper {
+.action-buttons-wrap {
   width: 90%;
   height: 11%;
   margin: 0 auto;
@@ -72,11 +72,11 @@
 }
 
 @media screen and (min-width: 500px) {
-  .calendar-page section.action-buttons-wrapper {
+  .calendar-page section.action-buttons-wrap {
     justify-content: space-around;
   }
   
-  /* .calendar-page section.action-buttons-wrapper button.button--calendar {
+  /* .calendar-page section.action-buttons-wrap button.button--calendar {
     margin-left: 4vw;
   } */
 
