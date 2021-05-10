@@ -64,7 +64,7 @@
     </div>
     <div class="todo-item-none-modal todo-item-none-image" v-show="nothingTodoModal">
     </div>
-    <div class="todo-item-none-modal todo-flex todo-loading" v-show="loadingModal">
+    <div class="todo-item-none-modal todo-loading todo-flex " v-show="loadingModal">
       <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="loader">
     </div>
   </div>
