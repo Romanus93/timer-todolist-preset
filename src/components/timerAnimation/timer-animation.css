@@ -1,7 +1,4 @@
-.image-egg img {
-  height: 100%;
-}
-
+/* 타이머 대기 진행 완료 이미지 */
 .image-egg {
   border: olivedrab 5px solid;
   width: 100%;
@@ -9,6 +6,11 @@
   justify-content: center;
 }
 
+.image-egg img {
+  height: 100%;
+}
+
+/* 이미지 애니메이션 - 떠는 느낌 */
 .slight-shaking {
   animation: slight-shaking 3s infinite;
   
@@ -101,6 +103,7 @@
   }
 }
 
+/* 이미지 애니메이션 - 통통 뛰는 느낌 */
 .y-axis-animation {
     animation: translate-y 2s infinite linear;
   }
