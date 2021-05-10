@@ -52,6 +52,11 @@
           </button>
         </li>
         <li>
+          <button type="button" class="edit-button button--modal"  @click="goEditTodoPage2(todoItem)">
+            <i class="far fa-edit"></i> 수정연습하기
+          </button>
+        </li>
+        <li>
           <button type="button" class="cancle-button button--modal" @click="showEditDeleteModal(false)">
             <i class="fas fa-times"></i> 취소
           </button>
@@ -135,10 +140,6 @@ export default defineComponent({
     }
   },
   created() {
-    console.log('todolist-created');
-    console.log('this.todolist.length',this.todolist.length);
-    console.log('nothingTodoModal');
-    console.log(this.nothingTodoModal);
     setTimeout(()=>this.axiosGet(), 500);
   },
   methods: {
@@ -154,14 +155,11 @@ export default defineComponent({
       this.todoItem = item;
     },
     twoDigit(param:number): string {
-      console.log('two Digit', param);
       return ((param < 10 ? '0' : '') + param); 
     },
     showNothingTodoModal(param: object[] ) {
-      console.log('showNothingTodoModal');
       this.loadingModal = false;
       this.nothingTodoModal = (param.length === 0)? true : false;
-      console.log(this.nothingTodoModal);
     },
     async axiosGet(): Promise<void> {
       console.log('axiosGet이 실행');
@@ -191,6 +189,12 @@ export default defineComponent({
     },
     goEditTodoPage(todoItem: any): void {
       this.$router.push({ name: "EditTodo", params: todoItem });
+    },
+    goEditTodoPage2(todoItem: any): void {
+      console.log(todoItem);
+      todoItem.type = 'edit'
+      todoItem.path= 'edit-todo'
+      this.$router.push({ name: "CopyTodo", params: todoItem });
     },
     goCalendarPage(): void {
       this.$router.push({ name: "Calendar" });

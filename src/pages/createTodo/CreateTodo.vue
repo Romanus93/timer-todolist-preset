@@ -19,7 +19,12 @@ export default defineComponent({
       type: String,
       required: true
     }
-  }
+  },
+  created () {
+    console.log(this.$route);
+    console.log('createTodo-page');
+    console.log(this.dateOfTodoItem);
+  }, 
 });
 </script>
 

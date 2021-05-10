@@ -25,6 +25,9 @@ export default {
       required: true
     }
   },
+  created () {
+    console.log(this.todoItem);
+  },
   computed: {
     todoTime() {
       let integer = this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;

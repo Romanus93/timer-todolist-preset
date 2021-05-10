@@ -4,14 +4,14 @@
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
         <span> {{ date }} </span>
-        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!show"> <i class="far fa-edit"></i> </button>
-        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="show"> <i class="far fa-check-circle"></i>  </button>
+        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!showingPCalendar"> <i class="far fa-edit"></i> </button>
+        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="showingPCalendar"> <i class="far fa-check-circle"></i>  </button>
         <todo-date
-        :dateOfTodoItem="dateOfTodoItem"
-        show="show"
+        :dateOfTodoItem="date"
+        show="showingPCalendar"
         @checkDate="checkDate"
         @showPocketCalendar="showPocketCalendar"
-        v-if="show"
+        v-if="showingPCalendar"
         />
       </li>
       <li class="todo-title">
@@ -65,10 +65,10 @@
         </button>
       </li>
     </ul>
-    <div class="check-modal todo-flex" v-show="error">
+    <div class="check-modal todo-flex" v-show="showingWarning">
       <div class="check-modal__text">
         <p>값을 확인해주세요.</p>
-        <button @click="error = false"><i class="fas fa-times"></i> 닫기</button>
+        <button @click="showingWarning = false"><i class="fas fa-times"></i> 닫기</button>
       </div>
     </div>
   </section>
@@ -86,50 +86,42 @@ export default defineComponent({
     TodoDate
   },
   props: {
-    type: {
-      type: String,
-      required: true
-    },
-    dateOfTodoItem: {
-      type: String,
-      default: ''
-      // dateOfTodoItem type 에러 해결값.
-    },
-    item: {
-      type: Object
+    todoitem: {
+      type: Object as any
     }
   },
   data() {
     return {
-      date: this.dateOfTodoItem,
+      date: '',
       title: '',
       description: '',
       hours: 0 as any,
       minutes: 0 as any,
       seconds: 0 as any,
-      show: false,
-      error: false,
-      isActive: false,
-      hasError: true
+      showingPCalendar: false,
+      showingWarning: false,
     }
   },
+  beforeCreate(){
+    console.log('todoForm--beforeCreated');
+  },
   created () {
-    console.log('todoform-created');
-    console.log(this.dateOfTodoItem);
-    if(this.item){
-      this.date = this.item.date;
-      this.title = this.item.title;
-      this.description = this.item.description;
-      this.hours = this.item.hours;
-      this.minutes = this.item.minutes;
-      this.seconds = this.item.seconds;
+    console.log('todoForm--created');
+    if(this.todoitem.type === 'create'){
+      this.date = this.todoitem.date;
+    } else {
+      this.date = this.todoitem.date;
+      this.title = this.todoitem.title;
+      this.description = this.todoitem.description;
+      this.hours = this.todoitem.hours;
+      this.minutes = this.todoitem.minutes;
+      this.seconds = this.todoitem.seconds;
     };
   },
-  mounted () {
-    console.log('aaaaa');
+  beforeMount() {
+    console.log('todoForm--beforeMount');
   },
   beforeUpdate () {
-    console.log('beforeUpdate');
     this.hrs();
     this.min();
     this.sec();
@@ -138,8 +130,8 @@ export default defineComponent({
     async createUpdateTodoItem() {
       let totalTime: number = this.hours + this.minutes + this.seconds;
       if(this.title === '' || this.description === '' || totalTime === 0 ){
-        this.error=true;
-        return console.log('값이 비어있음.');
+        this.showingWarning = true;
+        return
       } else {
           let params = {
           date: this.date,
@@ -149,10 +141,10 @@ export default defineComponent({
           minutes: this.minutes,
           seconds: this.seconds
         };
-        console.log('0이 아님');
-        if(this.type === 'edit' && this.item ) {
+        // if(this.todoitem.type === 'edit' && this.todoitem ) {
+        if(this.todoitem.type === 'edit') {
           const res = await axios
-          .put("http://localhost:3005/todolist/"+this.item.id, params)
+          .put("http://localhost:3005/todolist/"+this.todoitem.id, params)
           .then(response => {
             console.debug(response.data);
             this.goCalendarPage();
@@ -174,10 +166,6 @@ export default defineComponent({
       }
     },
     hrs(): any {
-      console.log('hrs');
-      // (this.hours === '')&&(this.hours = 0);
-      // this.hours = Math.floor(this.hours);
-      // return Math.floor(this.hours)
       if(this.hours >= 100 || this.hours === '') {
         this.hours = 0;
         return this.hours;
@@ -187,7 +175,6 @@ export default defineComponent({
       }
     },
     min(): any {
-      console.log('min');
       (this.minutes === '')&&(this.minutes = 0);
       if(this.minutes >= 60) {
         this.minutes = 0;
@@ -198,7 +185,6 @@ export default defineComponent({
       }
     },
     sec(): any {
-      console.log('sec');
       (this.seconds === '')&&(this.seconds = 0);
       if(this.seconds >= 60) {
         this.seconds = 0;
@@ -213,13 +199,10 @@ export default defineComponent({
       (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
     },
     showPocketCalendar(param: boolean):void {
-      this.show = param;
-      console.log('abcdefghrty');
+      this.showingPCalendar = param;
     },
     checkDate(changedDate: any) {
-      console.log(changedDate);
       this.date = changedDate;
-      console.log(this.date);
     }
   }
 })

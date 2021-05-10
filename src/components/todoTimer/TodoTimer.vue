@@ -65,10 +65,10 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
       },
       startTimer: function() {
         this.timer = setInterval(() => this.totalTime--, 1000);
-        console.log('startTimer', this.timer);
+        // console.log('startTimer', this.timer);
       },
       pauseTimer(param) {
-        console.log('pauseTimer', this.totalTime);
+        // console.log('pauseTimer', this.totalTime);
         clearInterval(this.timer);
         this.on = false;
       },
@@ -77,7 +77,7 @@ import TimerAnimation from "../timerAnimation/TimerAnimation.vue"
         this.on = true;
       },
       offTimer(totalTime, delayTime) {
-        console.log('offTimer')
+        // console.log('offTimer')
         this.buttons = false;
         clearInterval(this.timer);
         this.totalTime = totalTime;
