@@ -1,10 +1,20 @@
-/* Todo-Form */
-.todo-form-wrap {
+.todo-form-component {
   width: 90%;
   height: 90%;
   flex-direction: column;
   justify-content: space-between;
   border: 5px solid blue;
+}
+/* 할 일 내용, 시간 등 세부사항 */
+.todo-info {
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 11%;
+  padding-left: 23%;
+  padding-top: 4%;
+  height: 83%;
+  border: blanchedalmond solid 5px;
+  font-weight: bold;
 }
 
 .todo-info--bg-image {
@@ -21,19 +31,6 @@ li label,input {
   display: block;
 }
 
-.todo-info {
-  flex-direction: column;
-  justify-content: space-around;
-  /* padding-bottom: 9%; */
-  padding-bottom: 11%;
-  padding-left: 23%;
-  padding-top: 4%;
-  /* height: 80%; */
-  height: 83%;
-  border: blanchedalmond solid 5px;
-  font-weight: bold;
-}
-
 .todo-info > li label {
   font-size: 20px;
 }
@@ -48,11 +45,9 @@ li label,input {
   font-size: 18px;
 }
 
+/* 날짜 설정 */
 .todo-date {
   border-bottom: solid 2px var(--black);
-}
-
-.todo-date  {
   border: none;
 }
 
@@ -61,19 +56,20 @@ li label,input {
   border-bottom: solid 2px var(--black);
 }
 
-.todo-date button {
+.button--pocket-calendar {
   font-size: 24px;
   padding-left: 5px;
 }
 
 .change-date-button {
-  color: var(--red-500);
+  color: var(--red-300);
 }
 
 .check-date-button {
   color: var(--teal-600);
 }
 
+/* 시간 설정 */
 .todo-time {
   width: 162px;
   border: 5px solid salmon;
@@ -83,23 +79,21 @@ li label,input {
   border: 1px solid yellow;
 }
 
-.todo-time .time-hms {
+.time-hms {
   display: inline-block;
-}
-
-.todo-time .time-hms {
   width: 2em;
   padding-left: 0.5em;
 }
 
-.buttons-wrap {
+.create-edit-buttons-wrap {
   height: 15%;
   border: 5px solid red;
   justify-content: space-around;
   align-items: center;
 }
 
-.modal {
+/* 입력 값이 잘 못 되었을 때, 안내 모달 */
+.check-modal {
   position: absolute;
   top: 0;
   right: 0;
@@ -110,7 +104,7 @@ li label,input {
   justify-content: center;
 }
 
-.modal-text {
+.check-modal-text {
   border: 5px solid var(--dark-blue);
   background-color: var(--white);
   border-radius: 5px;
@@ -120,9 +114,9 @@ li label,input {
   text-align: center;
   padding-top: 1.2em;
 }
-/* red-300 */
-.modal-text button {
-  background-color: #e57373;
+
+.check-modal-text button {
+  background-color: var(--red-300);
   color: var(--white);
   width: 4em;
   height: 1.5em;
@@ -150,19 +144,15 @@ li label,input {
     font-size: 24px;
   }
 
-  ul > div > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
-    bottom: 5px;
-  }
-
   .todo-time {
     width: 220px;
   }
 
-  .modal-text {
+  .check-modal-text {
     font-size: 24px;
   }
 
-  .modal-text button {
+  .check-modal-text button {
     font-size: 20px;
   }
 } 
@@ -186,19 +176,15 @@ li label,input {
     font-size: 32px;
   }
 
-  .todo-date button {
+  .button--pocket-calendar {
     font-size: 32px;
   }
 
-  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
-    bottom: 10px;
-  }
-
-  .modal-text {
+  .check-modal-text {
     font-size: 32px;
   }
 
-  .modal-text button {
+  .check-modal-text button {
     font-size: 24px;
   }
 }

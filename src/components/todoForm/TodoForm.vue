@@ -1,11 +1,11 @@
 <template>
-  <div class="todo-flex todo-form-wrap">
+  <div class="todo-flex todo-form-component">
     <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
         <span> {{ date }} </span>
-        <button class="change-date-button" type="button" @click="showPocketCalendar(true)" v-show="!show"> <i class="far fa-edit"></i> </button>
-        <button class="check-date-button" type="button" @click="showPocketCalendar(false)" v-show="show"> <i class="far fa-check-circle"></i>  </button>
+        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!show"> <i class="far fa-edit"></i> </button>
+        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="show"> <i class="far fa-check-circle"></i>  </button>
         <todo-date
         :dateOfTodoItem="dateOfTodoItem"
         show="show"
@@ -34,7 +34,7 @@
           v-model.trim="description"
         />
       </li>
-      <li class="todo-time todo-flex">
+      <li class="todo-flex todo-time">
         <div class="time-wrap">
           <label for="hours">시간</label>
           <span>
@@ -53,7 +53,7 @@
         </div>
       </li>
     </ul>
-    <ul class="todo-flex buttons-wrap">
+    <ul class="todo-flex create-edit-buttons-wrap">
       <li>
         <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodoItem">
           <i class="fas fa-pencil-alt"></i>
@@ -65,8 +65,8 @@
         </button>
       </li>
     </ul>
-    <div class="modal todo-flex" v-show="error">
-      <div class="modal-text">
+    <div class="check-modal todo-flex" v-show="error">
+      <div class="check-modal-text">
         <p>값을 확인해주세요.</p>
         <button @click="error = false"><i class="fas fa-times"></i> 닫기</button>
       </div>

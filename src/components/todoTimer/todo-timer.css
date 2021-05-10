@@ -5,6 +5,7 @@
   justify-content: space-evenly;
 }
 
+/* 타이머 */
 .time {
   height: 20%;
   font-size: 20vw;
@@ -14,40 +15,37 @@
   align-items: center;
 }
 
-.todo-timer-animation-wrap {
+/* 타이머 애니메이션 컴포넌트*/
+.todo-timer-animation-component {
   height: 60%;
   border: chartreuse 5px solid;
 }
 
-.todo-timer-buttons-wrap {
-  height: 12%;
-  border: 5px solid yellow;
-}
-
+/* 타이머 정지 재시작 종료 버튼 */
 .todo-timer-buttons {
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 12%;
   border: 5px solid red;
   align-items: center;
 }
 
 .button--timer {
+  font-size: 20px;
   width: 5em;
   height: 2.5em;
   color: var(--white);
   border-radius: 12px;
   border: 5px solid var(--white);
-  font-size: 20px;
-}
-
-.restart-exit-button {
-  width: 100%;
-  justify-content: space-evenly;
 }
 
 .pause-button {
   background-color: var(--red);
+}
+
+.restart-off-buttons {
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .restart-button {
@@ -58,7 +56,7 @@
   background-color: var(--black);
 }
 
-/* animation */
+/* 버튼 애니메이션 */
 .mode-fade-enter-active, .mode-fade-leave-active {
   transition: opacity 0.4s ease;
 }
@@ -70,9 +68,6 @@
 @media screen and (min-width: 400px) and (min-height: 700px) {
   .button--timer {
     font-size: 24px;
-  }
-
-  .button--timer {
     width: 7em;
   }
 } 

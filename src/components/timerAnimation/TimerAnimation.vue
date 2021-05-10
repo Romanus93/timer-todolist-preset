@@ -7,6 +7,7 @@
 
 <script>
   export default {
+    name: 'TimerAnimation',
     props: {
       time: {
         type: Number,
