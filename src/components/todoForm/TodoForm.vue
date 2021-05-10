@@ -66,7 +66,7 @@
       </li>
     </ul>
     <div class="check-modal todo-flex" v-show="error">
-      <div class="check-modal-text">
+      <div class="check-modal__text">
         <p>값을 확인해주세요.</p>
         <button @click="error = false"><i class="fas fa-times"></i> 닫기</button>
       </div>
@@ -77,7 +77,7 @@
 <script lang="ts">
 import axios from 'axios'
 import moment from 'moment'
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import TodoDate from '../../components/todoDate/TodoDate.vue'
 
 export default defineComponent({

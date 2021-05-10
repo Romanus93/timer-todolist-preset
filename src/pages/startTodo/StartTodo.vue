@@ -1,10 +1,10 @@
 section<template>
-  <section class="start-todo-page">
+  <main class="start-todo-page">
       <TodoTimer 
         :todoTime="todoTime"
         @deleteTodoItem="deleteTodoItem"
       />
-  </section>
+  </main>
 </template>
 
 <script>

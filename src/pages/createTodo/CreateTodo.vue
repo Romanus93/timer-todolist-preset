@@ -1,10 +1,10 @@
 <template>
-  <section class="todo-flex create-todo-page">
+  <main class="todo-flex create-todo-page">
     <todo-form 
       type="create"
       :dateOfTodoItem="dateOfTodoItem" 
     ></todo-form>
-  </section>
+  </main>
 </template>
 
 <script lang="ts">

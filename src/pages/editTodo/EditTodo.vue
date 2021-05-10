@@ -1,10 +1,10 @@
 <template>
-  <div class="todo-flex edit-todo-page">
+  <main class="todo-flex edit-todo-page">
     <todo-form 
       type="edit" 
       :item="todoItem"
     ></todo-form>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">

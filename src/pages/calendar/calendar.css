@@ -3,37 +3,34 @@
   height: 100%;
   flex-direction: column;
   align-content: center;
-  /* justify-content: space-between; */
   justify-content: space-evenly;
-  /* justify-content: space-around; */
 }
 
-.calendar-wrap {
+/* v-calendar 라이브러리 */
+.v-calendar-component {
   margin: 0 auto;
   width: 90%;
   border: 5px solid var(--dark-blue);
   border-radius: 10px;
-  background: var(--dark-blue);
 }
 
-.todolist-wrap {
+/* 할 일 목록 */
+.todolist-component {
   width: 90%;
   text-align: center;
   border: 5px solid red;
   margin: 0 auto;
 }
 
+/* 선택된 날짜에 할 일 없을 경우 */
 .date-none-modal {
-  /* width: 100%; */
   height: 45vh;
   background-color: var(--white);
   border: var(--dark-blue) 6px solid;
   border-radius: 5px;
-  background-size: 70%;
+  background-size: 75%;
   background-position: center;
-  /* background-position: top; */
   background-repeat: no-repeat;
-  /* background-image: url("/src//assets/form-background-image/website.svg"); */
   background-image: url("/src/assets/form-background-image/calendar-warning.svg");
 }
 
@@ -45,6 +42,7 @@
   font-weight: bold;
 }
 
+/* 요일, 날짜 이동, 할 일 생성 버튼 */
 .action-buttons-wrap {
   width: 90%;
   height: 11%;
@@ -67,22 +65,17 @@
 
 @media screen and (min-width: 400px) and (min-height: 700px) {
   .date-none-modal__text {
-    font-size: 16px;
+    font-size: 24px;
   }
 }
 
 @media screen and (min-width: 500px) {
-  .calendar-page section.action-buttons-wrap {
+  section.action-buttons-wrap {
     justify-content: space-around;
   }
-  
-  /* .calendar-page section.action-buttons-wrap button.button--calendar {
-    margin-left: 4vw;
-  } */
-
 }
 
-@media screen and (min-width: 600px) and (max-width: 770px){
+@media screen and (min-width: 600px) and (min-height: 850px) {
   .date-none-modal {
     background-size: 60%;
   }
@@ -91,17 +84,11 @@
     font-size: 30px;
     font-weight: bold;
   }
-}
-
-@media screen and (min-width: 600px) and (min-height: 850px) {
+  
   .button--calendar {
     width: 80px;
     height: 75px;
     font-size: 32px;
     padding-top: 26px;
-  }
-
-  div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
-    bottom: 10px;
   }
 }

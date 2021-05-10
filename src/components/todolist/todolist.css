@@ -26,9 +26,16 @@
 }
 
 /* 할 일 시작 버튼 */
-.time-start-buttons-wrap {
-  justify-content: space-evenly;
+.time-start-button-wrap {
   align-items: center;
+}
+
+.time {
+  flex-basis: 70%;
+}
+
+.start-button-wrap {
+  flex-basis: 30%;
 }
 
 .start-button {

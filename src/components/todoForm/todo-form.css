@@ -104,7 +104,7 @@ li label,input {
   justify-content: center;
 }
 
-.check-modal-text {
+.check-modal__text {
   border: 5px solid var(--dark-blue);
   background-color: var(--white);
   border-radius: 5px;

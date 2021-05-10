@@ -1,72 +1,68 @@
 <template>
-  <div class="todolist-component">
-    <div>
-      <ul class="todo-list">
-        <swiper
-          :slides-per-view="1"
-          :space-between="50"
-          :pagination="{ clickable: true }"
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
-        >
-          <swiper-slide v-for="(item, index) in todolist" :key="index">
-            <li class="todo-flex todo-item-wrap">
-              <div class="todo-item todo-flex">
-                <div>{{ item.title }}</div>
-                <div>{{ item.description }}</div>
-                <div class="todo-flex time-start-buttons-wrap">
-                  <span>
-                    <span>
-                      {{ twoDigit(item.hours) }} :
-                    </span>
-                    <span>
-                      {{ twoDigit(item.minutes) }} :
-                    </span>
-                    <span>
-                      {{ twoDigit(item.seconds) }}
-                    </span>
-                  </span>
-                  <span>
-                    <button type="button" class="start-button" @click="goStartTodoPage(item)">
-                      시작
-                    </button>
-                  </span>
-                </div>
-              </div>
-              <div class="edit-delete-modal-button-wrap">
-                <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true, item)">
-                  <i class="fas fa-ellipsis-h"></i>
+  <ul class="todo-list">
+    <swiper
+      :slides-per-view="1"
+      :space-between="50"
+      :pagination="{ clickable: true }"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
+    >
+      <swiper-slide v-for="(item, index) in todolist" :key="index">
+        <li class="todo-flex todo-item-wrap">
+          <div class="todo-item todo-flex">
+            <div>{{ item.title }}</div>
+            <div>{{ item.description }}</div>
+            <div class="todo-flex time-start-button-wrap">
+              <span class="time">
+                <span>
+                  {{ twoDigit(item.hours) }} :
+                </span>
+                <span>
+                  {{ twoDigit(item.minutes) }} :
+                </span>
+                <span>
+                  {{ twoDigit(item.seconds) }}
+                </span>
+              </span>
+              <span class="start-button-wrap">
+                <button type="button" class="start-button" @click="goStartTodoPage(item)">
+                  시작
                 </button>
-              </div>
-            </li>
-          </swiper-slide>
-        </swiper>
-        <div class="edit-delete-buttons-modal" v-show="editDeleteModal" >
-          <ul class="todo-flex">
-            <li>
-              <button type="button" class="delete-button button--modal" @click="deleteTodoItem(todoItem)">
-                <i class="fas fa-trash-alt"></i> 삭제하기
-              </button>
-            </li>
-            <li>
-              <button type="button" class="edit-button button--modal"  @click="goEditTodoPage(todoItem)">
-                <i class="far fa-edit"></i> 수정하기
-              </button>
-            </li>
-            <li>
-              <button type="button" class="cancle-button button--modal" @click="showEditDeleteModal(false)">
-                <i class="fas fa-times"></i> 취소
-              </button>
-            </li>
-          </ul>
-        </div>
+              </span>
+            </div>
+          </div>
+          <div class="edit-delete-modal-button-wrap">
+            <button type="button" class="edit-delete-modal-button" @click="showEditDeleteModal(true, item)">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </div>
+        </li>
+      </swiper-slide>
+    </swiper>
+    <div class="edit-delete-buttons-modal" v-show="editDeleteModal" >
+      <ul class="todo-flex">
+        <li>
+          <button type="button" class="delete-button button--modal" @click="deleteTodoItem(todoItem)">
+            <i class="fas fa-trash-alt"></i> 삭제하기
+          </button>
+        </li>
+        <li>
+          <button type="button" class="edit-button button--modal"  @click="goEditTodoPage(todoItem)">
+            <i class="far fa-edit"></i> 수정하기
+          </button>
+        </li>
+        <li>
+          <button type="button" class="cancle-button button--modal" @click="showEditDeleteModal(false)">
+            <i class="fas fa-times"></i> 취소
+          </button>
+        </li>
       </ul>
     </div>
-    <div class="none-todo-item-modal none-todo-item-image" v-show="nothingTodoModal">
-    </div>
-    <div class="none-todo-item-modal todo-loading todo-flex " v-show="loadingModal">
-      <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="loader">
-    </div>
+  </ul>
+  <div class="none-todo-item-modal none-todo-item-image" v-show="nothingTodoModal">
+  </div>
+  <div class="none-todo-item-modal todo-loading todo-flex " v-show="loadingModal">
+    <img class="rotate" src="/src/assets/and-so-on/loader.svg" alt="loader">
   </div>
 </template>
 
