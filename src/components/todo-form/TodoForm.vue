@@ -78,7 +78,7 @@
 import axios from 'axios'
 import moment from 'moment'
 import { defineComponent } from 'vue'
-import TodoDate from '../../components/todoDate/TodoDate.vue'
+import TodoDate from '/src/components/todo-Date/TodoDate.vue'
 
 export default defineComponent({
   name: 'TodoForm',

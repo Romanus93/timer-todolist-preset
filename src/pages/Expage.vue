@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import TodoDate from '../components/todoDate/TodoDate.vue'
+import TodoDate from '../components/todo-Date/TodoDate.vue'
 
 export default defineComponent({
   components: {TodoDate},

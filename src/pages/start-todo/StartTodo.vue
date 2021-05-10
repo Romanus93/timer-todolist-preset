@@ -8,8 +8,8 @@ section<template>
 </template>
 
 <script>
-import TodoTimer from "../../components/todoTimer/TodoTimer.vue"
-import TimerAnimation from "../../components/timerAnimation/TimerAnimation.vue"
+import TodoTimer from "/src/components/todo-timer/TodoTimer.vue"
+import TimerAnimation from "/src/components/timer-animation/TimerAnimation.vue"
 import axios from "axios"
 import moment from "moment"
 
@@ -26,11 +26,13 @@ export default {
     }
   },
   created () {
+    console.log('startTodo');
     console.log(this.todoItem);
   },
   computed: {
     todoTime() {
       let integer = this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;
+      console.log('computed',integer)
       return parseInt(integer,10);
     }
   },

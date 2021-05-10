@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import TodoForm from '../../components/todoForm/TodoForm.vue';
+import TodoForm from '/src/components/todo-form/TodoForm.vue';
 
 export default defineComponent({
   components: { TodoForm },
