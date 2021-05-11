@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/startTodo",
     name: "StartTodo",
-    props: (route) => ({ todoItem: route.params }),
+    props: true,
     component: StartTodo
   },
   {

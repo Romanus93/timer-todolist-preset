@@ -50,13 +50,16 @@ export default {
     }
   },
   created() {
+    console.log('befroeUpdate');
+    this.timeAnimation = this.totalTime;
+  },
+  beforeUpdate() {
+    console.log('befroeUpdate');
     this.timeAnimation = this.totalTime;
   },
   mounted () {
+    console.log('befroeUpdate');
     this.startTimer();
-  },
-  beforeUpdate() {
-    this.timeAnimation = this.totalTime;
   },
   methods: {
     twoDigitTime: function(time){
@@ -76,7 +79,7 @@ export default {
       this.on = true;
     },
     offTimer(totalTime, delayTime) {
-      // console.log('offTimer')
+      console.log('offTimer')
       this.buttons = false;
       clearInterval(this.timer);
       this.totalTime = totalTime;

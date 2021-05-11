@@ -20,20 +20,24 @@ export default {
     TimerAnimation
   },
   props: {
-    todoItem: {
-      type: Object,
-      required: true
+    hours: {
+      type: String
+    },
+    minutes: {
+      type: String
+    },
+    seconds: {
+      type: String
     }
   },
   created () {
     console.log('startTodo');
-    console.log(this.todoItem);
   },
   computed: {
     todoTime() {
-      let integer = this.todoItem.hours*3600 + this.todoItem.minutes*60 + this.todoItem.seconds;
+      let integer = parseInt(this.hours,10)*3600 + parseInt(this.minutes,10)*60 + parseInt(this.seconds,10);
       console.log('computed',integer)
-      return parseInt(integer,10);
+      return integer
     }
   },
   methods: {
@@ -49,7 +53,9 @@ export default {
       this.goCalendarPage();
     },
     goCalendarPage() {
+      console.log('go calendar-page');
       const today = moment(new Date()).format("YYYY-MM-DD");
+      console.log(today);
       (today == this.todoItem.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.todoItem.date} });
     }
   }
