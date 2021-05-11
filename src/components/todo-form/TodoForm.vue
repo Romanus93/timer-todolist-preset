@@ -104,8 +104,10 @@ export default defineComponent({
   },
   beforeCreate(){
     console.log('todoForm--beforeCreated');
+    console.log(this.todoitem);
   },
   created () {
+    console.log(this.todoitem);
     console.log('todoForm--created');
     if(this.todoitem.type === 'create'){
       this.date = this.todoitem.date;
