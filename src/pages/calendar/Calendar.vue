@@ -75,6 +75,7 @@ export default defineComponent({
       }
     },
     today(): string {
+      console.log('computed today');
       return moment(new Date()).format('DD')
     },
     calendar(): any {
@@ -84,12 +85,30 @@ export default defineComponent({
   },
   created() {
     (this.$route.params.dateOfTodoItem !== undefined)&&this.resetDate();
+    // console.log('created');
+    // console.log('this.today',this.today);
+  },
+  beforeMount() {
+    // console.log('beforeMount');
+    // console.log('this.today',this.today);
+  },
+  mounted() {
+    // console.log('mounted');
+    // console.log('this.today',this.today);
+  },
+  beforeUpdate() {
+    // console.log('beforeUpdate');
+    // console.log('this.date',this.date);
+    // console.log('this.today',this.today);
   },
   methods: {
     //type: string | null
     goToday(): void {
       this.date = new Date();
       this.calendar.move(this.date);
+      console.log('goToday');
+      let today = moment(this.date).format("YYYY-MM-DD");
+      sessionStorage.setItem('today',today);
     },
     goYesterday(): void {
       const startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
@@ -117,7 +136,7 @@ export default defineComponent({
         date : this.inputedDay,
         path: 'create-todo',
         type: 'create'
-      }
+      };
       this.$router.push({ name: "CreateEditTodo" , params: todoItem });
     },
     resetDate(){

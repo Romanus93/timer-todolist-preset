@@ -121,6 +121,9 @@ export default defineComponent({
   beforeMount() {
     console.log('todoForm--beforeMount');
   },
+  mounted() {
+    console.log('todoForm--mounted');
+  },
   beforeUpdate () {
     this.hrs();
     this.min();

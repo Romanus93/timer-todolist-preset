@@ -12,23 +12,29 @@ import TodoForm from '/src/components/todo-form/TodoForm.vue';
 
 export default defineComponent({
   components: { TodoForm },
-  name: 'CreateTodo',
+  name: 'CreateEditTodo',
   data() {
     return {
       todoitem: this.$route.params
     }
   },
   beforeCreate(){
-    console.log('brforeCreated--CopyTodo-page');
+    console.log('brforeCreated--editTodo-page');
   },
   created () {
-    console.log('created--CopyTodo-page');
+    console.log('created--editTodo-page');
     console.log(this.todoitem);
     console.log(this.$route);
   },
   beforeMount () {
-    console.log('beforeMount--CopyTodo-page');
-  } 
+    console.log('beforeMount--editTodo-page');
+  },
+  mounted () {
+    console.log('mounted--editTodo-page');
+  },
+  beforeUpdate () {
+    console.log('beforeUpdate--editTodo-page');
+  }  
 });
 </script>
 

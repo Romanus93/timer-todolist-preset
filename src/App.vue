@@ -7,6 +7,9 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'App',
+  beforeCreate() {
+    console.log('a')
+  },
 })
 </script>
 

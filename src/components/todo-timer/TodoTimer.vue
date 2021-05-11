@@ -50,16 +50,16 @@ export default {
     }
   },
   created() {
-    console.log('befroeUpdate');
+    // console.log('befroeUpdate');
     this.timeAnimation = this.totalTime;
   },
   beforeUpdate() {
-    console.log('befroeUpdate');
+    // console.log('befroeUpdate');
     this.timeAnimation = this.totalTime;
   },
   mounted () {
-    console.log('befroeUpdate');
-    this.startTimer();
+    // console.log('befroeUpdate');
+    this.startTimer(); 
   },
   methods: {
     twoDigitTime: function(time){
