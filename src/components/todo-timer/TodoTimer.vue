@@ -50,16 +50,31 @@ export default {
     }
   },
   created() {
-    // console.log('befroeUpdate');
+    console.log('created');
+    console.log(this.totalTime);
+    console.log(this.totalTime === NaN);
+    console.log('isNaN',isNaN(this.totalTime))
+    if(isNaN(this.totalTime)) {
+      let json = sessionStorage.getItem('totalTime');
+      console.log(json, typeof json);
+      this.totalTime = parseInt(json,10)
+    }
+    console.log(this.totalTime);
     this.timeAnimation = this.totalTime;
   },
-  beforeUpdate() {
-    // console.log('befroeUpdate');
-    this.timeAnimation = this.totalTime;
+  beforeMount () {
+    console.log('beforeMount');
   },
   mounted () {
-    // console.log('befroeUpdate');
+    console.log('mounted');
     this.startTimer(); 
+    // setTimeout(()=>console.log('abcdefg',this.totalTime),5000);
+  },
+  beforeUpdate() {
+    console.log('befroeUpdate');
+    console.log('totalTime',this.totalTime);
+    sessionStorage.setItem('totalTime', this.totalTime)
+    this.timeAnimation = this.totalTime;
   },
   methods: {
     twoDigitTime: function(time){
@@ -67,7 +82,8 @@ export default {
     },
     startTimer: function() {
       this.timer = setInterval(() => this.totalTime--, 1000);
-      // console.log('startTimer', this.timer);
+      console.log('startTimer', this.timer);
+      console.log('startTimer,totalTime', this.totalTime);
     },
     pauseTimer(param) {
       // console.log('pauseTimer', this.totalTime);
@@ -84,6 +100,11 @@ export default {
       clearInterval(this.timer);
       this.totalTime = totalTime;
       setTimeout(()=> this.$emit('deleteTodoItem'), delayTime);
+    },
+    setGetItem() {
+      console.log(this.totalTime);
+      // sessionStorage.setItem('totalTime',this.totalTime);
+      setTimeout(this.totatlTime=6400,5000);
     }
   },
   computed: {

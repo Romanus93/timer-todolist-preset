@@ -108,7 +108,6 @@ export default defineComponent({
       this.calendar.move(this.date);
       console.log('goToday');
       let today = moment(this.date).format("YYYY-MM-DD");
-      sessionStorage.setItem('today',today);
     },
     goYesterday(): void {
       const startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');

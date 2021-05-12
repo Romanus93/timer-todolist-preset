@@ -20,14 +20,24 @@ export default defineComponent({
   },
   beforeCreate(){
     console.log('brforeCreated--editTodo-page');
-    console.log(this.$route.params);
+    console.log(this.$route.params.type);
     console.log(this.sessionSetItem);
   },
   created () {
     console.log('created--editTodo-page');
     console.log(this.todoitem);
-    (this.$route.params) && this.sessionSetItem(this.$route.params);
-    this.sessionGetItem()
+    if(this.$route.params.type) {
+      console.log('$route.params.type 존재',this.$route.params.type);
+      this.sessionSetItem(this.$route.params);
+      console.log('todoitem',this.todoitem);
+      this.todoitem = this.$route.params;
+      console.log('todoitem',this.todoitem);
+    } else {
+      console.log('$route.params.type 존재 안함',this.$route.params.type);
+      this.sessionGetItem()
+    }
+    console.log('created 에서 함수 실행했음');
+    
   },
   beforeMount () {
     console.log('beforeMount--editTodo-page');

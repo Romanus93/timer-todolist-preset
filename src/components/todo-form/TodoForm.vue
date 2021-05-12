@@ -200,6 +200,7 @@ export default defineComponent({
       }
     },
     goCalendarPage(): void {
+      sessionStorage.removeItem('todoitem');
       const today: string = moment(new Date()).format("YYYY-MM-DD");
       (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
     },
