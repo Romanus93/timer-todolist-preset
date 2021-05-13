@@ -60,8 +60,6 @@ export default {
   },
   mounted() {
     console.log('mounted-startTodo');
-    // let json = sessionStorage.getItem('timer-status');
-    // (json === 'off')&&(this.deleteTodoItem());
   },
   computed: {
     todoTime() {

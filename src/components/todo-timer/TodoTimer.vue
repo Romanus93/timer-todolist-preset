@@ -55,14 +55,14 @@ export default {
   },
   created() {
     console.log('created-TodoTimer');
-    // console.log(this.totalTime);
+    console.log(this.totalTime);
     // console.log(this.textData);
     // console.log(this.totalTime === NaN);
     // console.log('isNaN',isNaN(this.totalTime))
     if(isNaN(this.totalTime)) {
       let json = sessionStorage.getItem('total-time');
       //console.log(json, typeof json);
-      this.totalTime = parseInt(json,10)
+      this.totalTime = parseInt(json,10);
     }
     //console.log(this.totalTime);
     this.timeAnimation = this.totalTime;
@@ -77,10 +77,9 @@ export default {
   },
   mounted () {
     console.log('mounted-TodoTimer');
-    //console.log('timerStatus',this.timerStatus);
-    (this.timerStatus === null)&&(this.startTimer());
-    (this.timerStatus === 'ongoing')&&(this.startTimer());
-    (this.timerStatus === 'off')&&(this.$emit('deleteTodoItem'))
+    console.log('timerStatus',this.timerStatus);
+    ((this.timerStatus === 'ongoing')||(this.timerStatus === null))&&(this.startTimer());
+    (this.timerStatus === 'off')&&(this.$emit('deleteTodoItem'));
   },
   beforeUpdate() {
     console.log('befroeUpdate');
@@ -134,10 +133,13 @@ export default {
       }
     },
     minutes: function(){
+      console.log('computed');
       if(this.totalTime !== -999) {
+        console.log('computed',this.totalTime);
         const minutes = Math.floor((this.totalTime - (this.hours * 60 * 60)) / 60);
         return this.twoDigitTime(minutes);
       } else {
+        console.log('computed',this.totalTime);
         return this.twoDigitTime(0);
       }
     },
