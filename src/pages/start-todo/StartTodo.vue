@@ -47,14 +47,8 @@ export default {
   },
   created () {
     console.log('created-startTodo');
-    // console.log('startTodo');
-    // console.log('$route',this.$route);
-    // console.log('id',this.$route.params.id,typeof this.$route.params.id);
-    console.log(this.todoId,this.todoDate);
     (this.todoId)&&( sessionStorage.setItem('id',this.todoId) );
     (this.todoDate)&& ( sessionStorage.setItem('date',this.todoDate) );
-    // let json = sessionStorage.getItem('timer-status')
-    // (json==='off') && ( this.goCalendarPage);
   },
   beforeMount() {
     console.log('beforeMount-startTodo');
@@ -71,15 +65,7 @@ export default {
   },
   methods: {
     async deleteTodoItem() {
-      console.log('this.todoId',this.todoId);
-      // if(this.todoId === undefined) {
-      //   console.log('a');
-      //   let json = sessionStorage.getItem('id');
-      //   this.todoId = json
-      //   console.log(this.todoId);
-      // }
       this.getItem('id');
-      console.log(this.todoId);
       const res = await axios
         .delete(`http://localhost:3005/todolist/${this.todoId}`)
         .then(response => {
@@ -89,7 +75,6 @@ export default {
         .catch(error => {
           console.debug(error);
         });
-      console.log('goCalendarPage');
       this.goCalendarPage();
     },
     getItem(key) {
@@ -109,16 +94,7 @@ export default {
     goCalendarPage() {
       console.log('go calendar-page');
       const today = moment(new Date()).format("YYYY-MM-DD");
-      console.log(today);
-      console.log('this.date',this.todoDate);
-      // if(this.todoDate === undefined) {
-      //   let json = sessionStorage.getItem('date');
-      //   console.log(json);
-      //   this.todoDate = json;
-      //   console.log(this.todoDate);
-      // }
       this.getItem('date');
-      console.log(this.todoDate);
       (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.todoDate} });
       sessionStorage.clear();
       // sessionStorage.removeItem('date');

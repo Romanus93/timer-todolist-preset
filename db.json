@@ -2,11 +2,11 @@
   "todolist": [
     {
       "date": "2021-05-13",
-      "title": "added a new quote",
+      "title": "2021-05-04",
       "description": "불고기 닭고기 등등등",
-      "hours": 1,
+      "hours": 0,
       "minutes": 0,
-      "seconds": 0,
+      "seconds": 5,
       "id": 1
     }
   ]
