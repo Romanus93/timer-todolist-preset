@@ -50,9 +50,9 @@ export default {
       timerStatus: null
     }
   },
-  beforeCreate () {
-    console.log('beforecreated-TodoTimer');
-  },
+  // beforeCreate () {
+  //   console.log('beforecreated-TodoTimer');
+  // },
   created() {
     console.log('created-TodoTimer');
     if(isNaN(this.totalTime)) {
@@ -66,17 +66,18 @@ export default {
     this.timeAnimation = this.totalTime;
     this.showButtons();
   },
-  beforeMount () {
-    console.log('beforeMount-TodoTimer');
-  },
+  // beforeMount () {
+  //   console.log('beforeMount-TodoTimer');
+  // },
   mounted () {
     console.log('mounted-TodoTimer');
     ((this.timerStatus === 'ongoing')||(this.timerStatus === null))&&(this.startTimer());
-    (this.timerStatus === 'off')&&(this.$emit('deleteTodoItem'));
+    (this.timerStatus === 'off')&&(this.offTimerCondition());
   },
   beforeUpdate() {
-    console.log('befroeUpdate');
-    sessionStorage.setItem('total-time', this.totalTime)
+    console.log('beforeUpdate-TodoTimer');
+    sessionStorage.setItem('total-time', this.totalTime);
+    (this.totalTime === 0)&&(this.offTimer(0, 3000));
     this.timeAnimation = this.totalTime;
   },
   methods: {
@@ -104,17 +105,29 @@ export default {
       this.buttons = false;
       setTimeout(()=> this.$emit('deleteTodoItem'), delayTime);
     },
+    offTimerCondition() {
+      if(this.totalTime === -999) {
+        console.log('-999');
+        this.$emit('deleteTodoItem');
+      } else if( this.totalTime === 0 ) {
+        console.log('0');
+        setTimeout(()=> this.$emit('deleteTodoItem'), 3000);
+      } else {
+        console.error('-999도 0도 아님 확인해볼 것');
+      }
+    },
     showButtons () {
       this.timerStatus = sessionStorage.getItem('timer-status');
       console.log(this.on, this.buttons);
       if(this.timerStatus === 'pausing' ) {
         this.on = false;
-        console.log(this.on);
+        return
       } else if ( this.timerStatus === 'off' ) {
         this.buttons = false;
-        console.log(this.buttons);
+        return
       } else {
         console.log(this.on, this.buttons);
+        return
       }
     }
   },
@@ -143,11 +156,6 @@ export default {
       } else {
         return this.twoDigitTime(0);
       }
-    }
-  },
-  watch: {
-    totalTime(newValue, oldValue) {
-      (newValue === 0)&&(console.log('watch',this.totalTime),this.offTimer(0, 3000));
     }
   }
 }

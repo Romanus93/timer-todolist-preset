@@ -42,20 +42,20 @@ export default {
       todoDate: this.date
     }
   },
-  beforeCreate () {
-    console.log('beforeCreated-startTodo');
-  },
+  // beforeCreate () {
+  //   console.log('beforeCreated-startTodo');
+  // },
   created () {
-    console.log('created-startTodo');
+    // console.log('created-startTodo');
     (this.todoId)&&( sessionStorage.setItem('id',this.todoId) );
     (this.todoDate)&& ( sessionStorage.setItem('date',this.todoDate) );
   },
-  beforeMount() {
-    console.log('beforeMount-startTodo');
-  },
-  mounted() {
-    console.log('mounted-startTodo');
-  },
+  // beforeMount() {
+  //   console.log('beforeMount-startTodo');
+  // },
+  // mounted() {
+  //   console.log('mounted-startTodo');
+  // },
   computed: {
     todoTime() {
       let integer = parseInt(this.hours,10)*3600 + parseInt(this.minutes,10)*60 + parseInt(this.seconds,10);
@@ -87,12 +87,11 @@ export default {
         this.todoDate = json;
         return
       } else {
-        console.error('error-key',key);
+        console.log('this.todoDate가 undefined가 아님.');
         return
       }
     },
     goCalendarPage() {
-      console.log('go calendar-page');
       const today = moment(new Date()).format("YYYY-MM-DD");
       this.getItem('date');
       (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.todoDate} });
