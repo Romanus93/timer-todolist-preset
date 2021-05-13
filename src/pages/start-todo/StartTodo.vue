@@ -50,6 +50,7 @@ export default {
     // console.log('startTodo');
     // console.log('$route',this.$route);
     // console.log('id',this.$route.params.id,typeof this.$route.params.id);
+    console.log(this.todoId,this.todoDate);
     (this.todoId)&&( sessionStorage.setItem('id',this.todoId) );
     (this.todoDate)&& ( sessionStorage.setItem('date',this.todoDate) );
     // let json = sessionStorage.getItem('timer-status')
@@ -71,12 +72,14 @@ export default {
   methods: {
     async deleteTodoItem() {
       console.log('this.todoId',this.todoId);
-      if(this.todoId === undefined) {
-        console.log('a');
-        let json = sessionStorage.getItem('id');
-        this.todoId = json
-        console.log(this.todoId);
-      }
+      // if(this.todoId === undefined) {
+      //   console.log('a');
+      //   let json = sessionStorage.getItem('id');
+      //   this.todoId = json
+      //   console.log(this.todoId);
+      // }
+      this.getItem('id');
+      console.log(this.todoId);
       const res = await axios
         .delete(`http://localhost:3005/todolist/${this.todoId}`)
         .then(response => {
@@ -89,24 +92,39 @@ export default {
       console.log('goCalendarPage');
       this.goCalendarPage();
     },
+    getItem(key) {
+      if((key === 'id')&&(this.todoId === undefined)) {
+        let json = sessionStorage.getItem('id');
+        this.todoId = json;
+        return
+      } else if ((key ==='date')&&(this.todoDate === undefined)) {
+        let json = sessionStorage.getItem('date');
+        this.todoDate = json;
+        return
+      } else {
+        console.error('error-key',key);
+        return
+      }
+    },
     goCalendarPage() {
       console.log('go calendar-page');
       const today = moment(new Date()).format("YYYY-MM-DD");
       console.log(today);
       console.log('this.date',this.todoDate);
-      if(this.todoDate === undefined) {
-        console.log('a');
-        let json = sessionStorage.getItem('date');
-        console.log(json);
-        this.todoDate = json;
-        console.log(this.todoDate);
-      }
+      // if(this.todoDate === undefined) {
+      //   let json = sessionStorage.getItem('date');
+      //   console.log(json);
+      //   this.todoDate = json;
+      //   console.log(this.todoDate);
+      // }
+      this.getItem('date');
       console.log(this.todoDate);
       (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.todoDate} });
-      sessionStorage.removeItem('date');
-      sessionStorage.removeItem('id');
-      sessionStorage.removeItem('timer-status');
-      sessionStorage.removeItem('total-time');
+      sessionStorage.clear();
+      // sessionStorage.removeItem('date');
+      // sessionStorage.removeItem('id');
+      // sessionStorage.removeItem('timer-status');
+      // sessionStorage.removeItem('total-time');
     }
   }
 } 
