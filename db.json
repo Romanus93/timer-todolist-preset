@@ -1,49 +1,13 @@
 {
   "todolist": [
     {
-      "date": "2021-05-11",
+      "date": "2021-05-12",
       "title": "added a new quote",
-      "description": "1",
+      "description": "불고기 닭고기 등등등",
       "hours": 10,
       "minutes": 0,
       "seconds": 0,
       "id": 1
-    },
-    {
-      "date": "2021-05-11",
-      "title": "1",
-      "description": "1",
-      "hours": 1,
-      "minutes": 1,
-      "seconds": 1,
-      "id": 2
-    },
-    {
-      "date": "2021-05-11",
-      "title": "added a new quote",
-      "description": "1111",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 1,
-      "id": 3
-    },
-    {
-      "date": "2021-05-12",
-      "title": "2021-04-29",
-      "description": "불고기 닭고기 등등등",
-      "hours": 1,
-      "minutes": 1,
-      "seconds": 19,
-      "id": 4
-    },
-    {
-      "date": "2021-05-12",
-      "title": "2021-04-29",
-      "description": "sdsdsdsd",
-      "hours": 1,
-      "minutes": 0,
-      "seconds": 0,
-      "id": 5
     }
   ]
 }

@@ -46,34 +46,46 @@ export default {
       timer: null,
       totalTime: this.todoTime,
       on: true,
-      buttons: true
+      buttons: true,
+      timerStatus: null
     }
+  },
+  beforeCreate () {
+    console.log('beforecreated-TodoTimer');
   },
   created() {
-    console.log('created');
-    console.log(this.totalTime);
-    console.log(this.totalTime === NaN);
-    console.log('isNaN',isNaN(this.totalTime))
+    console.log('created-TodoTimer');
+    // console.log(this.totalTime);
+    // console.log(this.textData);
+    // console.log(this.totalTime === NaN);
+    // console.log('isNaN',isNaN(this.totalTime))
     if(isNaN(this.totalTime)) {
-      let json = sessionStorage.getItem('totalTime');
-      console.log(json, typeof json);
+      let json = sessionStorage.getItem('total-time');
+      //console.log(json, typeof json);
       this.totalTime = parseInt(json,10)
     }
-    console.log(this.totalTime);
+    //console.log(this.totalTime);
     this.timeAnimation = this.totalTime;
+    this.timerStatus = sessionStorage.getItem('timer-status');
+    //console.log('timerStatus',this.timerStatus);
+    (this.timerStatus === 'pausing')&&(this.on = false);
+    (this.timerStatus === 'off')&&(this.buttons = false);
+
   },
   beforeMount () {
-    console.log('beforeMount');
+    console.log('beforeMount-TodoTimer');
   },
   mounted () {
-    console.log('mounted');
-    this.startTimer(); 
-    // setTimeout(()=>console.log('abcdefg',this.totalTime),5000);
+    console.log('mounted-TodoTimer');
+    //console.log('timerStatus',this.timerStatus);
+    (this.timerStatus === null)&&(this.startTimer());
+    (this.timerStatus === 'ongoing')&&(this.startTimer());
+    (this.timerStatus === 'off')&&(this.$emit('deleteTodoItem'))
   },
   beforeUpdate() {
     console.log('befroeUpdate');
-    console.log('totalTime',this.totalTime);
-    sessionStorage.setItem('totalTime', this.totalTime)
+    //console.log('totalTime',this.totalTime);
+    sessionStorage.setItem('total-time', this.totalTime)
     this.timeAnimation = this.totalTime;
   },
   methods: {
@@ -82,16 +94,20 @@ export default {
     },
     startTimer: function() {
       this.timer = setInterval(() => this.totalTime--, 1000);
+      // 타이머 진행중
+      sessionStorage.setItem('timer-status','ongoing');
       console.log('startTimer', this.timer);
       console.log('startTimer,totalTime', this.totalTime);
     },
     pauseTimer(param) {
       // console.log('pauseTimer', this.totalTime);
       clearInterval(this.timer);
+      sessionStorage.setItem('timer-status','pausing')
       this.on = false;
     },
     restartTimer() {
       this.timer = setInterval(() => this.totalTime--, 1000);
+      sessionStorage.setItem('timer-status','ongoing');
       this.on = true;
     },
     offTimer(totalTime, delayTime) {
@@ -99,12 +115,12 @@ export default {
       this.buttons = false;
       clearInterval(this.timer);
       this.totalTime = totalTime;
+      sessionStorage.setItem('timer-status','off');
       setTimeout(()=> this.$emit('deleteTodoItem'), delayTime);
     },
     setGetItem() {
       console.log(this.totalTime);
-      // sessionStorage.setItem('totalTime',this.totalTime);
-      setTimeout(this.totatlTime=6400,5000);
+      // sessionStorage.setItem('total-time',this.totalTime);
     }
   },
   computed: {

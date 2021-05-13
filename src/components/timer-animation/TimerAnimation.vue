@@ -19,6 +19,18 @@
         completion: true
       }
     },
+    beforeCreate () {
+    console.log('beforecreated-TimerAnimation');
+    },
+    created() {
+      console.log('created-TimerAnimation');
+    },
+    beforeMount () {
+      console.log('beforeMount-TimerAnimation');
+    },
+    mounted () {
+      console.log('mounted-TimerAnimation');
+    },
     computed: {
       eggImage() {
         if(this.time > 20) {

@@ -191,8 +191,8 @@ export default defineComponent({
       this.$router.push({ name: "Calendar" });
     },
     goStartTodoPage(todoItem: any): void {
-      console.log(todoItem.hours);
-      console.log(typeof todoItem.hours);
+      // console.log(todoItem.hours);
+      // console.log(typeof todoItem.hours);
       this.$router.push({ name: "StartTodo", params: todoItem });
     },
     async deleteTodoItem(item: TodoItem): Promise<void> {
