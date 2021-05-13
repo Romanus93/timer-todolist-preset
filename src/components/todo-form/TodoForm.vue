@@ -67,7 +67,7 @@
     </ul>
     <div class="check-modal todo-flex" v-show="showingWarning">
       <div class="check-modal__text">
-        <p>값을 확인해주세요.</p>
+        <p>시간을 입력해주세요.</p>
         <button @click="showingWarning = false"><i class="fas fa-times"></i> 닫기</button>
       </div>
     </div>
@@ -134,10 +134,11 @@ export default defineComponent({
   methods: {
     async createUpdateTodoItem() {
       let totalTime: number = this.hours + this.minutes + this.seconds;
-      if(this.title === '' || this.description === '' || totalTime === 0 ){
+      if(totalTime === 0 ){
         this.showingWarning = true;
         return
       } else {
+        console.log(this);
           let params = {
           date: this.date,
           title: this.title,
@@ -145,9 +146,10 @@ export default defineComponent({
           hours: this.hours,
           minutes: this.minutes,
           seconds: this.seconds
-        };
+          };
         // if(this.todoitem.type === 'edit' && this.todoitem ) {
         if(this.todoitem.type === 'edit') {
+        console.log(this);
           const res = await axios
           .put("http://localhost:3005/todolist/"+this.todoitem.id, params)
           .then(response => {
