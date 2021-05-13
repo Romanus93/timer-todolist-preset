@@ -38,18 +38,18 @@
         <div class="time-wrap">
           <label for="hours">시간</label>
           <span>
-            <input id="hour" class="time-hms" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
+            <input type="number" id="hour" class="time-hms" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
           </span>
         </div>
         <div class="time-wrap">
           <label for="minutes">&nbsp분</label>
           <span>
-            <input id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
+            <input type="number" id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)"/>&nbsp:&nbsp
           </span>
         </div>
         <div class="time-wrap">
           <label for="seconds">&nbsp초</label>
-          <input id="seconds" class="time-hms" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
+          <input type="number" id="seconds" class="time-hms" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
         </div>
       </li>
     </ul>
@@ -95,9 +95,9 @@ export default defineComponent({
       date: '',
       title: '',
       description: '',
-      hours: 0 as any,
-      minutes: 0 as any,
-      seconds: 0 as any,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
       showingPCalendar: false,
       showingWarning: false,
     }
@@ -158,6 +158,8 @@ export default defineComponent({
             console.debug(error);
           });
         } else {
+          console.log(params.hours, typeof params.hours);
+          
           const res = await axios
           .post("http://localhost:3005/todolist", params)
           .then(response => {
@@ -171,7 +173,7 @@ export default defineComponent({
       }
     },
     hrs(): any {
-      if(this.hours >= 100 || this.hours === '') {
+      if(this.hours >= 100) {
         this.hours = 0;
         return this.hours;
       } else {
@@ -180,7 +182,6 @@ export default defineComponent({
       }
     },
     min(): any {
-      (this.minutes === '')&&(this.minutes = 0);
       if(this.minutes >= 60) {
         this.minutes = 0;
         return this.minutes
@@ -190,7 +191,6 @@ export default defineComponent({
       }
     },
     sec(): any {
-      (this.seconds === '')&&(this.seconds = 0);
       if(this.seconds >= 60) {
         this.seconds = 0;
         return this.seconds

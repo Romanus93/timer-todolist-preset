@@ -36,13 +36,16 @@ li label,input {
 }
 
 .todo-info > li input {
-  width: 70%;
   height: 1.5em;
   border: none;
   border-bottom: solid 2px var(--black);
   background-color: var(--blue-50);
   margin-top: 0.1em;
   font-size: 18px;
+}
+
+.todo-info > li > input {
+  width: 70%;
 }
 
 /* 날짜 설정 */
@@ -71,7 +74,7 @@ li label,input {
 
 /* 시간 설정 */
 .todo-time {
-  width: 162px;
+  width: 180px;
   border: 5px solid salmon;
 }
 
@@ -82,7 +85,7 @@ li label,input {
 .time-hms {
   display: inline-block;
   width: 2em;
-  padding-left: 0.5em;
+  text-align: center;
 }
 
 .create-edit-buttons-wrap {
@@ -136,8 +139,11 @@ li label,input {
   }
 
   .todo-info > li input {
-    width: 70%;
     font-size: 20px;
+  }
+
+  .todo-info > li > input {
+    width: 70%;
   }
 
   .todo-date span {
@@ -145,14 +151,18 @@ li label,input {
   }
 
   .todo-time {
-    width: 220px;
+    width: 250px;
   }
 
-  .check-modal-text {
+  .time-hms {
+    width: 2.5em;
+  }
+
+  .check-modal__text {
     font-size: 24px;
   }
 
-  .check-modal-text button {
+  .check-modal__text button {
     font-size: 20px;
   }
 } 
@@ -180,11 +190,11 @@ li label,input {
     font-size: 32px;
   }
 
-  .check-modal-text {
+  .check-modal__text {
     font-size: 32px;
   }
 
-  .check-modal-text button {
+  .check-modal__text button {
     font-size: 24px;
   }
 }
