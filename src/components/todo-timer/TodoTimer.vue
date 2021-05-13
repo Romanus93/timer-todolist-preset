@@ -56,13 +56,14 @@ export default {
   created() {
     console.log('created-TodoTimer');
     if(isNaN(this.totalTime)) {
+      console.log('새로고침');
       let json = sessionStorage.getItem('total-time');
       this.totalTime = parseInt(json,10);
+    } else {
+      console.log('정상작동');
+      sessionStorage.setItem('total-time', this.totalTime);
     };
     this.timeAnimation = this.totalTime;
-    // this.timerStatus = sessionStorage.getItem('timer-status');
-    // (this.timerStatus === 'pausing')&&(this.on = false);
-    // (this.timerStatus === 'off')&&(this.buttons = false);
     this.showButtons();
   },
   beforeMount () {
@@ -84,7 +85,6 @@ export default {
     },
     startTimer: function() {
       this.timer = setInterval(() => this.totalTime--, 1000);
-      // 타이머 진행중
       sessionStorage.setItem('timer-status','ongoing');
     },
     pauseTimer(param) {
