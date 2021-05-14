@@ -130,16 +130,6 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
   color: var(--light-blue);
 }
 
-@media screen and (max-width: 500px) {
-  section.v-calendar-component div.vc-header.align-center {
-    padding-top: 5px;
-  }
-  
-  section.v-calendar-component div.vc-arrows-container.title-center {
-    padding-top: 5px;
-  }  
-}
-
 @media screen and (min-width: 500px) {
   section.v-calendar-component div.vc-header.align-center {
     padding-top: 0;
@@ -208,11 +198,43 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
 }
 
 @media screen and (min-width: 500px) and (min-height: 700px) {
+  section.v-calendar-component div.vc-header.align-center {
+    padding-top: 0;
+  }
+
+  /*년 월 일 중 년-월 (타이틀) */
+  section.v-calendar-component div.vc-header.align-center > div.vc-title {
+    font-size: var(--font-md);
+  }
+  
+  /* 일요일~토요일 */
+  section.v-calendar-component div.vc-weeks > div {
+    font-size: var(--font-xx-sm);
+  }
+  
+  /* 년월일중 일자 */
+  section.v-calendar-component div.vc-day > span {
+    font-size: var(--font-xx-sm);
+  }
+
+  /*arrow---move-month-btn*/
+  section.v-calendar-component div.vc-arrows-container.title-center > div > svg {
+    height: 30px;
+    width: 30px;
+  }
+  
   /* 캘린더 전체 너비*/
   section.v-calendar-component > div {
     border: springgreen solid 5px;
     height: 41vh;
   }
+
+  /* 월 이동 버튼 너비 상자*/
+  section.v-calendar-component div.vc-arrows-container.title-center {
+    border: red dotted 3px;
+    height: 7vh;
+  }
+
 
   /* 년 월 버튼 너비 상자 */
   section.v-calendar-component div.vc-header.align-center {
@@ -226,6 +248,21 @@ div.vc-weeks > div.vc-day.weekday-7.weekday-position-7 > span {
     border: yellow solid 5px;
     height: 32.5vh;
     min-height: 227.5px;
+  }
+
+   /* 팝업 캘린더 포지션 조정*/
+  /* 팝업 캘린더 폰트 사이즈- */
+  section.v-calendar-component div.vc-popover-content-wrap.is-interactive > div {
+    top: 1vh;
+    width: 200px;
+    font-size: var(--font-xx-sm); 
+  }
+
+  /* 팝업 캘린더 그리드 조정*/
+  /* 팝업 캘린더 요일 vc-nav-items  높이 */
+  section.v-calendar-component div.vc-popover-content-wrap.is-interactive > div > div > div.vc-nav-items {
+    grid-row-gap: 1vh;
+    padding-left: 5px ;
   }
 }
 
