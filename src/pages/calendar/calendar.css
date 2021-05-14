@@ -17,8 +17,6 @@
 /* 할 일 목록 */
 .todolist-component {
   width: 90%;
-  text-align: center;
-  border: 5px solid red;
   margin: 0 auto;
 }
 
@@ -38,8 +36,9 @@
   position: relative;
   top: 50%;
   color: var(--black);
-  font-size: 20px;
+  font-size: var(--font-sm);
   font-weight: bold;
+  text-align: center;
 }
 
 /* 요일, 날짜 이동, 할 일 생성 버튼 */
@@ -59,13 +58,13 @@
 
 @media screen and (min-width: 300px) and (max-width: 350px) {
   .date-none-modal__text {
-    font-size: 16px;
+    font-size: var(--font-xx-sm);
   }
 }
 
 @media screen and (min-width: 400px) and (min-height: 700px) {
   .date-none-modal__text {
-    font-size: 24px;
+    font-size: var(--font-md);
   }
 }
 
@@ -81,14 +80,7 @@
   }
 
   .date-none-modal__text {
-    font-size: 30px;
+    font-size: var(--font-lg);
     font-weight: bold;
-  }
-  
-  .button--calendar {
-    width: 80px;
-    height: 75px;
-    font-size: 32px;
-    padding-top: 26px;
   }
 }

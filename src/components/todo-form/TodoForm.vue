@@ -22,6 +22,7 @@
           name="title"
           placeholder=" ?"
           v-model.trim="title"
+          maxlength="30"
         />
       </li>
       <li class="todo-description">
@@ -32,21 +33,24 @@
           name="description"
           placeholder=" ?"
           v-model.trim="description"
+          maxlength="30"
         />
       </li>
       <li class="todo-flex todo-time">
         <div class="time-wrap">
           <label for="hours">시간</label>
-          <span>
-            <input type="number" id="hour" class="time-hms" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />&nbsp:&nbsp
-          </span>
+          <input type="number" id="hour" class="time-hms" placeholder="0" min="0" v-model.number="hours" oninput="this.value = Math.abs(this.value)" />
+        </div>
+        <div class="time-separator">
+          :
         </div>
         <div class="time-wrap">
           <label for="minutes">&nbsp분</label>
-          <span>
-            <input type="number" id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)"/>&nbsp:&nbsp
-          </span>
+          <input type="number" id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)"/>
         </div>
+        <div class="time-separator">
+          :
+        </div>  
         <div class="time-wrap">
           <label for="seconds">&nbsp초</label>
           <input type="number" id="seconds" class="time-hms" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
@@ -103,12 +107,9 @@ export default defineComponent({
     }
   },
   beforeCreate(){
-    console.log('todoForm--beforeCreated');
-    console.log(this.todoitem);
+    // console.log('todoForm--beforeCreated');
   },
   created () {
-    console.log(this.todoitem);
-    console.log('todoForm--created');
     if(this.todoitem.type === 'create'){
       this.date = this.todoitem.date;
     } else {
@@ -120,12 +121,12 @@ export default defineComponent({
       this.seconds = this.todoitem.seconds;
     };
   },
-  beforeMount() {
-    console.log('todoForm--beforeMount');
-  },
-  mounted() {
-    console.log('todoForm--mounted');
-  },
+  // beforeMount() {
+  //   console.log('todoForm--beforeMount');
+  // },
+  // mounted() {
+  //   console.log('todoForm--mounted');
+  // },
   beforeUpdate () {
     this.hrs();
     this.min();
@@ -138,7 +139,6 @@ export default defineComponent({
         this.showingWarning = true;
         return
       } else {
-        console.log(this);
           let params = {
           date: this.date,
           title: this.title,
@@ -149,7 +149,6 @@ export default defineComponent({
           };
         // if(this.todoitem.type === 'edit' && this.todoitem ) {
         if(this.todoitem.type === 'edit') {
-        console.log(this);
           const res = await axios
           .put("http://localhost:3005/todolist/"+this.todoitem.id, params)
           .then(response => {

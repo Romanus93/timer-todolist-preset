@@ -32,7 +32,7 @@ li label,input {
 }
 
 .todo-info > li label {
-  font-size: 20px;
+  font-size: var(--font-sm);
 }
 
 .todo-info > li input {
@@ -41,13 +41,15 @@ li label,input {
   border-bottom: solid 2px var(--black);
   background-color: var(--blue-50);
   margin-top: 0.1em;
-  font-size: 18px;
-}
-
-.todo-info > li > input {
+  font-size: var(--font-xx-sm);
   width: 70%;
 }
 
+/* 할 일, 내용 입력 */
+li.todo-title input,li.todo-description input{
+  padding-left: 0.2em;
+  width: 70%;
+}
 /* 날짜 설정 */
 .todo-date {
   border-bottom: solid 2px var(--black);
@@ -55,13 +57,13 @@ li label,input {
 }
 
 .todo-date span {
-  font-size: 20px;
+  font-size: var(--font-sm);
   border-bottom: solid 2px var(--black);
 }
 
 .button--pocket-calendar {
-  font-size: 24px;
-  padding-left: 5px;
+  font-size: var(--font-md);
+  padding-left: 0.5em;
 }
 
 .change-date-button {
@@ -82,10 +84,19 @@ li label,input {
   border: 1px solid yellow;
 }
 
-.time-hms {
+.todo-info .time-hms {
   display: inline-block;
-  width: 2em;
+  width: 2.5em;
   text-align: center;
+}
+
+.time-separator {
+  padding-top: 30px;
+  font-size: var(--font-xx-sm);
+}
+
+.time-wrap:nth-child(2) label,.time-wrap:nth-last-child(1) label {
+  padding-left: 0.2em;
 }
 
 .create-edit-buttons-wrap {
@@ -100,7 +111,7 @@ li label,input {
   position: absolute;
   top: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
   align-items: center;
@@ -113,7 +124,7 @@ li label,input {
   border-radius: 5px;
   width: 11em;
   height: 6em;
-  font-size: 18px;
+  font-size: var(--font-xx-sm);
   text-align: center;
   padding-top: 1.2em;
 }
@@ -123,7 +134,7 @@ li label,input {
   color: var(--white);
   width: 4em;
   height: 1.5em;
-  font-size: 16px;
+  font-size: var(--font-xx-sm);
   margin-top: 0.5em;
   border-radius: 0.5em;
 }
@@ -135,11 +146,11 @@ li label,input {
   }
   
   .todo-info > li label {
-    font-size: 24px;
+    font-size: var(--font-md);
   }
 
   .todo-info > li input {
-    font-size: 20px;
+    font-size: var(--font-sm);
   }
 
   .todo-info > li > input {
@@ -147,25 +158,33 @@ li label,input {
   }
 
   .todo-date span {
-    font-size: 24px;
+    font-size: var(--font-sm);
   }
 
+  .check-modal__text {
+    font-size: var(--font-md);
+  }
+
+  .check-modal__text button {
+    font-size: var(--font-sm);
+  }
+} 
+
+@media screen and (min-width: 480px) and (min-height: 700px) {
   .todo-time {
-    width: 250px;
+    width: 220px;
   }
 
   .time-hms {
     width: 2.5em;
   }
 
-  .check-modal__text {
-    font-size: 24px;
+  
+  .time-separator {
+    padding-top: 30px;
+    font-size: var(--font-md);
   }
-
-  .check-modal__text button {
-    font-size: 20px;
-  }
-} 
+}
 
 @media screen and (min-width: 600px) and (min-height: 850px) {
   
@@ -175,26 +194,36 @@ li label,input {
   }
 
   .todo-info > li label {
-    font-size: 32px;
+    font-size: var(--font-lg);
   }
 
   .todo-info > li input {
-    font-size: 24px;
+    font-size: var(--font-md);
   }
 
   .todo-date span {
-    font-size: 32px;
+    font-size: var(--font-lg);
   }
 
   .button--pocket-calendar {
-    font-size: 32px;
+    font-size: var(--font-lg);
+  }
+
+  .time-separator {
+    padding-top: 46px;
+    font-size: var(--font-md);
+  }
+
+  .todo-time {
+    width: 255px;
+    border: 5px solid salmon;
   }
 
   .check-modal__text {
-    font-size: 32px;
+    font-size: var(--font-lg);
   }
 
   .check-modal__text button {
-    font-size: 24px;
+    font-size: var(--font-md);
   }
 }
