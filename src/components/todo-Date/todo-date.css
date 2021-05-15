@@ -23,11 +23,3 @@
     top: 16%;
   }
 }
-
-/* 달력 크기 */
-@media screen and (min-width: 500px) {
-  .pocket-calendar-component div.vc-container {
-    min-width: 320px;
-    min-height: 306px;
-  }
-}
