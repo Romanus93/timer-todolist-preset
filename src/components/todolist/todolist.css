@@ -89,7 +89,6 @@
   height: 40%;
   top: 30%;
   position: relative;
-  border: solid red 5px;
 }
 
 .button--modal {
@@ -99,7 +98,7 @@
   font-weight: 600;
   border: 5px solid;
   border-radius: 12px;
-  background-color: var(--light-grey);
+  background-color: var(--white);
   text-align: center;
 }
 

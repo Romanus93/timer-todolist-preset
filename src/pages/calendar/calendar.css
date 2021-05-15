@@ -46,7 +46,6 @@
   width: 90%;
   height: 11%;
   margin: 0 auto;
-  border: 5px solid red;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
