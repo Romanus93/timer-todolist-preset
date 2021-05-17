@@ -182,7 +182,6 @@ export default defineComponent({
       }
     },
     hrs (): void {
-      console.log('hrs');
       if(this.hours >= 100) {
         this.hours = 0;
       } else {
