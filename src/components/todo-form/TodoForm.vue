@@ -64,7 +64,7 @@
         </button>
       </li>
       <li>
-        <button class="home-button button--calendar button--calendar-image" @click="goCalendar">
+        <button class="home-button button--calendar button--calendar-image" @click="goCalendar('noAxios')">
           <i class="fas fa-home"></i>
         </button>
       </li>
@@ -162,7 +162,7 @@ export default defineComponent({
           .put("http://localhost:3005/todolist/"+this.todo.id, params)
           .then(response => {
             console.debug(response.data);
-            this.goCalendar();
+            this.goCalendar('Axios');
           })
           .catch(error => {
             console.debug(error);
@@ -173,7 +173,7 @@ export default defineComponent({
           .post("http://localhost:3005/todolist", params)
           .then(response => {
             console.debug(response.data);
-            this.goCalendar();
+            this.goCalendar('Axios');
           })
           .catch(error => {
             console.debug(error);
@@ -202,10 +202,15 @@ export default defineComponent({
         this.seconds = Math.floor(this.seconds)
       }
     },
-    goCalendar (): void {
+    goCalendar (condition: string): void {
       sessionStorage.removeItem('todo');
-      let today: string = moment(new Date()).format("YYYY-MM-DD");
-      (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.date} });
+      console.log('condition', condition);
+      if( condition === 'noAxios') {
+        this.$router.push({name: "Calendar" })
+      } else {
+        let today: string = moment(new Date()).format("YYYY-MM-DD");
+        (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.date} });  
+      }
     },
     showPocketCalendar (param: boolean): void {
       this.showingPocketCalendar = param;
