@@ -41,7 +41,7 @@
           </button>
         </div>
       <div>
-        <button type="button" class="create-button button--calendar button--calendar-image" @click="goCreateTodoPage">
+        <button type="button" class="create-button button--calendar button--calendar-image" @click="goCreateTodo">
           <i class="fas fa-plus"></i>
         </button>
       </div>
@@ -78,7 +78,6 @@ export default defineComponent({
       return moment(new Date()).format('DD')
     },
     calendar(): any {
-      // const calendars = this.$refs.calendar as object;
       return this.$refs.calendar;
     }
   },
@@ -106,17 +105,16 @@ export default defineComponent({
       this.date = new Date();
       this.calendar.move(this.date);
       console.log('goToday');
-      let today = moment(this.date).format("YYYY-MM-DD");
     },
     goYesterday(): void {
-      const startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
+      let startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
       let step: number = 0;
       (this.inputedDay == startOfMonth ) ? step = -1 : step = 0;
       this.date = moment(this.date).subtract(1, "day").toDate();
       this.goMonth(step);
     },
     goTomorrow(): void {
-      const endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
+      let endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
       let step: number = 0;
       (this.inputedDay == endOfMonth ) ? step = 1 : step = 0;
       this.date = moment(this.date).add(1, "day").toDate();
@@ -129,18 +127,19 @@ export default defineComponent({
         position: this.position
       });
     },
-    goCreateTodoPage(): void {
-      let todoItem:any = {
+    goCreateTodo(): void {
+      let todo:any = {
         date : this.inputedDay,
         path: 'create-todo',
         type: 'create'
       };
-      this.$router.push({ name: "CreateEditTodo" , params: todoItem });
+      this.$router.push({ name: "CreateEditTodo" , params: todo });
     },
-    resetDate(){
-      const resetDateOfTodoItem: any = moment(this.$route.params.dateOfTodoItem);
-      this.date = resetDateOfTodoItem._d;
-      return;
+    resetDate(): void{
+      let resetDate: any = moment(this.$route.params.todoDate);
+      console.log('restDateOfTodoItem', resetDate);
+      console.log(typeof resetDate);
+      this.date = resetDate._d;
     }
   }
 });

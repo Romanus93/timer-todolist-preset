@@ -94,7 +94,7 @@ export default {
     goCalendarPage() {
       const today = moment(new Date()).format("YYYY-MM-DD");
       this.getItem('date');
-      (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.todoDate} });
+      (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.todoDate} });
       sessionStorage.clear();
       // sessionStorage.removeItem('date');
       // sessionStorage.removeItem('id');
