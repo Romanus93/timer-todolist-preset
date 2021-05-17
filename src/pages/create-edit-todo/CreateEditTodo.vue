@@ -1,7 +1,7 @@
 <template>
   <main class="todo-flex create-edit-todo-page">
     <todo-form 
-      :todoitem="todoitem"
+      :todo="todo"
     ></todo-form>
   </main>
 </template>
@@ -13,25 +13,25 @@ import TodoForm from '/src/components/todo-form/TodoForm.vue';
 export default defineComponent({
   components: { TodoForm },
   name: 'CreateEditTodo',
-  data() {
+  data () {
     return {
-      todoitem: { } as object
+      todo: { } as object
     }
   },
-  beforeCreate(){
-    console.log('brforeCreated--editTodo-page');
-    console.log(this.$route.params.type);
-    console.log(this.sessionSetItem);
-  },
+  // beforeCreate(){
+  //   console.log('brforeCreated--editTodo-page');
+  //   console.log(this.$route.params.type);
+  //   console.log(this.sessionSetItem);
+  // },
   created () {
     console.log('created--editTodo-page');
-    console.log(this.todoitem);
+    console.log(this.todo);
     if(this.$route.params.type) {
       console.log('$route.params.type 존재',this.$route.params.type);
       this.sessionSetItem(this.$route.params);
-      console.log('todoitem',this.todoitem);
-      this.todoitem = this.$route.params;
-      console.log('todoitem',this.todoitem);
+      console.log('todo',this.todo);
+      this.todo = this.$route.params;
+      console.log('todo',this.todo);
     } else {
       console.log('$route.params.type 존재 안함',this.$route.params.type);
       this.sessionGetItem()
@@ -41,24 +41,23 @@ export default defineComponent({
   },
   beforeMount () {
     console.log('beforeMount--editTodo-page');
-    console.log(this.todoitem);
+    console.log(this.todo);
   },
-  mounted () {
-    console.log('mounted--editTodo-page');
-  },
-  beforeUpdate () {
-    console.log('beforeUpdate--editTodo-page');
-  }, 
+  // mounted () {
+  //   console.log('mounted--editTodo-page');
+  // },
+  // beforeUpdate () {
+  //   console.log('beforeUpdate--editTodo-page');
+  // }, 
   methods: {
-    sessionSetItem(params: object) {
+    sessionSetItem (params: object) {
       console.log('aa');
-      let todoitem:string = JSON.stringify(params);
-      sessionStorage.setItem('todoitem',todoitem);
+      let todo:string = JSON.stringify(params);
+      sessionStorage.setItem('todo',todo);
     },
-    sessionGetItem(){
-      let json: any = sessionStorage.getItem('todoitem');
-      // let todoitem:object = JSON.parse(json);
-      this.todoitem = JSON.parse(json);
+    sessionGetItem () {
+      let json: any = sessionStorage.getItem('todo');
+      this.todo = JSON.parse(json);
     }
   }, 
 });

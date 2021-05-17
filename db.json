@@ -1,33 +1,6 @@
 {
   "todolist": [
     {
-      "date": "2021-05-13",
-      "title": "1",
-      "description": "1",
-      "hours": 99,
-      "minutes": 0,
-      "seconds": 0,
-      "id": 1
-    },
-    {
-      "date": "2021-05-14",
-      "title": "1wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-      "description": "1",
-      "hours": 1,
-      "minutes": 0,
-      "seconds": 1,
-      "id": 5
-    },
-    {
-      "date": "2021-05-14",
-      "title": "",
-      "description": "",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 1,
-      "id": 6
-    },
-    {
       "date": "2021-05-15",
       "title": "김동혁김동혁김동혁김동혁김동혁김동혁김동혁",
       "description": "김동혁김동혁김동혁김동혁",
@@ -44,6 +17,24 @@
       "minutes": 0,
       "seconds": 5,
       "id": 8
+    },
+    {
+      "date": "2021-05-19",
+      "title": "1",
+      "description": "1",
+      "hours": 1,
+      "minutes": 0,
+      "seconds": 0,
+      "id": 11
+    },
+    {
+      "date": "2021-05-13",
+      "title": "1",
+      "description": "1",
+      "hours": 0,
+      "minutes": 0,
+      "seconds": 52,
+      "id": 12
     }
   ]
 }

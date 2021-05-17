@@ -16,25 +16,26 @@ import moment from 'moment'
 export default defineComponent({
   name: 'TodoDate',
   props: {
-    dateOfTodoItem: {
+    todoDate: {
       type: String as any
     }
   },
-  data() {
+  data () {
     return {
-      date: this.dateOfTodoItem
+      date: this.todoDate
     }
   },
-  beforeUpdate() {
+  beforeUpdate () {
+    console.log('chnageDate-todoDate');
     this.changeDate();
   },
   methods: {
-    sendDate(changedDate: string): void {
+    sendDate (changedDate: string): void {
       this.$emit('checkDate',changedDate);
     },
-    changeDate(): any {
-      (this.date === null)&&(this.date = this.dateOfTodoItem)
-      let changedDate = moment(this.date).format("YYYY-MM-DD")
+    changeDate (): void {
+      (this.date === null)&&(this.date = this.todoDate)
+      let changedDate: string = moment(this.date).format("YYYY-MM-DD")
       this.sendDate(changedDate);
     }
   },

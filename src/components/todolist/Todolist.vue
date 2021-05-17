@@ -25,7 +25,7 @@
                 </span>
               </span>
               <span class="start-button-wrap">
-                <button type="button" class="start-button" @click="goStartTodoPage(item)">
+                <button type="button" class="start-button" @click="goStartTodo(item)">
                   시작
                 </button>
               </span>
@@ -42,12 +42,12 @@
     <div class="edit-delete-buttons-modal" v-show="editDeleteModal" >
       <ul class="todo-flex">
         <li>
-          <button type="button" class="delete-button button--modal" @click="deleteTodoItem(todoItem)">
+          <button type="button" class="delete-button button--modal" @click="deleteTodo(todo)">
             <i class="fas fa-trash-alt"></i> 삭제하기
           </button>
         </li>
         <li>
-          <button type="button" class="edit-button button--modal"  @click="goEditTodoPage(todoItem)">
+          <button type="button" class="edit-button button--modal"  @click="goEditTodo(todo)">
             <i class="far fa-edit"></i> 수정하기
           </button>
         </li>
@@ -81,7 +81,7 @@ import 'swiper/components/pagination/pagination.scss';
  // install Swiper modules
 SwiperCore.use([Pagination, A11y]);
 
-interface TodoItem {
+interface Todo {
   date: string;
   title: string;
   description: string;
@@ -119,7 +119,7 @@ export default defineComponent({
     return {
       todolist: [] as object[],
       editDeleteModal: false,
-      todoItem: {} as object,
+      todo: {} as object,
       loadingModal: true,
       nothingTodoModal: false
     }
@@ -145,9 +145,9 @@ export default defineComponent({
     onSlideChange(): void {
         console.log('slide change');
     },
-    showEditDeleteModal (boolean: boolean, item: TodoItem) :void {
+    showEditDeleteModal (boolean: boolean, item: Todo) :void {
       this.editDeleteModal = boolean;
-      this.todoItem = item;
+      this.todo = item;
     },
     twoDigit(param:number): string {
       return ((param < 10 ? '0' : '') + param); 
@@ -172,7 +172,7 @@ export default defineComponent({
         });
       this.showNothingTodoModal(this.todolist);  
     },
-    async axiosDelete(item: TodoItem): Promise<void> {
+    async axiosDelete(item: Todo): Promise<void> {
       await axios
         .delete(`http://localhost:3005/todolist/${item.id}`)
         .then(response => {
@@ -182,20 +182,17 @@ export default defineComponent({
           console.debug(error);
         });
     },
-    goEditTodoPage(todoItem: any): void {
-      todoItem.type = 'edit'
-      todoItem.path= 'edit-todo'
-      this.$router.push({ name: "CreateEditTodo", params: todoItem });
+    goEditTodo(todo: any): void {
+      todo.type = 'edit'
+      todo.path= 'edit-todo'
+      this.$router.push({ name: "CreateEditTodo", params: todo });
     },
-    goCalendarPage(): void {
-      this.$router.push({ name: "Calendar" });
+    goStartTodo(todo: any): void {
+      // console.log(todo.hours);
+      // console.log(typeof todo.hours);
+      this.$router.push({ name: "StartTodo", params: todo });
     },
-    goStartTodoPage(todoItem: any): void {
-      // console.log(todoItem.hours);
-      // console.log(typeof todoItem.hours);
-      this.$router.push({ name: "StartTodo", params: todoItem });
-    },
-    async deleteTodoItem(item: TodoItem): Promise<void> {
+    async deleteTodo(item: Todo): Promise<void> {
       await this.axiosDelete(item);
       await this.axiosGet();
       this.editDeleteModal = false;

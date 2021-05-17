@@ -2,7 +2,7 @@ section<template>
   <main class="start-todo-page">
       <TodoTimer 
         :todoTime="todoTime"
-        @deleteTodoItem="deleteTodoItem"
+        @deleteTodo="deleteTodo"
       />
   </main>
 </template>
@@ -36,7 +36,7 @@ export default {
       type: String
     }
   },
-  data() {
+  data () {
     return {
       todoId: this.id,
       todoDate: this.date
@@ -57,27 +57,26 @@ export default {
   //   console.log('mounted-startTodo');
   // },
   computed: {
-    todoTime() {
-      let integer = parseInt(this.hours,10)*3600 + parseInt(this.minutes,10)*60 + parseInt(this.seconds,10);
-      console.log('computed',integer)
-      return integer
+    todoTime () {
+      let totalTime = parseInt(this.hours,10)*3600 + parseInt(this.minutes,10)*60 + parseInt(this.seconds,10);
+      console.log('computed',totalTime)
+      return totalTime
     }
   },
   methods: {
-    async deleteTodoItem() {
+    async deleteTodo () {
       this.getItem('id');
       const res = await axios
         .delete(`http://localhost:3005/todolist/${this.todoId}`)
         .then(response => {
           console.debug(response.data);
-          console.log('axios-delete');
         })
         .catch(error => {
           console.debug(error);
         });
-      this.goCalendarPage();
+      this.goCalendar();
     },
-    getItem(key) {
+    getItem (key) {
       if((key === 'id')&&(this.todoId === undefined)) {
         let json = sessionStorage.getItem('id');
         this.todoId = json;
@@ -91,15 +90,11 @@ export default {
         return
       }
     },
-    goCalendarPage() {
+    goCalendar () {
       const today = moment(new Date()).format("YYYY-MM-DD");
       this.getItem('date');
       (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.todoDate} });
       sessionStorage.clear();
-      // sessionStorage.removeItem('date');
-      // sessionStorage.removeItem('id');
-      // sessionStorage.removeItem('timer-status');
-      // sessionStorage.removeItem('total-time');
     }
   }
 } 

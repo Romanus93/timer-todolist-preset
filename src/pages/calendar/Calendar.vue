@@ -67,67 +67,66 @@ export default defineComponent({
     };
   },
   computed: {
-    inputedDay(): any {
+    inputedDay (): any {
       if (this.date != null) {
         return moment(this.date).format("YYYY-MM-DD");
       } else {
         return 0;
       }
     },
-    today(): string {
+    today (): string {
       return moment(new Date()).format('DD')
     },
-    calendar(): any {
+    calendar (): any {
       return this.$refs.calendar;
     }
   },
-  created() {
-    (this.$route.params.dateOfTodoItem !== undefined)&&this.resetDate();
+  created () {
+    (this.$route.params.todoDate !== undefined)&&this.resetDate();
     // console.log('created');
     // console.log('this.today',this.today);
   },
-  beforeMount() {
+  beforeMount () {
     // console.log('beforeMount');
     // console.log('this.today',this.today);
   },
-  mounted() {
+  mounted () {
     // console.log('mounted');
     // console.log('this.today',this.today);
   },
-  beforeUpdate() {
+  beforeUpdate () {
     // console.log('beforeUpdate');
     // console.log('this.date',this.date);
     // console.log('this.today',this.today);
   },
   methods: {
-    //type: string | null
-    goToday(): void {
+    goToday (): void {
       this.date = new Date();
       this.calendar.move(this.date);
       console.log('goToday');
     },
-    goYesterday(): void {
+    goYesterday (): void {
       let startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
       let step: number = 0;
       (this.inputedDay == startOfMonth ) ? step = -1 : step = 0;
       this.date = moment(this.date).subtract(1, "day").toDate();
       this.goMonth(step);
     },
-    goTomorrow(): void {
+    goTomorrow (): void {
       let endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
       let step: number = 0;
       (this.inputedDay == endOfMonth ) ? step = 1 : step = 0;
       this.date = moment(this.date).add(1, "day").toDate();
       this.goMonth(step);
     },
-    goMonth(step: number): void {
+    goMonth (step: number): void {
       // step: -1 이전 달, 0 이동 없음, 1 다음 달
       this.calendar.move(step, {
         transition: this.transition,
         position: this.position
       });
     },
-    goCreateTodo(): void {
+    goCreateTodo (): void {
       let todo:any = {
         date : this.inputedDay,
         path: 'create-todo',
@@ -135,9 +134,9 @@ export default defineComponent({
       };
       this.$router.push({ name: "CreateEditTodo" , params: todo });
     },
-    resetDate(): void{
+    resetDate (): void{
       let resetDate: any = moment(this.$route.params.todoDate);
-      console.log('restDateOfTodoItem', resetDate);
+      console.log('restDate', resetDate);
       console.log(typeof resetDate);
       this.date = resetDate._d;
     }

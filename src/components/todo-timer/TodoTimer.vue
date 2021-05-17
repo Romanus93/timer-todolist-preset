@@ -56,15 +56,17 @@ export default {
   created() {
     console.log('created-TodoTimer');
     if(isNaN(this.totalTime)) {
-      console.log('새로고침');
+      console.log('새로고침한 경우');
       let json = sessionStorage.getItem('total-time');
       this.totalTime = parseInt(json,10);
     } else {
       console.log('정상작동');
       sessionStorage.setItem('total-time', this.totalTime);
     };
+    console.log('a');
     this.timeAnimation = this.totalTime;
-    this.showButtons();
+    (sessionStorage.getItem('timer-status') !== null)&& this.showButtons();
+    // this.showButtons();
   },
   // beforeMount () {
   //   console.log('beforeMount-TodoTimer');
@@ -74,51 +76,50 @@ export default {
     ((this.timerStatus === 'ongoing')||(this.timerStatus === null))&&(this.startTimer());
     (this.timerStatus === 'off')&&(this.offTimerCondition());
   },
-  beforeUpdate() {
+  beforeUpdate () {
     console.log('beforeUpdate-TodoTimer');
     sessionStorage.setItem('total-time', this.totalTime);
     (this.totalTime === 0)&&(this.offTimer(0, 3000));
     this.timeAnimation = this.totalTime;
   },
   methods: {
-    twoDigitTime: function(time){
+    twoDigitTime (time) {
       return (time < 10 ? '0' : '') + time;
     },
-    startTimer: function() {
+    startTimer () {
       this.timer = setInterval(() => this.totalTime--, 1000);
       sessionStorage.setItem('timer-status','ongoing');
     },
-    pauseTimer(param) {
+    pauseTimer (param) {
       clearInterval(this.timer);
       sessionStorage.setItem('timer-status','pausing')
       this.on = false;
     },
-    restartTimer() {
+    restartTimer () {
       this.timer = setInterval(() => this.totalTime--, 1000);
       sessionStorage.setItem('timer-status','ongoing');
       this.on = true;
     },
-    offTimer(totalTime, delayTime) {
+    offTimer (totalTime, delayTime) {
       sessionStorage.setItem('timer-status','off');
       clearInterval(this.timer);
       this.totalTime = totalTime;
       this.buttons = false;
-      setTimeout(()=> this.$emit('deleteTodoItem'), delayTime);
+      setTimeout(()=> this.$emit('deleteTodo'), delayTime);
     },
-    offTimerCondition() {
+    offTimerCondition () {
       if(this.totalTime === -999) {
         console.log('-999');
-        this.$emit('deleteTodoItem');
+        this.$emit('deleteTodo');
       } else if( this.totalTime === 0 ) {
         console.log('0');
-        setTimeout(()=> this.$emit('deleteTodoItem'), 3000);
+        setTimeout(()=> this.$emit('deleteTodo'), 3000);
       } else {
-        console.error('-999도 0도 아님 확인해볼 것');
+        console.error('-999도 0도,타이머가 끝났을 때, 새로고침 안한경우');
       }
     },
     showButtons () {
       this.timerStatus = sessionStorage.getItem('timer-status');
-      console.log(this.on, this.buttons);
       if(this.timerStatus === 'pausing' ) {
         this.on = false;
         return
@@ -132,7 +133,7 @@ export default {
     }
   },
   computed: {
-    hours: function(){
+    hours () {
       if(this.totalTime !== -999) {
         const hours = Math.floor(this.totalTime / (60*60));
         return this.twoDigitTime(hours);   
@@ -140,8 +141,7 @@ export default {
         return this.twoDigitTime(0);
       }
     },
-    minutes: function(){
-      console.log('computed');
+    minutes () {
       if(this.totalTime !== -999) {
         const minutes = Math.floor((this.totalTime - (this.hours * 60 * 60)) / 60);
         return this.twoDigitTime(minutes);
@@ -149,7 +149,7 @@ export default {
         return this.twoDigitTime(0);
       }
     },
-    seconds: function() {
+    seconds () {
       if(this.totalTime !== -999) {
         const seconds = this.totalTime - (this.hours * 60 *60) - (this.minutes * 60);
         return this.twoDigitTime(seconds);

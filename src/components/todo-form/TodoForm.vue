@@ -4,14 +4,14 @@
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
         <span> {{ date }} </span>
-        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!showingPCalendar"> <i class="far fa-edit"></i> </button>
-        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="showingPCalendar"> <i class="far fa-check-circle"></i>  </button>
+        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!showingPocketCalendar"> <i class="far fa-edit"></i> </button>
+        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="showingPocketCalendar"> <i class="far fa-check-circle"></i>  </button>
         <todo-date
-        :dateOfTodoItem="date"
-        show="showingPCalendar"
+        :todoDate="date"
+        show="showingPocketCalendar"
         @checkDate="checkDate"
         @showPocketCalendar="showPocketCalendar"
-        v-if="showingPCalendar"
+        v-show="showingPocketCalendar"
         />
       </li>
       <li class="todo-title">
@@ -59,12 +59,12 @@
     </ul>
     <ul class="todo-flex create-edit-buttons-wrap">
       <li>
-        <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodoItem">
+        <button class="create-edit-button button--calendar button--calendar-image" @click="createUpdateTodo">
           <i class="fas fa-pencil-alt"></i>
         </button>
       </li>
       <li>
-        <button class="home-button button--calendar button--calendar-image" @click="goCalendarPage">
+        <button class="home-button button--calendar button--calendar-image" @click="goCalendar">
           <i class="fas fa-home"></i>
         </button>
       </li>
@@ -84,17 +84,26 @@ import moment from 'moment'
 import { defineComponent } from 'vue'
 import TodoDate from '/src/components/todo-Date/TodoDate.vue'
 
+interface ParamsTodo {
+  date: string;
+  title: string;
+  description: string;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
 export default defineComponent({
   name: 'TodoForm',
   components: {
     TodoDate
   },
   props: {
-    todoitem: {
+    todo: {
       type: Object as any
     }
   },
-  data() {
+  data () {
     return {
       date: '',
       title: '',
@@ -102,23 +111,24 @@ export default defineComponent({
       hours: 0,
       minutes: 0,
       seconds: 0,
-      showingPCalendar: false,
+      showingPocketCalendar: false,
       showingWarning: false,
     }
   },
-  beforeCreate(){
+  beforeCreate () {
     // console.log('todoForm--beforeCreated');
   },
   created () {
-    if(this.todoitem.type === 'create'){
-      this.date = this.todoitem.date;
+    if(this.todo.type === 'create'){
+      this.date = this.todo.date;
     } else {
-      this.date = this.todoitem.date;
-      this.title = this.todoitem.title;
-      this.description = this.todoitem.description;
-      this.hours = this.todoitem.hours;
-      this.minutes = this.todoitem.minutes;
-      this.seconds = this.todoitem.seconds;
+      console.log('this.todo.type === edit',this.todo.type);
+      this.date = this.todo.date;
+      this.title = this.todo.title;
+      this.description = this.todo.description;
+      this.hours = this.todo.hours;
+      this.minutes = this.todo.minutes;
+      this.seconds = this.todo.seconds;
     };
   },
   // beforeMount() {
@@ -133,13 +143,13 @@ export default defineComponent({
     this.sec();
   },
   methods: {
-    async createUpdateTodoItem() {
+    async createUpdateTodo () : Promise<void> {
       let totalTime: number = this.hours + this.minutes + this.seconds;
       if(totalTime === 0 ){
         this.showingWarning = true;
         return
       } else {
-          let params = {
+          let params: ParamsTodo = {
           date: this.date,
           title: this.title,
           description: this.description,
@@ -147,25 +157,23 @@ export default defineComponent({
           minutes: this.minutes,
           seconds: this.seconds
           };
-        // if(this.todoitem.type === 'edit' && this.todoitem ) {
-        if(this.todoitem.type === 'edit') {
+        if(this.todo.type === 'edit') {
           const res = await axios
-          .put("http://localhost:3005/todolist/"+this.todoitem.id, params)
+          .put("http://localhost:3005/todolist/"+this.todo.id, params)
           .then(response => {
             console.debug(response.data);
-            this.goCalendarPage();
+            this.goCalendar();
           })
           .catch(error => {
             console.debug(error);
           });
         } else {
           console.log(params.hours, typeof params.hours);
-          
           const res = await axios
           .post("http://localhost:3005/todolist", params)
           .then(response => {
             console.debug(response.data);
-            this.goCalendarPage();
+            this.goCalendar();
           })
           .catch(error => {
             console.debug(error);
@@ -173,42 +181,37 @@ export default defineComponent({
         }
       }
     },
-    hrs(): any {
+    hrs (): void {
+      console.log('hrs');
       if(this.hours >= 100) {
         this.hours = 0;
-        return this.hours;
       } else {
         this.hours = Math.floor(this.hours);
-        return Math.floor(this.hours);
       }
     },
-    min(): any {
+    min (): void {
       if(this.minutes >= 60) {
         this.minutes = 0;
-        return this.minutes
       } else {
         this.minutes = Math.floor(this.minutes);
-        return Math.floor(this.minutes)
       }
     },
-    sec(): any {
+    sec (): void {
       if(this.seconds >= 60) {
         this.seconds = 0;
-        return this.seconds
       } else {
         this.seconds = Math.floor(this.seconds)
-        return Math.floor(this.seconds)
       }
     },
-    goCalendarPage(): void {
-      sessionStorage.removeItem('todoitem');
-      const today: string = moment(new Date()).format("YYYY-MM-DD");
-      (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {dateOfTodoItem: this.date} });
+    goCalendar (): void {
+      sessionStorage.removeItem('todo');
+      let today: string = moment(new Date()).format("YYYY-MM-DD");
+      (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.date} });
     },
-    showPocketCalendar(param: boolean):void {
-      this.showingPCalendar = param;
+    showPocketCalendar (param: boolean): void {
+      this.showingPocketCalendar = param;
     },
-    checkDate(changedDate: any) {
+    checkDate (changedDate: string): void {
       this.date = changedDate;
     }
   }
