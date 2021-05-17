@@ -75,7 +75,6 @@ export default defineComponent({
       }
     },
     today(): string {
-      console.log('computed today');
       return moment(new Date()).format('DD')
     },
     calendar(): any {

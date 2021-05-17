@@ -138,7 +138,7 @@ export default defineComponent({
     setTimeout(()=>this.axiosGet(), 500);
   },
   methods: {
-    // Swiper func - onSwiper, onSlideChange
+    // Swiper function - onSwiper, onSlideChange
     onSwiper(swiper: any): void {
         console.log(swiper);
     },
