@@ -159,7 +159,6 @@ export default defineComponent({
             console.debug(error);
           });
         } else {
-          console.log(params.hours, typeof params.hours);
           const res = await axios
           .post("http://localhost:3005/todolist", params)
           .then(response => {

@@ -50,11 +50,7 @@ export default {
       timerStatus: null
     }
   },
-  // beforeCreate () {
-  //   console.log('beforecreated-TodoTimer');
-  // },
   created() {
-    console.log('created-TodoTimer');
     if(isNaN(this.totalTime)) {
       console.log('새로고침한 경우');
       let json = sessionStorage.getItem('total-time');
@@ -63,46 +59,43 @@ export default {
       console.log('정상작동');
       sessionStorage.setItem('total-time', this.totalTime);
     };
-    console.log('a');
     this.timeAnimation = this.totalTime;
     (sessionStorage.getItem('timer-status') !== null)&& this.showButtons();
-    // this.showButtons();
   },
-  // beforeMount () {
-  //   console.log('beforeMount-TodoTimer');
-  // },
   mounted () {
-    console.log('mounted-TodoTimer');
     ((this.timerStatus === 'ongoing')||(this.timerStatus === null))&&(this.startTimer());
     (this.timerStatus === 'off')&&(this.offTimerCondition());
   },
   beforeUpdate () {
-    console.log('beforeUpdate-TodoTimer');
     sessionStorage.setItem('total-time', this.totalTime);
     (this.totalTime === 0)&&(this.offTimer(0, 3000));
     this.timeAnimation = this.totalTime;
   },
   methods: {
+    setIntervalandItem () {
+      this.timer = setInterval(() => this.totalTime--, 1000);
+      sessionStorage.setItem('timer-status','ongoing');
+    },
+    clearIntervalandItem (timerStatus) {
+      clearInterval(this.timer);
+      sessionStorage.setItem('timer-status',timerStatus);
+    },
     twoDigitTime (time) {
       return (time < 10 ? '0' : '') + time;
     },
     startTimer () {
-      this.timer = setInterval(() => this.totalTime--, 1000);
-      sessionStorage.setItem('timer-status','ongoing');
+      this.setIntervalandItem();
     },
-    pauseTimer (param) {
-      clearInterval(this.timer);
-      sessionStorage.setItem('timer-status','pausing')
+    pauseTimer () {
+      this.clearIntervalandItem('pausing');
       this.on = false;
     },
     restartTimer () {
-      this.timer = setInterval(() => this.totalTime--, 1000);
-      sessionStorage.setItem('timer-status','ongoing');
+      this.setIntervalandItem();
       this.on = true;
     },
     offTimer (totalTime, delayTime) {
-      sessionStorage.setItem('timer-status','off');
-      clearInterval(this.timer);
+      this.clearIntervalandItem('off');
       this.totalTime = totalTime;
       this.buttons = false;
       setTimeout(()=> this.$emit('deleteTodo'), delayTime);
