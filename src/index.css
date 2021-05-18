@@ -49,10 +49,10 @@ button {
 }
 
 .button--calendar {
-  width: 58px;
-  height: 50px;
-  font-size: var(--font-sm);
-  padding-top: 17px;
+  width: 60px;
+  height: 70px;
+  font-size: var(--font-md);
+  padding-top: 19px;
   background-color: var(--light-blue);
   /* background-color: rgba(0, 0, 0, 0); */
 }
