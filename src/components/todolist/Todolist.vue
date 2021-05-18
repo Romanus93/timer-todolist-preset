@@ -159,7 +159,7 @@ export default defineComponent({
     async axiosGet(): Promise<void> {
       console.log('axiosGet이 실행');
       console.log('this.todolist.length  '+ this.todolist.length);
-      await axios
+      const res = await axios
         .get(`http://localhost:3005/todolist?date=${this.inputedDay}`)
         .then((response) => {
           // handle success
@@ -173,7 +173,7 @@ export default defineComponent({
       this.showNothingTodoModal(this.todolist);  
     },
     async axiosDelete(item: Todo): Promise<void> {
-      await axios
+      const res = await axios
         .delete(`http://localhost:3005/todolist/${item.id}`)
         .then(response => {
           console.debug(response);

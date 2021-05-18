@@ -204,7 +204,6 @@ export default defineComponent({
     },
     goCalendar (condition: string): void {
       sessionStorage.removeItem('todo');
-      console.log('condition', condition);
       if( condition === 'noAxios') {
         this.$router.push({name: "Calendar" })
       } else {

@@ -42,20 +42,10 @@ export default {
       todoDate: this.date
     }
   },
-  // beforeCreate () {
-  //   console.log('beforeCreated-startTodo');
-  // },
   created () {
-    // console.log('created-startTodo');
     (this.todoId)&&( sessionStorage.setItem('id',this.todoId) );
     (this.todoDate)&& ( sessionStorage.setItem('date',this.todoDate) );
   },
-  // beforeMount() {
-  //   console.log('beforeMount-startTodo');
-  // },
-  // mounted() {
-  //   console.log('mounted-startTodo');
-  // },
   computed: {
     todoTime () {
       let totalTime = parseInt(this.hours,10)*3600 + parseInt(this.minutes,10)*60 + parseInt(this.seconds,10);
