@@ -115,9 +115,6 @@ export default defineComponent({
       showingWarning: false,
     }
   },
-  beforeCreate () {
-    // console.log('todoForm--beforeCreated');
-  },
   created () {
     if(this.todo.type === 'create'){
       this.date = this.todo.date;
@@ -131,16 +128,10 @@ export default defineComponent({
       this.seconds = this.todo.seconds;
     };
   },
-  // beforeMount() {
-  //   console.log('todoForm--beforeMount');
-  // },
-  // mounted() {
-  //   console.log('todoForm--mounted');
-  // },
   beforeUpdate () {
     this.hrs();
-    this.min();
-    this.sec();
+    this.minSec(this.seconds);
+    this.minSec(this.minutes);
   },
   methods: {
     async createUpdateTodo () : Promise<void> {
@@ -188,18 +179,11 @@ export default defineComponent({
         this.hours = Math.floor(this.hours);
       }
     },
-    min (): void {
-      if(this.minutes >= 60) {
-        this.minutes = 0;
+    minSec (minOrSec: number): void {
+      if(minOrSec >= 60) {
+        minOrSec = 0;
       } else {
-        this.minutes = Math.floor(this.minutes);
-      }
-    },
-    sec (): void {
-      if(this.seconds >= 60) {
-        this.seconds = 0;
-      } else {
-        this.seconds = Math.floor(this.seconds)
+        minOrSec = Math.floor(minOrSec);
       }
     },
     goCalendar (condition: string): void {
