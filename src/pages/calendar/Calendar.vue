@@ -68,7 +68,6 @@ export default defineComponent({
   },
   computed: {
     inputtedDate (): any {
-      // console.log(this.date);
       if (this.date != null) {
         return moment(this.date).format("YYYY-MM-DD");
       } else {
@@ -83,24 +82,7 @@ export default defineComponent({
     }
   },
   created () {
-    console.log(this.$route);
     (this.$route.params.todoDate !== undefined)&&this.resetDate();
-    // console.log('created');
-    // console.log('this.today',this.today);
-  },
-  beforeMount () {
-    // console.log('beforeMount');
-    // console.log('this.today',this.today);
-  },
-  mounted () {
-    // console.log('mounted');
-    // console.log('this.today',this.today);
-  },
-  beforeUpdate () {
-    console.log('beforeUpdate-calendar');
-    console.log(this.date);
-    // console.log('this.date',this.date);
-    // console.log('this.today',this.today);
   },
   methods: {
     goToday (): void {
@@ -137,10 +119,7 @@ export default defineComponent({
       this.$router.push({ name: "CreateEditTodo" , params: todo });
     },
     resetDate (): void{
-      console.log(this.$route);
       let resetDate: any = moment(this.$route.params.todoDate);
-      console.log('restDate', resetDate);
-      console.log(typeof resetDate);
       this.date = resetDate._d;
     }
   }
