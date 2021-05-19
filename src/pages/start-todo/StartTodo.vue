@@ -71,7 +71,7 @@ export default {
         this.todoId = json;
         return
       } else {
-        console.log('key === date', key === 'date')
+        //'key === date', key === 'date'
         let json = sessionStorage.getItem('date');
         this.todoDate = json;
         return

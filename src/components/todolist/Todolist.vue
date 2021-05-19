@@ -134,11 +134,7 @@ export default defineComponent({
     }
   },
   created () {
-    // console.log('created-Todolist');
     setTimeout(()=>this.axiosGet(), 500);
-  },
-  beforeUpdate() {
-    // console.log('beforeUpdate-Todolist');
   },
   methods: {
     // Swiper function - onSwiper, onSlideChange
@@ -160,14 +156,11 @@ export default defineComponent({
       this.nothingTodoModal = (param.length === 0)? true : false;
     },
     async axiosGet(): Promise<void> {
-      console.log('axiosGet이 실행');
-      // console.log('this.todolist.length  '+ this.todolist.length);
       const res = await axios
         .get(`http://localhost:3005/todolist?date=${this.inputtedDate}`)
         .then((response) => {
           // handle success
           console.debug(response);
-          console.log('axiosGet이 실행');
           this.todolist = response.data;
         })
         .catch((error): void => {
@@ -177,12 +170,10 @@ export default defineComponent({
       this.showNothingTodoModal(this.todolist);  
     },
     async axiosDelete(item: Todo): Promise<void> {
-      console.log('axiosDelete이 실행');
       const res = await axios
         .delete(`http://localhost:3005/todolist/${item.id}`)
         .then(response => {
           console.debug(response);
-          console.log('axiosDelete이 실행');
         })
         .catch(error => {
           console.debug(error);
@@ -194,8 +185,6 @@ export default defineComponent({
       this.$router.push({ name: "CreateEditTodo", params: todo });
     },
     goStartTodo(todo: any): void {
-      // console.log(todo.hours);
-      // console.log(typeof todo.hours);
       this.$router.push({ name: "StartTodo", params: todo });
     },
     async goDeleteTodo(item: Todo): Promise<void> {

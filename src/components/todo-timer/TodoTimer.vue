@@ -102,8 +102,11 @@ export default {
       setTimeout(()=> this.$emit('deleteTodo'), delayTime);
     },
     offTimerCondition () {
-      (this.totalTime === -999)&&(this.$emit('deleteTodo'))
-      ( this.totalTime === 0 )&&(setTimeout(()=> this.$emit('deleteTodo'), 3000))
+      if( this.totalTime === -999) {
+        this.$emit('deleteTodo');
+      } else {
+        setTimeout(() => this.$emit('deleteTodo'), 3000)
+      }
     },
     showButtons () {
       this.timerStatus = sessionStorage.getItem('timer-status');
