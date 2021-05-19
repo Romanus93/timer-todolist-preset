@@ -42,7 +42,7 @@
     <div class="edit-delete-buttons-modal" v-show="editDeleteModal" >
       <ul class="todo-flex">
         <li>
-          <button type="button" class="delete-button button--modal" @click="deleteTodo(todo)">
+          <button type="button" class="delete-button button--modal" @click="goDeleteTodo(todo)">
             <i class="fas fa-trash-alt"></i> 삭제하기
           </button>
         </li>
@@ -106,7 +106,7 @@ declare module "axios" {
 export default defineComponent({
   name: 'TodoList',
   props: {
-    inputedDay: {
+    inputtedDate: {
       type: [ Number, String ],
       required: true
     }
@@ -125,8 +125,7 @@ export default defineComponent({
     }
   },
   watch: {
-    inputedDay(newValue, oldValue) {
-      console.log('watch 실행되었습니다.');
+    inputtedDate(newValue, oldValue) {
       if(newValue == 0){
         return
       } else {
@@ -134,8 +133,12 @@ export default defineComponent({
       }
     }
   },
-  created() {
+  created () {
+    // console.log('created-Todolist');
     setTimeout(()=>this.axiosGet(), 500);
+  },
+  beforeUpdate() {
+    // console.log('beforeUpdate-Todolist');
   },
   methods: {
     // Swiper function - onSwiper, onSlideChange
@@ -158,12 +161,13 @@ export default defineComponent({
     },
     async axiosGet(): Promise<void> {
       console.log('axiosGet이 실행');
-      console.log('this.todolist.length  '+ this.todolist.length);
+      // console.log('this.todolist.length  '+ this.todolist.length);
       const res = await axios
-        .get(`http://localhost:3005/todolist?date=${this.inputedDay}`)
+        .get(`http://localhost:3005/todolist?date=${this.inputtedDate}`)
         .then((response) => {
           // handle success
           console.debug(response);
+          console.log('axiosGet이 실행');
           this.todolist = response.data;
         })
         .catch((error): void => {
@@ -173,10 +177,12 @@ export default defineComponent({
       this.showNothingTodoModal(this.todolist);  
     },
     async axiosDelete(item: Todo): Promise<void> {
+      console.log('axiosDelete이 실행');
       const res = await axios
         .delete(`http://localhost:3005/todolist/${item.id}`)
         .then(response => {
           console.debug(response);
+          console.log('axiosDelete이 실행');
         })
         .catch(error => {
           console.debug(error);
@@ -192,7 +198,7 @@ export default defineComponent({
       // console.log(typeof todo.hours);
       this.$router.push({ name: "StartTodo", params: todo });
     },
-    async deleteTodo(item: Todo): Promise<void> {
+    async goDeleteTodo(item: Todo): Promise<void> {
       await this.axiosDelete(item);
       await this.axiosGet();
       this.editDeleteModal = false;

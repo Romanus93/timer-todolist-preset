@@ -52,18 +52,19 @@ export default {
   },
   created() {
     if(isNaN(this.totalTime)) {
-      console.log('새로고침한 경우');
+      // 새로고침
       let json = sessionStorage.getItem('total-time');
       this.totalTime = parseInt(json,10);
     } else {
-      console.log('정상작동');
+      // 새로고침 안함, 정상적으로 작동
       sessionStorage.setItem('total-time', this.totalTime);
     };
     this.timeAnimation = this.totalTime;
     (sessionStorage.getItem('timer-status') !== null)&& this.showButtons();
   },
   mounted () {
-    ((this.timerStatus === 'ongoing')||(this.timerStatus === null))&&(this.startTimer());
+    (this.timerStatus === null)&&(this.setItem(),this.startTimer());
+    (this.timerStatus === 'ongoing')&&(this.startTimer());
     (this.timerStatus === 'off')&&(this.offTimerCondition());
   },
   beforeUpdate () {
@@ -72,26 +73,26 @@ export default {
     this.timeAnimation = this.totalTime;
   },
   methods: {
-    setIntervalandItem () {
-      this.timer = setInterval(() => this.totalTime--, 1000);
+    setItem() {
       sessionStorage.setItem('timer-status','ongoing');
     },
+    startTimer () {
+      this.timer = setInterval(() => this.totalTime--, 1000);
+    },
     clearIntervalandItem (timerStatus) {
-      clearInterval(this.timer);
       sessionStorage.setItem('timer-status',timerStatus);
+      clearInterval(this.timer);
     },
     twoDigitTime (time) {
       return (time < 10 ? '0' : '') + time;
-    },
-    startTimer () {
-      this.setIntervalandItem();
     },
     pauseTimer () {
       this.clearIntervalandItem('pausing');
       this.on = false;
     },
     restartTimer () {
-      this.setIntervalandItem();
+      this.setItem();
+      this.startTimer();
       this.on = true;
     },
     offTimer (totalTime, delayTime) {
@@ -101,28 +102,13 @@ export default {
       setTimeout(()=> this.$emit('deleteTodo'), delayTime);
     },
     offTimerCondition () {
-      if(this.totalTime === -999) {
-        console.log('-999');
-        this.$emit('deleteTodo');
-      } else if( this.totalTime === 0 ) {
-        console.log('0');
-        setTimeout(()=> this.$emit('deleteTodo'), 3000);
-      } else {
-        console.error('-999도 0도,타이머가 끝났을 때, 새로고침 안한경우');
-      }
+      (this.totalTime === -999)&&(this.$emit('deleteTodo'))
+      ( this.totalTime === 0 )&&(setTimeout(()=> this.$emit('deleteTodo'), 3000))
     },
     showButtons () {
       this.timerStatus = sessionStorage.getItem('timer-status');
-      if(this.timerStatus === 'pausing' ) {
-        this.on = false;
-        return
-      } else if ( this.timerStatus === 'off' ) {
-        this.buttons = false;
-        return
-      } else {
-        console.log(this.on, this.buttons);
-        return
-      }
+      (this.timerStatus === 'pausing' )&&(this.on = false);
+      (this.timerStatus === 'off' )&&(this.buttons = false);
     }
   },
   computed: {

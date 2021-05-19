@@ -18,40 +18,22 @@ export default defineComponent({
       todo: { } as object
     }
   },
-  // beforeCreate(){
-  //   console.log('brforeCreated--editTodo-page');
-  //   console.log(this.$route.params.type);
-  //   console.log(this.sessionSetItem);
-  // },
   created () {
     console.log('created--editTodo-page');
     console.log(this.todo);
-    if(this.$route.params.type) {
-      console.log('$route.params.type 존재',this.$route.params.type);
+    this.selectType();
+  },
+  methods: {
+    selectType () :void {
+      if(this.$route.params.type) {
       this.sessionSetItem(this.$route.params);
-      console.log('todo',this.todo);
       this.todo = this.$route.params;
-      console.log('todo',this.todo);
+      console.log(this.todo);
     } else {
-      console.log('$route.params.type 존재 안함',this.$route.params.type);
       this.sessionGetItem()
     }
-    console.log('created 에서 함수 실행했음');
-    
-  },
-  beforeMount () {
-    console.log('beforeMount--editTodo-page');
-    console.log(this.todo);
-  },
-  // mounted () {
-  //   console.log('mounted--editTodo-page');
-  // },
-  // beforeUpdate () {
-  //   console.log('beforeUpdate--editTodo-page');
-  // }, 
-  methods: {
+    },
     sessionSetItem (params: object) {
-      console.log('aa');
       let todo:string = JSON.stringify(params);
       sessionStorage.setItem('todo',todo);
     },

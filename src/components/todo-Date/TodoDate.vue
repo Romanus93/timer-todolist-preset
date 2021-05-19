@@ -26,17 +26,16 @@ export default defineComponent({
     }
   },
   beforeUpdate () {
-    console.log('chnageDate-todoDate');
     this.changeDate();
   },
   methods: {
-    sendDate (changedDate: string): void {
-      this.$emit('checkDate',changedDate);
-    },
     changeDate (): void {
       (this.date === null)&&(this.date = this.todoDate)
-      let changedDate: string = moment(this.date).format("YYYY-MM-DD")
+      let changedDate: string = moment(this.date).format("YYYY-MM-DD");
       this.sendDate(changedDate);
+    },
+    sendDate (changedDate: string): void {
+      this.$emit('checkDate',changedDate);
     }
   },
 })

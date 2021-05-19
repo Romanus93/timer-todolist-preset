@@ -49,13 +49,12 @@ export default {
   computed: {
     todoTime () {
       let totalTime = parseInt(this.hours,10)*3600 + parseInt(this.minutes,10)*60 + parseInt(this.seconds,10);
-      console.log('computed',totalTime)
       return totalTime
     }
   },
   methods: {
     async deleteTodo () {
-      this.getItem('id');
+      (this.todoId === undefined)&&(this.getItem('id'));
       const res = await axios
         .delete(`http://localhost:3005/todolist/${this.todoId}`)
         .then(response => {
@@ -67,22 +66,20 @@ export default {
       this.goCalendar();
     },
     getItem (key) {
-      if((key === 'id')&&(this.todoId === undefined)) {
+      if(key === 'id') {
         let json = sessionStorage.getItem('id');
         this.todoId = json;
         return
-      } else if ((key ==='date')&&(this.todoDate === undefined)) {
+      } else {
+        console.log('key === date', key === 'date')
         let json = sessionStorage.getItem('date');
         this.todoDate = json;
-        return
-      } else {
-        console.log('this.todoDate가 undefined가 아님.');
         return
       }
     },
     goCalendar () {
-      const today = moment(new Date()).format("YYYY-MM-DD");
-      this.getItem('date');
+      (this.todoDate === undefined)&&(this.getItem('date'));
+      let today = moment(new Date()).format("YYYY-MM-DD");
       (today == this.todoDate )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.todoDate} });
       sessionStorage.clear();
     }

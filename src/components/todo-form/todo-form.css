@@ -80,10 +80,6 @@ li.todo-description input {
   width: 180px;
 }
 
-.time-wrap {
-  border: 1px solid yellow;
-}
-
 .todo-info .time-hms {
   display: inline-block;
   width: 2.5em;
@@ -95,9 +91,9 @@ li.todo-description input {
   font-size: var(--font-xx-sm);
 }
 
-.time-wrap:nth-child(2) label,
-.time-wrap:nth-last-child(1) label {
-  padding-left: 0.2em;
+.todo-time div:nth-child(3) label,
+.todo-time div:nth-child(5) label {
+  padding-left: 0.5em;
 }
 
 .create-edit-buttons-wrap {

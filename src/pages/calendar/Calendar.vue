@@ -13,17 +13,17 @@
       ></v-date-picker>
     </section>
     <section class="todolist-component">
-      <div v-show="inputedDay">
+      <div v-show="inputtedDate">
         <todo-list
-          :inputedDay="inputedDay"
+          :inputtedDate="inputtedDate"
         ></todo-list>
       </div>
       <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
-      <div class="date-none-modal" v-show="!inputedDay">
+      <div class="date-none-modal" v-show="!inputtedDate">
         <p class="date-none-modal__text">날짜를 선택해주세요!</p>
       </div>
     </section>
-    <section class="todo-flex action-buttons-wrap" v-show="inputedDay">
+    <section class="todo-flex action-buttons-wrap" v-show="inputtedDate">
         <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <div>
           <button type="button" class="yesterday-button button--calendar button--calendar-image" @click="goYesterday">
@@ -67,7 +67,8 @@ export default defineComponent({
     };
   },
   computed: {
-    inputedDay (): any {
+    inputtedDate (): any {
+      // console.log(this.date);
       if (this.date != null) {
         return moment(this.date).format("YYYY-MM-DD");
       } else {
@@ -82,6 +83,7 @@ export default defineComponent({
     }
   },
   created () {
+    console.log(this.$route);
     (this.$route.params.todoDate !== undefined)&&this.resetDate();
     // console.log('created');
     // console.log('this.today',this.today);
@@ -95,7 +97,8 @@ export default defineComponent({
     // console.log('this.today',this.today);
   },
   beforeUpdate () {
-    // console.log('beforeUpdate');
+    console.log('beforeUpdate-calendar');
+    console.log(this.date);
     // console.log('this.date',this.date);
     // console.log('this.today',this.today);
   },
@@ -103,19 +106,18 @@ export default defineComponent({
     goToday (): void {
       this.date = new Date();
       this.calendar.move(this.date);
-      console.log('goToday');
     },
     goYesterday (): void {
       let startOfMonth : string = moment(this.date).startOf('month').format('YYYY-MM-DD');
       let step: number = 0;
-      (this.inputedDay == startOfMonth ) ? step = -1 : step = 0;
+      (this.inputtedDate == startOfMonth ) ? step = -1 : step = 0;
       this.date = moment(this.date).subtract(1, "day").toDate();
       this.goMonth(step);
     },
     goTomorrow (): void {
       let endOfMonth : string = moment(this.date).endOf("month").format("YYYY-MM-DD");
       let step: number = 0;
-      (this.inputedDay == endOfMonth ) ? step = 1 : step = 0;
+      (this.inputtedDate == endOfMonth ) ? step = 1 : step = 0;
       this.date = moment(this.date).add(1, "day").toDate();
       this.goMonth(step);
     },
@@ -128,13 +130,14 @@ export default defineComponent({
     },
     goCreateTodo (): void {
       let todo:any = {
-        date : this.inputedDay,
+        date : this.inputtedDate,
         path: 'create-todo',
         type: 'create'
       };
       this.$router.push({ name: "CreateEditTodo" , params: todo });
     },
     resetDate (): void{
+      console.log(this.$route);
       let resetDate: any = moment(this.$route.params.todoDate);
       console.log('restDate', resetDate);
       console.log(typeof resetDate);

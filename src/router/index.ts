@@ -8,7 +8,6 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Calendar",
-    props:true,
     component: Calendar
   },
   {

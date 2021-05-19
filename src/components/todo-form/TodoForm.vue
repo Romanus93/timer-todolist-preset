@@ -45,14 +45,14 @@
           :
         </div>
         <div class="time-wrap">
-          <label for="minutes">&nbsp분</label>
+          <label for="minutes">분</label>
           <input type="number" id="minutes" class="time-hms" placeholder="0" min="0" v-model.number="minutes" oninput="this.value = Math.abs(this.value)"/>
         </div>
         <div class="time-separator">
           :
         </div>  
         <div class="time-wrap">
-          <label for="seconds">&nbsp초</label>
+          <label for="seconds">초</label>
           <input type="number" id="seconds" class="time-hms" placeholder="0" min="0" v-model.number="seconds" oninput="this.value = Math.abs(this.value)" />
         </div>
       </li>
@@ -64,7 +64,7 @@
         </button>
       </li>
       <li>
-        <button class="home-button button--calendar button--calendar-image" @click="goCalendar('noAxios')">
+        <button class="home-button button--calendar button--calendar-image" @click="goCalendar()">
           <i class="fas fa-home"></i>
         </button>
       </li>
@@ -130,47 +130,10 @@ export default defineComponent({
   },
   beforeUpdate () {
     this.hrs();
-    this.minSec(this.seconds);
-    this.minSec(this.minutes);
+    this.min();
+    this.sec();
   },
   methods: {
-    async createUpdateTodo () : Promise<void> {
-      let totalTime: number = this.hours + this.minutes + this.seconds;
-      if(totalTime === 0 ){
-        this.showingWarning = true;
-        return
-      } else {
-          let params: ParamsTodo = {
-          date: this.date,
-          title: this.title,
-          description: this.description,
-          hours: this.hours,
-          minutes: this.minutes,
-          seconds: this.seconds
-          };
-        if(this.todo.type === 'edit') {
-          const res = await axios
-          .put("http://localhost:3005/todolist/"+this.todo.id, params)
-          .then(response => {
-            console.debug(response.data);
-            this.goCalendar('Axios');
-          })
-          .catch(error => {
-            console.debug(error);
-          });
-        } else {
-          const res = await axios
-          .post("http://localhost:3005/todolist", params)
-          .then(response => {
-            console.debug(response.data);
-            this.goCalendar('Axios');
-          })
-          .catch(error => {
-            console.debug(error);
-          });
-        }
-      }
-    },
     hrs (): void {
       if(this.hours >= 100) {
         this.hours = 0;
@@ -178,27 +141,76 @@ export default defineComponent({
         this.hours = Math.floor(this.hours);
       }
     },
-    minSec (minOrSec: number): void {
-      if(minOrSec >= 60) {
-        minOrSec = 0;
+    min (): void {
+      if(this.minutes >= 60) {
+        this.minutes = 0;
       } else {
-        minOrSec = Math.floor(minOrSec);
+        this.minutes = Math.floor(this.minutes);
       }
     },
-    goCalendar (condition: string): void {
-      sessionStorage.removeItem('todo');
-      if( condition === 'noAxios') {
-        this.$router.push({name: "Calendar" })
+    sec (): void {
+      if(this.seconds >= 60) {
+        this.seconds = 0;
       } else {
-        let today: string = moment(new Date()).format("YYYY-MM-DD");
-        (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.date} });  
+        this.seconds = Math.floor(this.seconds);
       }
+    },
+    goCalendar (): void {
+      sessionStorage.removeItem('todo');
+      let today: string = moment(new Date()).format("YYYY-MM-DD");
+      (today == this.date )? this.$router.push({name: "Calendar" }) : this.$router.push({name: "Calendar", params: {todoDate: this.date} });
     },
     showPocketCalendar (param: boolean): void {
       this.showingPocketCalendar = param;
     },
     checkDate (changedDate: string): void {
       this.date = changedDate;
+    },
+    createUpdateTodo () : void {
+      let totalTime: number = this.hours + this.minutes + this.seconds;
+      if(totalTime === 0 ){
+        this.showingWarning = true;
+        return
+      } else {
+        this.postOrPut();
+      }
+    },
+    postOrPut() : void {
+      let params: ParamsTodo = {
+        date: this.date,
+        title: this.title,
+        description: this.description,
+        hours: this.hours,
+        minutes: this.minutes,
+        seconds: this.seconds
+      };
+      if(this.todo.type === 'edit') {
+        this.axiosPut(params);
+      } else {
+        this.axiosPost(params);
+      }
+    },
+    async axiosPut(params: ParamsTodo ): Promise<void> {
+      const res = await axios
+          .put("http://localhost:3005/todolist/"+this.todo.id, params)
+          .then(response => {
+            console.debug(response.data);
+            this.goCalendar();
+          })
+          .catch(error => {
+            console.debug(error);
+          });
+    },
+    async axiosPost(params: ParamsTodo ): Promise<void> {
+      const res = await axios
+          .post("http://localhost:3005/todolist", params)
+          .then(response => {
+            console.debug(response.data);
+            this.goCalendar();
+          })
+          .catch(error => {
+            console.debug(error);
+          });
     }
   }
 })
