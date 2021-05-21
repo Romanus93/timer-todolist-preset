@@ -8,42 +8,6 @@
       "minutes": 0,
       "seconds": 5,
       "id": 15
-    },
-    {
-      "date": "2021-05-28",
-      "title": "",
-      "description": "",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 5,
-      "id": 17
-    },
-    {
-      "date": "2021-05-27",
-      "title": "2021-04-29",
-      "description": "",
-      "hours": 0,
-      "minutes": "0",
-      "seconds": "5",
-      "id": 18
-    },
-    {
-      "date": "2021-05-27",
-      "title": "",
-      "description": "",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 5,
-      "id": 19
-    },
-    {
-      "date": "2021-05-27",
-      "title": "",
-      "description": "",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 5,
-      "id": 20
     }
   ]
 }

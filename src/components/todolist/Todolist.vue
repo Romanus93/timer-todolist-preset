@@ -52,7 +52,7 @@
           </button>
         </li>
         <li>
-          <button type="button" class="cancle-button button--modal" @click="showEditDeleteModal(false)">
+          <button type="button" class="cancle-button button--modal" @click="editDeleteModal = false">
             <i class="fas fa-times"></i> 취소
           </button>
         </li>
@@ -91,17 +91,17 @@ interface Todo {
   id: number;
 }
 
-declare module "axios" {
-  interface AxiosRequestConfig {
-    title: string;
-    description: string;
-    id: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    date?: string;
-  }
-}
+// declare module "axios" {
+//   interface AxiosRequestConfig {
+//     title: string;
+//     description: string;
+//     id: number;
+//     hours: number;
+//     minutes: number;
+//     seconds: number;
+//     date?: string;
+//   }
+// }
 
 export default defineComponent({
   name: 'TodoList',
@@ -117,9 +117,17 @@ export default defineComponent({
     },
   data() {
     return {
-      todolist: [] as object[],
+      todolist: [] as Array<Todo>,
       editDeleteModal: false,
-      todo: {} as object,
+      todo: {
+        date: '',
+        title: '',
+        description: '',
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        id: 0
+      } as Todo,
       loadingModal: true,
       nothingTodoModal: false
     }
@@ -144,7 +152,7 @@ export default defineComponent({
     onSlideChange(): void {
         console.log('slide change');
     },
-    showEditDeleteModal (boolean: boolean, item: Todo) :void {
+    showEditDeleteModal (boolean: boolean, item: any) :void {
       this.editDeleteModal = boolean;
       this.todo = item;
     },
@@ -169,9 +177,9 @@ export default defineComponent({
         });
       this.showNothingTodoModal(this.todolist);  
     },
-    async axiosDelete(item: Todo): Promise<void> {
+    async axiosDelete(todo: Todo): Promise<void> {
       const res = await axios
-        .delete(`http://localhost:3005/todolist/${item.id}`)
+        .delete(`http://localhost:3005/todolist/${todo.id}`)
         .then(response => {
           console.debug(response);
         })
@@ -187,8 +195,8 @@ export default defineComponent({
     goStartTodo(todo: any): void {
       this.$router.push({ name: "StartTodo", params: todo });
     },
-    async goDeleteTodo(item: Todo): Promise<void> {
-      await this.axiosDelete(item);
+    async goDeleteTodo(todo: Todo): Promise<void> {
+      await this.axiosDelete(todo);
       await this.axiosGet();
       this.editDeleteModal = false;
     }

@@ -22,7 +22,7 @@
           name="title"
           placeholder=" ?"
           v-model.trim="title"
-          maxlength="30"
+          :maxlength="max"
         />
       </li>
       <li class="todo-description">
@@ -33,7 +33,7 @@
           name="description"
           placeholder=" ?"
           v-model.trim="description"
-          maxlength="30"
+          :maxlength="max"
         />
       </li>
       <li class="todo-flex todo-time">
@@ -113,6 +113,7 @@ export default defineComponent({
       seconds: 0,
       showingPocketCalendar: false,
       showingWarning: false,
+      max: 20
     }
   },
   created () {
