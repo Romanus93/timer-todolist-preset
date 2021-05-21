@@ -91,18 +91,6 @@ interface Todo {
   id: number;
 }
 
-// declare module "axios" {
-//   interface AxiosRequestConfig {
-//     title: string;
-//     description: string;
-//     id: number;
-//     hours: number;
-//     minutes: number;
-//     seconds: number;
-//     date?: string;
-//   }
-// }
-
 export default defineComponent({
   name: 'TodoList',
   props: {

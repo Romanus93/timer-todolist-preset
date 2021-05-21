@@ -1,8 +1,7 @@
 /* 타이머 대기 진행 완료 이미지 */
 .image-egg {
-  border: olivedrab 5px solid;
   width: 100%;
-  height: 100%;
+  height: 88%;
   justify-content: center;
 }
 

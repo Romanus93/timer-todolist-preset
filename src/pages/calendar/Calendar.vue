@@ -18,13 +18,11 @@
           :inputtedDate="inputtedDate"
         ></todo-list>
       </div>
-      <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
       <div class="date-none-modal" v-show="!inputtedDate">
         <p class="date-none-modal__text">날짜를 선택해주세요!</p>
       </div>
     </section>
     <section class="todo-flex action-buttons-wrap" v-show="inputtedDate">
-        <!--Icon <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
         <div>
           <button type="button" class="yesterday-button button--calendar button--calendar-image" @click="goYesterday">
             <i class="fas fa-arrow-left"></i>

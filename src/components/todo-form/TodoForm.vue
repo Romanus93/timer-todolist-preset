@@ -1,11 +1,10 @@
 <template>
   <section class="todo-flex todo-form-component">
-    <!--Background Image Source <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     <ul class="todo-flex todo-info todo-info--bg-image">
       <li class="todo-date">
         <span> {{ date }} </span>
-        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!showingPocketCalendar"> <i class="far fa-edit"></i> </button>
-        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="showingPocketCalendar"> <i class="far fa-check-circle"></i>  </button>
+        <button class="change-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(true)" v-show="!showingPocketCalendar"> <i class="far fa-calendar-alt"></i>  </button>
+        <button class="check-date-button button--pocket-calendar" type="button" @click="showPocketCalendar(false)" v-show="showingPocketCalendar"> <i class="fas fa-calendar-check"></i> </button>
         <todo-date
         :todoDate="date"
         show="showingPocketCalendar"
@@ -113,7 +112,7 @@ export default defineComponent({
       seconds: 0,
       showingPocketCalendar: false,
       showingWarning: false,
-      max: 20
+      max: 25
     }
   },
   created () {

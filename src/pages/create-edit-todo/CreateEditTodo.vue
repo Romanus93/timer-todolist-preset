@@ -23,7 +23,6 @@ export default defineComponent({
   },
   methods: {
     selectType () :void {
-      console.log(this.$route.params);
       if(this.$route.params.type) {
       this.sessionSetItem(this.$route.params);
       this.todo = this.$route.params;
