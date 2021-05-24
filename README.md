@@ -1,10 +1,10 @@
 # Timer-Calendar-Todolist
->일을 하거나 공부를 할 때, 타이머(시간측정)를 사용하면, 내가 얼마나 효율적으로 시간을 사용하고 있는지를 정량화 할 수 있습니다.
-계획을 세우는 'Todolist'와 Timer를 합친 Timer-Todolist를 만들어보았습니다.
-
+>일을 하거나 공부를 할 때, 타이머(시간측정)를 사용하면, 내가 얼마나 효율적으로 시간을 사용하고 있는지를 확인할 수 있습니다.   
+저의 경우 그날 해야 될 것을 적어놓고, 스탑워치를 사용하여 '얼마나 집중했는지'를 기록합니다.   
+이때 ‘Todolist와 Timer를 합치면 좋겠다’ 라는 생각을 하게 되었고, Timer-Todolist를 만들게 되었습니다. 
 
 ## What i use
-***
+
 ### Framework - [Vue3](https://v3.vuejs.org/)      
 
 [<img src="https://router.vuejs.org/logo.png" width="15%">](https://v3.vuejs.org/)   
@@ -20,7 +20,6 @@
 ### DB - [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 
 ## 목차
-***
 - 기능 (Features)
 - 파일 구조 / component 등
 - 설치 및 실행
@@ -41,5 +40,3 @@
 ### 이미지 참고 사이트 - fontawsome , flaticon
 
 ##### Live 
-
-
