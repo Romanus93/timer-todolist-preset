@@ -95,3 +95,8 @@
 <img src="./src/assets/99532F385A5305401B.gif" width="20%">
 
 ##### Live
+
+<img src="./src/assets/and-so-on/item.gif" width="20%">   
+<img src="./src/assets/and-so-on/item.gif" width="30%">   
+<img src="./src/assets/and-so-on/item.gif" width="50%">    
+<img src="./src/assets/and-so-on/item.gif" width="45%">
