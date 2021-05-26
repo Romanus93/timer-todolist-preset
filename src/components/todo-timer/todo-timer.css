@@ -9,7 +9,7 @@
   height: 20%;
   font-size: var(--font-resp);
   color: var(--white);
-  width: 100%;  
+  width: 100%;
   justify-content: center;
   align-items: center;
   margin: 1vh 0;
@@ -26,7 +26,6 @@
   width: 100%;
   height: 12%;
   align-items: center;
-  margin-top: 3vh;
 }
 
 .button--timer {
@@ -56,11 +55,13 @@
 }
 
 /* 버튼 애니메이션 */
-.mode-fade-enter-active, .mode-fade-leave-active {
+.mode-fade-enter-active,
+.mode-fade-leave-active {
   transition: opacity 0.4s ease;
 }
 
-.mode-fade-enter-from, .mode-fade-leave-to {
+.mode-fade-enter-from,
+.mode-fade-leave-to {
   opacity: 0;
 }
 
@@ -69,7 +70,7 @@
     font-size: var(--font-md);
     width: 7em;
   }
-} 
+}
 
 @media screen and (min-width: 600px) and (min-height: 850px) {
   .button--timer {

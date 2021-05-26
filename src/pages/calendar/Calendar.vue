@@ -93,6 +93,9 @@ export default defineComponent({
       return this.$refs.calendar;
     },
   },
+  beforeCreate() {
+    sessionStorage.clear();
+  },
   created() {
     this.$route.params.todoDate !== undefined && this.resetDate();
   },

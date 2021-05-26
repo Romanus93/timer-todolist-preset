@@ -13,6 +13,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/startTodo",
     name: "StartTodo",
     props: true,
+    meta: { transition: 'slide-left' },
     component: StartTodo
   },
   {

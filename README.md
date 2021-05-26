@@ -32,28 +32,30 @@
 ## 설치 및 실행 방법 / Build Setup
 
 ```
-  (npm 6.X) 사용자의 경우
-1. npm install -g npm@latest ( 7.x 대로 업그레이드 후 이용하시거나)
-  OR
-2. npm i @popperjs/core ( 6.x대에서는 지원이 안되므로, 따로 설치하셔야 합니다.)
+  npm 6.X 사용자의 경우
+
+  1. npm install -g npm@latest ( 7.x 대로 업그레이드 후 이용하시거나)
+                    #### OR
+  2. npm i @popperjs/core ( 6.x대에서는 지원이 안되므로, 따로 설치하셔야 합니다.)
 ```
 
 ```
-  (npm 7.x) 사용자 경우
-npm install
-npm run dev
-npm run build
-npm run serve
+  npm 7.x 사용자 경우
+
+  npm install
+  npm run dev
+  npm run build
+  npm run serve
 ```
 
 ```
   DB Json-server
-json-server --watch db.json -p 3005 (기본 3000port가 vue의 기본 포트와 겹쳐, 3005로 변경.)
-#### OR
-npx json-server --watch db.json -p 3005( json-server: command not found라 출력시)
+  json-server --watch db.json -p 3005
+                    #### OR
+  npx json-server --watch db.json -p 3005( json-server: command not found라 출력시)
 ```
 
-### structure
+## structure
 
 ```
   src
@@ -74,7 +76,7 @@ npx json-server --watch db.json -p 3005( json-server: command not found라 출�
     |---pages
     |       |---calnedar
     |       |       |---Calnedar.vue
-    |       |       |---Calnedar.css
+    |       |       |---calnedar.css
     |       |
     |       |---create-edit-todo
     |       |---start-todo
@@ -88,5 +90,8 @@ npx json-server --watch db.json -p 3005( json-server: command not found라 출�
 ```
 
 ### 이미지 참고 사이트 - fontawsome , flaticon
+
+![gif](./src/assets/99532F385A5305401B.gif)
+<img src="./src/assets/99532F385A5305401B.gif" width="20%">
 
 ##### Live

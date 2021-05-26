@@ -1,6 +1,5 @@
 .create-edit-todo-page {
   height: 100%;
-  border: 5px solid teal;
   flex-direction: column;
   justify-content: center;
   align-items: center;
