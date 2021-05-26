@@ -35,6 +35,7 @@
           name="title"
           placeholder=" ?"
           v-model.trim="title"
+          autocomplete="off"
           :maxlength="max"
         />
       </li>
@@ -46,6 +47,7 @@
           name="description"
           placeholder=" ?"
           v-model.trim="description"
+          autocomplete="off"
           :maxlength="max"
         />
       </li>
