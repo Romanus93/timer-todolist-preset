@@ -61,6 +61,7 @@
             placeholder="0"
             min="0"
             v-model.number="hours"
+            autocomplete="off"
             oninput="this.value = Math.abs(this.value)"
           />
         </div>
@@ -74,6 +75,7 @@
             placeholder="0"
             min="0"
             v-model.number="minutes"
+            autocomplete="off"
             oninput="this.value = Math.abs(this.value)"
           />
         </div>
@@ -87,6 +89,7 @@
             placeholder="0"
             min="0"
             v-model.number="seconds"
+            autocomplete="off"
             oninput="this.value = Math.abs(this.value)"
           />
         </div>
