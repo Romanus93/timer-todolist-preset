@@ -164,6 +164,7 @@
 | :----------------------------------------: | :----------------------------------------: | :----------------------------------------: | :----------------------------------------: | :----------------------------------------: | :----------------------------------------: |
 | ![timer](./src/assets/gif/timer/7-1-1.gif) | ![timer](./src/assets/gif/timer/7-1-2.gif) | ![timer](./src/assets/gif/timer/7-1-3.gif) | ![timer](./src/assets/gif/timer/7-1-4.gif) | ![timer](./src/assets/gif/timer/7-1-5.gif) | ![timer](./src/assets/gif/timer/7-1-6.gif) |
 
+<<<<<<< HEAD
 ## session-storage 활용
 
 |                      Timer                       |
@@ -177,6 +178,17 @@
 |                        수정 기능                        |
 | :-----------------------------------------------------: |
 | ![timer](./src/assets/gif/session/8-2-session-edit.gif) |
+=======
+|              Timer-Session-Storage               |
+| :----------------------------------------------: |
+| ![timer](./src/assets/gif/timer/7-3-session.gif) |
+
+## session-storage 활용
+
+|                      Timer                       |                        생성session                        |                        수정 기능                        |
+| :----------------------------------------------: | :-------------------------------------------------------: | :-----------------------------------------------------: |
+| ![timer](./src/assets/gif/timer/7-3-session.gif) | ![timer](./src/assets/gif/session/8-1-session-create.gif) | ![timer](./src/assets/gif/session/8-2-session-edit.gif) |
+>>>>>>> 6a0a3329272ce7897a097bf1084e6554ac6c73ed
 
 ## date 이동
 
@@ -184,9 +196,15 @@
 | :------------------------------------: | :------------------------------------: | :------------------------------------: |
 | ![date](./src/assets/gif/date/2-1.gif) | ![date](./src/assets/gif/date/2-2.gif) | ![date](./src/assets/gif/date/2-3.gif) |
 
+<<<<<<< HEAD
 |                월 이동                 |         날짜 잘 못 선택시 모달         |              팝업 캘린더               |
 | :------------------------------------: | :------------------------------------: | :------------------------------------: |
 | ![date](./src/assets/gif/date/2-3.gif) | ![date](./src/assets/gif/date/2-4.gif) | ![date](./src/assets/gif/date/2-5.gif) |
+=======
+|         날짜 잘 못 선택시 모달         |              팝업 캘린더               |
+| :------------------------------------: | :------------------------------------: |
+| ![date](./src/assets/gif/date/2-4.gif) | ![date](./src/assets/gif/date/2-5.gif) |
+>>>>>>> 6a0a3329272ce7897a097bf1084e6554ac6c73ed
 
 ## 아이템, 스와이프
 
