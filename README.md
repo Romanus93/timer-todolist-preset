@@ -166,9 +166,9 @@
 
 ## session-storage 활용
 
-|                      Timer                       |
-| :----------------------------------------------: |
-| ![timer](./src/assets/gif/timer/7-3-session.gif) |
+|                          Timer                           |
+| :------------------------------------------------------: |
+| ![timer](./src/assets/gif/session/8-3-session-timer.gif) |
 
 |                        생성session                        |
 | :-------------------------------------------------------: |
@@ -180,13 +180,13 @@
 
 ## date 이동
 
-|            어제, 내일 이동             |            오늘 날짜로 이동            |                월 이동                 |
-| :------------------------------------: | :------------------------------------: | :------------------------------------: |
-| ![date](./src/assets/gif/date/2-1.gif) | ![date](./src/assets/gif/date/2-2.gif) | ![date](./src/assets/gif/date/2-3.gif) |
+|                 전날 이동                 |                다음날 이동                 |            오늘 날짜로 이동            |
+| :---------------------------------------: | :----------------------------------------: | :------------------------------------: |
+| ![date](./src/assets/gif/date/2-1-to.gif) | ![date](./src/assets/gif/date/2-1-yes.gif) | ![date](./src/assets/gif/date/2-2.gif) |
 
-|                월 이동                 |         날짜 잘 못 선택시 모달         |              팝업 캘린더               |
+|                월 이동                 |              팝업 캘린더               |         날짜 잘 못 선택시 모달         |
 | :------------------------------------: | :------------------------------------: | :------------------------------------: |
-| ![date](./src/assets/gif/date/2-3.gif) | ![date](./src/assets/gif/date/2-4.gif) | ![date](./src/assets/gif/date/2-5.gif) |
+| ![date](./src/assets/gif/date/2-3.gif) | ![date](./src/assets/gif/date/2-5.gif) | ![date](./src/assets/gif/date/2-4.gif) |
 
 ## 아이템, 스와이프
 
@@ -196,14 +196,18 @@
 
 ## 생성,수정,삭제
 
-|                       Todo 생성                       |                  Todo 수정                   |                    Todo 삭제                     |
-| :---------------------------------------------------: | :------------------------------------------: | :----------------------------------------------: |
-| ![timer](./src/assets/gif/create/3-1-create-todo.gif) | ![timer](./src/assets/gif/edit/4-1-edit.gif) | ![timer](./src/assets/gif/delete/5-1-delete.gif) |
+|                    Todo 생성                     |                  Todo 수정                   |                    Todo 삭제                     |
+| :----------------------------------------------: | :------------------------------------------: | :----------------------------------------------: |
+| ![timer](./src/assets/gif/create/3-1-create.gif) | ![timer](./src/assets/gif/edit/4-1-edit.gif) | ![timer](./src/assets/gif/delete/5-1-delete.gif) |
 
-## 기타
-
-생성 수정 삭제
+## 기타 기능
 
 |         Todo-모달(값을 입력 안했을 때)          |                      날짜 변경                      |                      Home-btn                      |
 | :---------------------------------------------: | :-------------------------------------------------: | :------------------------------------------------: |
 | ![timer](./src/assets/gif/create/3-3-modal.gif) | ![timer](./src/assets/gif/edit/4-2-change-date.gif) | ![timer](./src/assets/gif/create/3-4-home-btn.gif) |
+|         반응형(w: 320~768, h: 568~1024)         |                       반응형                        |
+|  ![timer](./src/assets/gif/responsive/9-1.gif)  |    ![timer](./src/assets/gif/responsive/9-2.gif)    |
+
+|        반응형(w: 320~768, h: 568~1024)        |                    반응형                     |
+| :-------------------------------------------: | :-------------------------------------------: |
+| ![timer](./src/assets/gif/responsive/9-1.gif) | ![timer](./src/assets/gif/responsive/9-2.gif) |
