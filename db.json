@@ -1,15 +1,6 @@
 {
   "todolist": [
     {
-      "date": "2021-05-24",
-      "title": "낮잠 자기",
-      "description": "",
-      "hours": 0,
-      "minutes": 30,
-      "seconds": 0,
-      "id": 3
-    },
-    {
       "date": "2021-05-30",
       "title": "공부",
       "description": "vue, vuex",
@@ -53,15 +44,6 @@
       "minutes": 23,
       "seconds": 5,
       "id": 11
-    },
-    {
-      "date": "2021-05-27",
-      "title": "a",
-      "description": "a22",
-      "hours": 0,
-      "minutes": 0,
-      "seconds": 2,
-      "id": 12
     }
   ]
 }
