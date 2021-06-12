@@ -1,16 +1,10 @@
 # Timer-Calendar-Todolist
-
-> 일을 하거나 공부를 할 때, 타이머(시간측정)를 사용하면, 내가 얼마나 효율적으로 시간을 사용하고 있는지를 확인할 수 있습니다.  
-> 저의 경우 그날 해야 될 것을 적어놓고, 스탑워치를 사용하여 '얼마나 했는지'를 기록합니다.  
+> 저는 그날 해야 될 것을 적어놓고, 스탑워치를 사용하여 '얼마나 했는지'를 기록합니다.  
 > 이때 ‘Todolist와 Timer를 합치면 좋겠다’ 라는 생각을 하게 되었고, Timer-Todolist를 만들게 되었습니다.
 
 ## What i use
 
-### Framework - [Vue3](https://v3.vuejs.org/)
-
-[<img src="https://router.vuejs.org/logo.png" width="15%">](https://v3.vuejs.org/)
-
-### Library - [Vue-Router](https://next.router.vuejs.org/) + [V-Calendar](https://vcalendar.io/) + [swiper](https://swiperjs.com/vue) + [momentJs](https://momentjs.com/) + [Typscript](https://www.typescriptlang.org/)
+### Front - [Vue3](https://v3.vuejs.org/) + [Vue-Router](https://next.router.vuejs.org/) + [V-Calendar](https://vcalendar.io/) + [swiper](https://swiperjs.com/vue) + [momentJs](https://momentjs.com/) + [Typscript](https://www.typescriptlang.org/)
 
 [<img src="https://router.vuejs.org/logo.png" width="15%">](https://next.router.vuejs.org/)
 [<img src="https://vcalendar.io/hero.png" width="15%">](https://vcalendar.io/)
@@ -18,7 +12,7 @@
 [<img src="https://cdn.worldvectorlogo.com/logos/momentjs.svg" width="15%">](https://momentjs.com/)
 [<img src="./src/assets/and-so-on/ts-logo-round-512.png" width="15%">](https://www.typescriptlang.org/)
 
-### DB - [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
+### DB - [JSONPlaceholder](https://jsonplaceholder.typicode.com/) + [Axios](https://github.com/axios/axios)
 
 ## 목차(Table of contents)
 
@@ -150,25 +144,33 @@
 
 흰 달걀 / White Egg  
 https://www.flaticon.com/free-icon/egg_528166?related_id=528166  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website: 
+`<div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 금이간 달걀 / Craked Egg  
 https://www.flaticon.com/free-icon/egg_812870?term=egg&related_id=812870  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website: 
+`<div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 깨진 달걀 / Broken Egg  
 https://www.flaticon.com/free-icon/egg_817324  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website: 
+`<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 부화되기 전 / Born-Egg  
 https://www.flaticon.com/free-icon/egg_812920?term=egg%20crack&related_id=812920  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website:
+`<div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 병아리 / Chick  
 https://www.flaticon.com/free-icon/hatch_2663015?term=chick&page=1&position=11&page=1&position=11&related_id=2663015&origin=search  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website:
+`<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 두루마리 / Roll-Out  
 https://www.flaticon.com/free-icon/roll-out_4334338?term=roll%20out&related_id=4334338  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website:
+`<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 달력 / Calendar-Page  
 https://www.flaticon.com/free-icon/calendar_1827278?term=calendar&page=3&position=65&page=3&position=65&related_id=1827278&origin=search  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>  
+Using it for web? Copy this link in your website: 
+`<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 경고 달력 / Warning-Calendar  
 https://www.flaticon.com/free-icon/calendar_4267533?term=calendar%20warning&page=1&position=2&page=1&position=2&related_id=4267533&origin=style  
-Using it for web? Copy this link in your website: <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+Using it for web? Copy this link in your website:
+`<div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
