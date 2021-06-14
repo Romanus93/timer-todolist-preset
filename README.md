@@ -26,20 +26,18 @@
 ## 실행(Getting started)
 
 ```
-  npm 6.X 사용자의 경우
+  **npm 6.X 사용자**
 
-  1. npm install -g npm@latest ( 7.x 대로 업그레이드 후 이용하시거나)
-                    #### OR
-  2. npm i @popperjs/core ( 6.x대에서는 지원이 안되므로, 따로 설치하셔야 합니다.)
+  npm install
+  npm i @popperjs/core ( 6.x대에서는 지원이 안되므로 설치 )
+  npm run dev
 ```
 
 ```
-  npm 7.x 사용자 및 @popperjs/core 설치 이후
+  **npm 7.x 사용자**
 
   npm install
   npm run dev
-  npm run build
-  npm run serve
 ```
 
 ```
