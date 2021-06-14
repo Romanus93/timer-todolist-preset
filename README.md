@@ -24,7 +24,7 @@
 - 기능 (Features)
 - 이미지 저작권 (Image Copyright)
 
-## 실행(Getting started)
+## 실행(Getting started) - git clone 후 파일 없을 시, issue 참고하시면 됩니다.
 
 **npm 6.X 사용자**
 
