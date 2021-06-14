@@ -104,6 +104,7 @@ export default defineComponent({
       this.date = new Date();
       this.calendar.move(this.date);
     },
+    // step: -1 이전 달, 0 이동 없음, 1 다음 달
     goYesterday(): void {
       let startOfMonth: string = moment(this.date)
         .startOf("month")
@@ -123,7 +124,6 @@ export default defineComponent({
       this.goMonth(step);
     },
     goMonth(step: number): void {
-      // step: -1 이전 달, 0 이동 없음, 1 다음 달
       this.calendar.move(step, {
         transition: this.transition,
         position: this.position,
