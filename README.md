@@ -1,12 +1,7 @@
 # Timer-Calendar-Todolist
-<<<<<<< HEAD
 
-> 일을 하거나 공부를 할 때, 타이머(시간측정)를 사용하면, 내가 얼마나 효율적으로 시간을 사용하고 있는지를 확인할 수 있다.  
-> 저의 경우 그날 해야 될 것을 적어놓고, 타이머를 사용하여 '얼마나 했는지'를 기록합니다.  
-=======
-> 저는 그날 해야 될 것을 적어놓고, 스탑워치를 사용하여 '얼마나 했는지'를 기록합니다.  
->>>>>>> 80d2d99cc47e0018148039acba76c885b4cc76d3
-> 이때 ‘Todolist와 Timer를 합치면 좋겠다’ 라는 생각을 하게 되었고, Timer-Todolist를 만들게 되었습니다.
+> 평소 그날 해야 될 것을 적어놓고, 스탑워치를 사용하여 '얼마나 했는지'를 기록합니다.  
+> 이때 ‘Todolist와 Timer를 합치면 좋겠다’ 라는 생각을 하게 되었고,앱 크기의 Timer-Calendar-Todolist를 만들게 되었습니다.
 
 ## What i use
 
@@ -31,26 +26,31 @@
 
 ## 실행(Getting started)
 
-```
-  **npm 6.X 사용자**
+**npm 6.X 사용자**
 
+```
   npm install
   npm i @popperjs/core ( 6.x대에서는 지원이 안되므로 설치 )
   npm run dev
 ```
 
-```
-  **npm 7.x 사용자**
+**npm 7.x 사용자**
 
+```
   npm install
   npm run dev
 ```
 
+**DB typicode/Json-Server**
+
 ```
-  DB typicode/Json-Server
   json-server --watch db.json -p 3005
-                    #### OR
-  npx json-server --watch db.json -p 3005( json-server: command not found라 출력시)
+```
+
+###만약 json-server: command not found 출력시
+
+```
+  npx json-server --watch db.json -p 3005
 ```
 
 ## 구조(Structure)
@@ -148,15 +148,15 @@
 
 흰 달걀 / White Egg  
 https://www.flaticon.com/free-icon/egg_528166?related_id=528166  
-Using it for web? Copy this link in your website: 
+Using it for web? Copy this link in your website:
 `<div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 금이간 달걀 / Craked Egg  
 https://www.flaticon.com/free-icon/egg_812870?term=egg&related_id=812870  
-Using it for web? Copy this link in your website: 
+Using it for web? Copy this link in your website:
 `<div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 깨진 달걀 / Broken Egg  
 https://www.flaticon.com/free-icon/egg_817324  
-Using it for web? Copy this link in your website: 
+Using it for web? Copy this link in your website:
 `<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 부화되기 전 / Born-Egg  
 https://www.flaticon.com/free-icon/egg_812920?term=egg%20crack&related_id=812920  
@@ -172,7 +172,7 @@ Using it for web? Copy this link in your website:
 `<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 달력 / Calendar-Page  
 https://www.flaticon.com/free-icon/calendar_1827278?term=calendar&page=3&position=65&page=3&position=65&related_id=1827278&origin=search  
-Using it for web? Copy this link in your website: 
+Using it for web? Copy this link in your website:
 `<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>`
 경고 달력 / Warning-Calendar  
 https://www.flaticon.com/free-icon/calendar_4267533?term=calendar%20warning&page=1&position=2&page=1&position=2&related_id=4267533&origin=style  
